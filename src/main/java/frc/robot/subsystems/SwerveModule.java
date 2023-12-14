@@ -4,6 +4,8 @@
 
 package frc.robot.subsystems;
 
+
+
 import com.ctre.phoenix6.configs.ClosedLoopRampsConfigs;
 import com.ctre.phoenix6.configs.CurrentLimitsConfigs;
 import com.ctre.phoenix6.configs.MotorOutputConfigs;
@@ -96,7 +98,7 @@ public class SwerveModule {
     driveMotor.getConfigurator().apply(driveslot0Configs);
     steerMotor.getConfigurator().apply(steerslot0Configs);
 
-    steerConfigurator.setRotorPosition(CANCoderDriveStraightSteerSetPoint);
+    steerConfigurator.setPosition(CANCoderDriveStraightSteerSetPoint);
 
     driveCurrentLimitsConfigs = new CurrentLimitsConfigs();
     steerCurrentLimitsConfigs = new CurrentLimitsConfigs();
@@ -140,7 +142,7 @@ public class SwerveModule {
   }
 
   public void resetEncoders() {
-    driveMotor.setRotorPosition(0);
+    driveMotor.setPosition(0);
   }
 
   /** Converts encoder counts to degrees. */
@@ -211,7 +213,7 @@ public class SwerveModule {
 
   public void setRotorPos(){
     initialCANCoderValue = canCoder.getAbsolutePosition().refresh().getValue() % 360;
-    steerMotor.setRotorPosition(-(initialCANCoderValue - CANCoderDriveStraightSteerSetPoint) * Constants.MotorConstants.STEER_MOTOR_GEAR_RATIO);
+    steerMotor.setPosition(-(initialCANCoderValue - CANCoderDriveStraightSteerSetPoint) * Constants.MotorConstants.STEER_MOTOR_GEAR_RATIO);
   }
 
   // public static SwerveModuleState optimize(SwerveModuleState desiredState, Rotation2d currentAngle) {
