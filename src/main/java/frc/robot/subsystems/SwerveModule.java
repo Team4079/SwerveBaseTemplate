@@ -288,6 +288,7 @@ public class SwerveModule {
   //     return new SwerveModuleState(desiredState.speedMetersPerSecond, Rotation2d.fromDegrees(desiredDegrees));
   //   }
   // }
+  
   public static SwerveModuleState optimize(SwerveModuleState desiredState, Rotation2d currentAngle) {
     double targetAngle = placeInAppropriate0To360Scope(
         currentAngle.getDegrees(), desiredState.angle.getDegrees()

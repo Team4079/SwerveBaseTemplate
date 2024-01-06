@@ -325,8 +325,6 @@ public class SwerveSubsystem extends SubsystemBase {
   public double getY(){
     return estimator.getEstimatedPosition().getTranslation().getY();
   }
-
-//  
 // }
 
 public ChassisSpeeds getChassisSpeeds() {
@@ -342,12 +340,4 @@ public void chassisSpeedsDrive(ChassisSpeeds chassisSpeeds){
     modules[i].setState(states[i]);
   }
 }
-
-
-
- 
-
-
 }
-
-
