@@ -28,8 +28,8 @@ public class AutoAlign extends CommandBase {
     this.swerveSubsystem = swerveSubsystem;
     this.limelight = limelight;
     this.led = led;
-    horizontalPID = new PID(0.05, 0, 0);
-    verticalPID = new PID(0.05, 0.0, 0.0);
+    horizontalPID = new PID(0.1, 0, 0);
+    verticalPID = new PID(0.1, 0.0, 0.0);
     rotationalPID = new PID(0.1, 0, 0);
     addRequirements(swerveSubsystem, limelight);
   }

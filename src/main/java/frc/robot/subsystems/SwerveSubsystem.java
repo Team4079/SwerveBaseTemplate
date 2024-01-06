@@ -4,6 +4,7 @@ import com.ctre.phoenix6.hardware.Pigeon2;
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.util.HolonomicPathFollowerConfig;
 import com.pathplanner.lib.util.PIDConstants;
+import com.pathplanner.lib.util.PathPlannerLogging;
 import com.pathplanner.lib.util.ReplanningConfig;
 
 import edu.wpi.first.math.controller.PIDController;
@@ -21,6 +22,7 @@ import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
@@ -48,6 +50,8 @@ public class SwerveSubsystem extends SubsystemBase {
   private final SwerveDriveKinematics sKinematics = Constants.SwerveConstants.kinematics;
   private double turnSpeed = 0;
   private Timer timer;
+
+  private Field2d field = new Field2d();
   /** Creates a new DriveTrain. */
   public SwerveSubsystem() {
     pidggy = new Pigeon2(16);
@@ -100,13 +104,17 @@ public class SwerveSubsystem extends SubsystemBase {
       this::chassisSpeedsDrive, // Method that will drive the robot given ROBOT RELATIVE ChassisSpeeds
       new HolonomicPathFollowerConfig( // HolonomicPathFollowerConfig, this should likely live in your Constants class
         new PIDConstants(0.1, 0.0, 0.0),
-        new PIDConstants(0.1, 10.0, 0.0),
-        4.5, // Max module speed, in m/s
+        new PIDConstants(0.1, 0.0, 0.0),
+        1.0, // Max module speed, in m/s
         0.4, // Drive base radius in meters. Distance from robot center to furthest module.
         new ReplanningConfig() // Default path replanning config. See the API for the options here
       ),
       this // Reference to this subsystem to set requirements
     );
+
+    PathPlannerLogging.setLogActivePathCallback((poses) -> field.getObject("path").setPoses(poses));
+
+    SmartDashboard.putData("Field", field);
   }
 
   public void drive(double forwardSpeed, double leftSpeed, double joyStickInput, boolean isFieldOriented) {
@@ -222,6 +230,8 @@ public class SwerveSubsystem extends SubsystemBase {
       {
         // updatePosition();
       }
+
+    field.setRobotPose(getPose());
 
     gyroAngle = getRotationPidggy();
     estimator.update(gyroAngle, getModulePositions());

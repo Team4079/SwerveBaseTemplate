@@ -19,9 +19,10 @@ public class LED extends SubsystemBase {
     rainbowFirstPixelHue = 0;
   }
 
+  
   @Override
   public void periodic() {
-
+    this.setRainbow();
   }
 
   public void setRainbow() {
@@ -47,4 +48,6 @@ public class LED extends SubsystemBase {
 
     m_led.setData(m_ledBuffer);
   }
+
+  
 }

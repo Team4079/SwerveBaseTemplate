@@ -81,8 +81,8 @@ public class RobotContainer {
     leftBumper = new JoystickButton(pad, 5);
 
     swerveSubsystem = new SwerveSubsystem();
-    swerveSubsystem.setDefaultCommand(new AutoAlign(swerveSubsystem, limelety, led));
-    // swerveSubsystem.setDefaultCommand(new PadDrive(swerveSubsystem, pad, true));
+    // swerveSubsystem.setDefaultCommand(new AutoAlign(swerveSubsystem, limelety, led));
+    swerveSubsystem.setDefaultCommand(new PadDrive(swerveSubsystem, pad, true));
 
     //Configure auto chooser
 
