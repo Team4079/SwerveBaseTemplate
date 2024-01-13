@@ -29,6 +29,7 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.SwerveControllerCommand;
+import frc.robot.Robot;
 import frc.robot.utils.Constants;
 import frc.robot.utils.Constants.MotorConstants;
 import frc.robot.utils.Constants.SwerveConstants;
@@ -109,6 +110,7 @@ public class SwerveSubsystem extends SubsystemBase {
         0.4, // Drive base radius in meters. Distance from robot center to furthest module.
         new ReplanningConfig() // Default path replanning config. See the API for the options here
       ),
+      () -> true,
       this // Reference to this subsystem to set requirements
     );
 
@@ -158,7 +160,6 @@ public class SwerveSubsystem extends SubsystemBase {
     }
     return positions;
   }
-
 
   public Rotation2d getRotationPidggy(){
     rot = -pidggy.getRotation2d().getDegrees();

@@ -60,7 +60,7 @@ public class RobotContainer {
   private final JoystickButton padY;
   private final JoystickButton rightBumper;
   private final JoystickButton leftBumper;
-
+  
   // private final SendableChooser<Command> autoChooser;
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -122,9 +122,9 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
 
     // PathPlannerPath path = PathPlannerPath.fromPathFile("Test Path");
-    // return AutoBuilder.followPathWithEvents(path);
+    // return AutoBuilder.followPath(path);
 
-    return new PathPlannerAuto("Straight Auto");
+    return new PathPlannerAuto("Test Auto");
   }
 
   /**

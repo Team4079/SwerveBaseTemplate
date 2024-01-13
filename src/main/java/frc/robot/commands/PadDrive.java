@@ -31,6 +31,7 @@ public class PadDrive extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    System.out.println("hey big boi ********************************************"); 
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -93,6 +94,7 @@ public class PadDrive extends Command {
     }
 
     else {
+      System.out.println(x + " " + y);
       swerveSubsystem.drive(x * Constants.MotorConstants.SPEED_CONSTANT, y * Constants.MotorConstants.SPEED_CONSTANT,
           turn, isFieldOriented);
     }

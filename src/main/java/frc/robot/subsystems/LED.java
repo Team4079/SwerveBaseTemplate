@@ -22,16 +22,15 @@ public class LED extends SubsystemBase {
   
   @Override
   public void periodic() {
-    this.setRainbow();
+    // this.setRainbow();
+    // this.setColor(0, 255, 174);
   }
 
   public void setRainbow() {
     for (var i = 0; i < m_ledBuffer.getLength(); i++) {
-      // Calculate the hue - hue is easier for rainbows because the color
-      // is more vibrant than just mixing R, G, and B values
       hue = (rainbowFirstPixelHue + (i * 180 / m_ledBuffer.getLength())) % 180;
       // Set the value
-      m_ledBuffer.setHSV(i, hue, 255, 128);
+      m_ledBuffer.setHSV(i, hue, 255, 180);
     }
     // Increase by to make the rainbow "move"
     rainbowFirstPixelHue += 3;
@@ -43,7 +42,7 @@ public class LED extends SubsystemBase {
 
   public void setColor(int r, int g, int b){
     for (var i = 0; i < m_ledBuffer.getLength(); i++){
-      m_ledBuffer.setRGB(i, r, g, b);
+      m_ledBuffer.setHSV(i, r, g, b);
     }
 
     m_led.setData(m_ledBuffer);

@@ -26,6 +26,7 @@ deploy {
                 // First part is artifact name, 2nd is artifact type
                 // getTargetTypeClass is a shortcut to get the class type using a string
 
+
                 frcJava(getArtifactTypeClass('FRCJavaArtifact')) {
                 }
 
@@ -100,3 +101,5 @@ wpi.java.configureTestTasks(test)
 tasks.withType(JavaCompile) {
     options.compilerArgs.add '-XDstringConcat=inline'
 }
+
+wpi.jreArtifactLocation = 'edu.wpi.first.jdk:roborio-2021:11.0.9u11-1'
