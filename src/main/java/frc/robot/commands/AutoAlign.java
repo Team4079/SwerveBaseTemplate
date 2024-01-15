@@ -4,13 +4,14 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.LED;
 import frc.robot.subsystems.Limelight;
 import frc.robot.subsystems.SwerveSubsystem;
 import frc.robot.utils.PID;
 
-public class AutoAlign extends CommandBase {
+@SuppressWarnings("unused")
+public class AutoAlign extends Command {
   /** Creates a new AutoAlign. */
   private Limelight limelight;
   private SwerveSubsystem swerveSubsystem;
