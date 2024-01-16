@@ -10,6 +10,7 @@ import frc.robot.subsystems.Limelight;
 import frc.robot.subsystems.SwerveSubsystem;
 import frc.robot.utils.PID;
 
+@SuppressWarnings("unused")
 public class AutoAlign extends Command {
   /** Creates a new AutoAlign. */
   private Limelight limelight;
