@@ -74,6 +74,7 @@ public final class Constants {
       throw new IllegalStateException(UTILITY_CLASS);
     }
 
+    public static final boolean isFieldOriented = true;
     public static final Translation2d frontLeftLocation = new Translation2d(0.263525, -0.263525);
     public static final Translation2d frontRightLocation = new Translation2d(0.263525, 0.263525);
     public static final Translation2d backLeftLocation = new Translation2d(-0.263525, -0.263525);

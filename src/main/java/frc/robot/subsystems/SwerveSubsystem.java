@@ -101,16 +101,16 @@ public class SwerveSubsystem extends SubsystemBase {
     AutoBuilder.configureHolonomic(
       this::getPose, // Robot pose supplier
       this::resetOdometry, // Method to reset odometry (will be called if your auto has a starting pose)
-      this::getChassisSpeeds, // ChassisSpeeds supplier. MUST BE ROBOT RELATIVE
+      this::getAutoSpeeds, // ChassisSpeeds supplier. MUST BE ROBOT RELATIVE
       this::chassisSpeedsDrive, // Method that will drive the robot given ROBOT RELATIVE ChassisSpeeds
       new HolonomicPathFollowerConfig( // HolonomicPathFollowerConfig, this should likely live in your Constants class
-        new PIDConstants(0.1, 0.0, 0.0),
-        new PIDConstants(0.1, 0.0, 0.0),
-        1.0, // Max module speed, in m/s
-        0.4, // Drive base radius in meters. Distance from robot center to furthest module.
+        new PIDConstants(0.14, 0.0002, 0.0),
+        new PIDConstants(0.01, 0.0, 0.0),
+        4.96824, // Max module speed, in m/s
+        0.66, // Drive base radius in meters. Distance from robot center to furthest module.
         new ReplanningConfig() // Default path replanning config. See the API for the options here
       ),
-      () -> true,
+      () -> false,
       this // Reference to this subsystem to set requirements
     );
 
@@ -235,6 +235,7 @@ public class SwerveSubsystem extends SubsystemBase {
     field.setRobotPose(getPose());
 
     gyroAngle = getRotationPidggy();
+    SmartDashboard.putNumber("Gyro Angle", gyroAngle.getDegrees());
     estimator.update(gyroAngle, getModulePositions());
   }
 
@@ -329,8 +330,15 @@ public class SwerveSubsystem extends SubsystemBase {
 // }
 
 public ChassisSpeeds getChassisSpeeds() {
-  return ChassisSpeeds.fromFieldRelativeSpeeds(turnSpeed, rot, delta, gyroAngle);
+  return ChassisSpeeds.fromRobotRelativeSpeeds(turnSpeed, rot, delta, gyroAngle);
+
 }
+
+
+public ChassisSpeeds getAutoSpeeds() {
+  return ChassisSpeeds.fromRobotRelativeSpeeds(0, 0, 0, Rotation2d.fromDegrees(0));
+}
+
 
 public void chassisSpeedsDrive(ChassisSpeeds chassisSpeeds){
   SwerveModuleState[] states = SwerveConstants.kinematics.toSwerveModuleStates(chassisSpeeds);

@@ -12,6 +12,7 @@ import frc.robot.subsystems.LED;
 import frc.robot.subsystems.Limelight;
 import frc.robot.subsystems.SwerveSubsystem;
 import frc.robot.utils.LogitechGamingPad;
+import frc.robot.utils.Constants.SwerveConstants;
 
 // import java.util.HashMap;
 // import java.util.function.Consumer;
@@ -84,7 +85,7 @@ public class RobotContainer {
 
     swerveSubsystem = new SwerveSubsystem();
     // swerveSubsystem.setDefaultCommand(new AutoAlign(swerveSubsystem, limelety, led));
-    swerveSubsystem.setDefaultCommand(new PadDrive(swerveSubsystem, pad, true));
+    swerveSubsystem.setDefaultCommand(new PadDrive(swerveSubsystem, pad, SwerveConstants.isFieldOriented));
 
     //Configure auto chooser
     configureBindings();

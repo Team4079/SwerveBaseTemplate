@@ -22,7 +22,7 @@ public class LED extends SubsystemBase {
   
   @Override
   public void periodic() {
-    // this.setRainbow();
+    this.setRainbow();
     // this.setColor(0, 255, 174);
   }
 
@@ -33,7 +33,7 @@ public class LED extends SubsystemBase {
       m_ledBuffer.setHSV(i, hue, 255, 180);
     }
     // Increase by to make the rainbow "move"
-    rainbowFirstPixelHue += 3;
+    rainbowFirstPixelHue += 4.5;
     // Check bounds
     rainbowFirstPixelHue %= 180;
 

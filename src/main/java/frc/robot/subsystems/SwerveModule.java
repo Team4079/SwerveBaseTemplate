@@ -176,7 +176,7 @@ public class SwerveModule {
   }
 
   public void setState(SwerveModuleState state) {
-    state = optimize(state, Rotation2d.fromDegrees(rotationsToAngle(steerMotor.getRotorPosition().getValue(), MotorConstants.STEER_MOTOR_GEAR_RATIO)));
+    state = optimizeJ(state, Rotation2d.fromDegrees(rotationsToAngle(steerMotor.getRotorPosition().getValue(), MotorConstants.STEER_MOTOR_GEAR_RATIO)), steerMotor.getDeviceID());
     
     var currentRotations = (steerMotor.getRotorPosition().getValue());
     var currentAngle = Rotation2d.fromDegrees(rotationsToAngle(currentRotations, MotorConstants.STEER_MOTOR_GEAR_RATIO));     
@@ -289,7 +289,7 @@ public class SwerveModule {
   //   }
   // }
   
-  public static SwerveModuleState optimize(SwerveModuleState desiredState, Rotation2d currentAngle) {
+  public static SwerveModuleState optimize(SwerveModuleState desiredState, Rotation2d currentAngle, int deviceID) {
     double targetAngle = placeInAppropriate0To360Scope(
         currentAngle.getDegrees(), desiredState.angle.getDegrees()
     );
@@ -300,8 +300,13 @@ public class SwerveModule {
         targetSpeed = -targetSpeed;
         targetAngle = delta > 90 ? (targetAngle -= 180) : (targetAngle += 180);
     }        
-
+    SmartDashboard.putNumber(deviceID + " Motor", currentAngle.getDegrees() - targetAngle);
     return new SwerveModuleState(targetSpeed, Rotation2d.fromDegrees(targetAngle));
+}
+
+public static SwerveModuleState optimizeJ(SwerveModuleState desiredState, Rotation2d currentAngle, int deviceID) {
+    var swerveState = SwerveModuleState.optimize(desiredState, currentAngle);
+    return swerveState;
 }
 
 private static double placeInAppropriate0To360Scope(double scopeReference, double newAngle) {
