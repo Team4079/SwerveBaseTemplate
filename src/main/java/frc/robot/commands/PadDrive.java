@@ -8,8 +8,8 @@ import edu.wpi.first.wpilibj2.command.Command;
 // import frc.robot.utils.Constants;
 import frc.robot.utils.Constants.MotorConstants;
 import frc.robot.utils.Constants.SwerveConstants;
-import frc.robot.subsystems.LED;
-import frc.robot.subsystems.Limelight;
+// import frc.robot.subsystems.LED;
+// import frc.robot.subsystems.Limelight;
 import frc.robot.subsystems.SwerveSubsystem;
 import frc.robot.utils.LogitechGamingPad;
 
@@ -18,23 +18,24 @@ public class PadDrive extends Command {
   private final SwerveSubsystem swerveSubsystem;
   private final boolean isFieldOriented;
   private final LogitechGamingPad pad;
-  private final Limelight limelety;
-  private final LED led;
+  // private final Limelight limelety;
+  // private final LED led;
 
   /** Creates a new SwerveJoystick. */
   public PadDrive(SwerveSubsystem swerveSubsystem,
       LogitechGamingPad pad,
-      boolean isFieldOriented,
-      Limelight limelety,
-      LED led) {
+      boolean isFieldOriented //,
+      // Limelight limelety,
+      // LED led
+      ) {
     this.swerveSubsystem = swerveSubsystem;
     this.pad = pad;
     this.isFieldOriented = isFieldOriented;
-    this.limelety = limelety;
-    this.led = led;
+    // this.limelety = limelety;
+    // this.led = led;
 
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(this.swerveSubsystem, this.limelety, this.led);
+    addRequirements(this.swerveSubsystem); // this.limelety, this.led
   }
 
   // Called when the command is initially scheduled.
@@ -110,12 +111,12 @@ public class PadDrive extends Command {
     }
 
     // Vision LED
-    if (limelety.isTarget()) {
-      led.rainbowOn();
-      swerveSubsystem.addVision(limelety.getRobotPosition());
-    } else {
-      led.rainbowOff();
-    }
+    // if (limelety.isTarget()) {
+    //   led.rainbowOn();
+    //   swerveSubsystem.addVision(limelety.getRobotPosition());
+    // } else {
+    //   led.rainbowOff();
+    // }
   }
 
   // Called once the command ends or is interrupted.

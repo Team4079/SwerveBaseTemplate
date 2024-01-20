@@ -8,8 +8,8 @@ package frc.robot;
 
 // import frc.robot.commands.AutoAlign;
 import frc.robot.commands.PadDrive;
-import frc.robot.subsystems.LED;
-import frc.robot.subsystems.Limelight;
+// import frc.robot.subsystems.LED;
+// import frc.robot.subsystems.Limelight;
 import frc.robot.subsystems.SwerveSubsystem;
 import frc.robot.utils.LogitechGamingPad;
 import frc.robot.utils.Constants.SwerveConstants;
@@ -52,9 +52,9 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 @SuppressWarnings("unused")
 public class RobotContainer {
   private final SwerveSubsystem swerveSubsystem;
-  private final LogitechGamingPad pad;
-  private final LED led;
-  private final Limelight limelety;
+  private final LogitechGamingPad pad = new LogitechGamingPad(0); // Placeholder LogitechGamingPad
+  // private final LED led;
+  // private final Limelight limelety;
   
   private final JoystickButton padA;
   private final JoystickButton padB;
@@ -69,9 +69,9 @@ public class RobotContainer {
    */
   public RobotContainer() {
     
-    pad = new LogitechGamingPad(0);
-    led = new LED();
-    limelety = new Limelight();
+    // pad = new LogitechGamingPad(0);
+    // led = new LED();
+    // limelety = new Limelight();
     // limelight = new Limelight();
    
     
@@ -84,7 +84,7 @@ public class RobotContainer {
 
     swerveSubsystem = new SwerveSubsystem();
     // swerveSubsystem.setDefaultCommand(new AutoAlign(swerveSubsystem, limelety, led));
-    swerveSubsystem.setDefaultCommand(new PadDrive(swerveSubsystem, pad, SwerveConstants.isFieldOriented, limelety, led));
+    swerveSubsystem.setDefaultCommand(new PadDrive(swerveSubsystem, pad, SwerveConstants.isFieldOriented)); // , limelety, led
 
     //Configure auto chooser
     configureBindings();
