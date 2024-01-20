@@ -5,8 +5,11 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.utils.Constants;
+// import frc.robot.utils.Constants;
 import frc.robot.utils.Constants.MotorConstants;
+import frc.robot.utils.Constants.SwerveConstants;
+import frc.robot.subsystems.LED;
+import frc.robot.subsystems.Limelight;
 import frc.robot.subsystems.SwerveSubsystem;
 import frc.robot.utils.LogitechGamingPad;
 
@@ -15,23 +18,29 @@ public class PadDrive extends Command {
   private final SwerveSubsystem swerveSubsystem;
   private final boolean isFieldOriented;
   private final LogitechGamingPad pad;
+  private final Limelight limelety;
+  private final LED led;
 
   /** Creates a new SwerveJoystick. */
   public PadDrive(SwerveSubsystem swerveSubsystem,
       LogitechGamingPad pad,
-      boolean isFieldOriented) {
+      boolean isFieldOriented,
+      Limelight limelety,
+      LED led) {
     this.swerveSubsystem = swerveSubsystem;
     this.pad = pad;
     this.isFieldOriented = isFieldOriented;
+    this.limelety = limelety;
+    this.led = led;
 
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(this.swerveSubsystem);
+    addRequirements(this.swerveSubsystem, this.limelety, this.led);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    System.out.println("hey big boi ********************************************"); 
+    System.out.println("hey big boi ********************************************");
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -39,13 +48,14 @@ public class PadDrive extends Command {
   public void execute() {
     double y;
     double x;
+    double rotation;
 
-    if (Constants.MotorConstants.SLOW_MODE) {
+    if (MotorConstants.SLOW_MODE) {
       y = pad.getLeftAnalogXAxis() * MotorConstants.MAX_SPEED * MotorConstants.SLOW_SPEED;
       x = pad.getLeftAnalogYAxis() * -MotorConstants.MAX_SPEED * MotorConstants.SLOW_SPEED;
     }
 
-    else if (Constants.MotorConstants.AACORN_MODE) {
+    else if (MotorConstants.AACORN_MODE) {
       y = pad.getLeftAnalogXAxis() * MotorConstants.MAX_SPEED * MotorConstants.AACORN_SPEED;
       x = pad.getLeftAnalogYAxis() * -MotorConstants.MAX_SPEED * MotorConstants.AACORN_SPEED;
     }
@@ -55,15 +65,15 @@ public class PadDrive extends Command {
       x = pad.getLeftAnalogYAxis() * -MotorConstants.MAX_SPEED * 0.6;
     }
 
-    if (Math.abs(pad.getLeftAnalogXAxis()) < Constants.SwerveConstants.JOYSTICK_DEADBAND) {
+    if (Math.abs(pad.getLeftAnalogXAxis()) < SwerveConstants.JOYSTICK_DEADBAND) {
       y = 0;
     }
 
-    if (Math.abs(pad.getLeftAnalogYAxis()) < Constants.SwerveConstants.JOYSTICK_DEADBAND) {
+    if (Math.abs(pad.getLeftAnalogYAxis()) < SwerveConstants.JOYSTICK_DEADBAND) {
       x = 0;
     }
 
-    Constants.MotorConstants.rotation = pad.getRightAnalogXAxis();
+    rotation = pad.getRightAnalogXAxis();
 
     double turn = 0;
     double heading_deadband = 0.2;
@@ -83,23 +93,29 @@ public class PadDrive extends Command {
       MotorConstants.HEADING = swerveSubsystem.pgetHeading();
     }
 
-    if (Math.abs(MotorConstants.rotation) < 0.05) {
-      MotorConstants.rotation = 0;
+    if (Math.abs(rotation) < 0.05) {
+      rotation = 0;
     }
 
-    turn = Constants.MotorConstants.rotation * MotorConstants.MAX_ANGULAR_SPEED * 2 * 1.5;
+    turn = rotation * MotorConstants.MAX_ANGULAR_SPEED * 2 * 1.5;
 
-    if (Constants.MotorConstants.AACORN_MODE) {
-      swerveSubsystem.drive(x * Constants.MotorConstants.AACORN_SPEED, y * Constants.MotorConstants.AACORN_SPEED, turn, isFieldOriented);
+    if (MotorConstants.AACORN_MODE) {
+      swerveSubsystem.drive(x * MotorConstants.AACORN_SPEED, y * MotorConstants.AACORN_SPEED, turn, isFieldOriented);
     }
 
     else {
       System.out.println(x + " " + y);
-      swerveSubsystem.drive(x * Constants.MotorConstants.SPEED_CONSTANT, y * Constants.MotorConstants.SPEED_CONSTANT,
+      swerveSubsystem.drive(x * MotorConstants.SPEED_CONSTANT, y * MotorConstants.SPEED_CONSTANT,
           turn, isFieldOriented);
     }
-    
 
+    // Vision LED
+    if (limelety.isTarget()) {
+      led.rainbowOn();
+      swerveSubsystem.addVision(limelety.getRobotPosition());
+    } else {
+      led.rainbowOff();
+    }
   }
 
   // Called once the command ends or is interrupted.

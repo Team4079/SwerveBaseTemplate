@@ -39,7 +39,6 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 // import frc.robot.utils.Constants;
 
-
 /**
  * This class is where the bulk of the robot should be declared. Since
  * Command-based is a
@@ -85,7 +84,7 @@ public class RobotContainer {
 
     swerveSubsystem = new SwerveSubsystem();
     // swerveSubsystem.setDefaultCommand(new AutoAlign(swerveSubsystem, limelety, led));
-    swerveSubsystem.setDefaultCommand(new PadDrive(swerveSubsystem, pad, SwerveConstants.isFieldOriented));
+    swerveSubsystem.setDefaultCommand(new PadDrive(swerveSubsystem, pad, SwerveConstants.isFieldOriented, limelety, led));
 
     //Configure auto chooser
     configureBindings();
@@ -124,7 +123,7 @@ public class RobotContainer {
     // PathPlannerPath path = PathPlannerPath.fromPathFile("Test Path");
     // return AutoBuilder.followPath(path);
 
-    return new PathPlannerAuto("Test Auto");
+    return new PathPlannerAuto("Straight Auto");
   }
 
   /**

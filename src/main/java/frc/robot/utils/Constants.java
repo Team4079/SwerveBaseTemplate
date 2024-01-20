@@ -47,26 +47,20 @@ public final class Constants {
     public static final int BACK_LEFT_CAN_CODER_ID = 11;
     public static final int BACK_RIGHT_CAN_CODER_ID = 12;
 
-    public static final double MAX_SPEED = 4.96824;  
+    public static final double MAX_SPEED = 4.96824;
     public static final double MAX_ANGULAR_SPEED = (14 * Math.PI) / 3;
-    public static final double ENCODER_COUNTS_PER_ROTATION = 1; //2048 for v5, 1 for v6 (rotations)
-    public static final double STEER_MOTOR_GEAR_RATIO = 150.0/7; //24
+    public static final double ENCODER_COUNTS_PER_ROTATION = 1; // 2048 for v5, 1 for v6 (rotations)
+    public static final double STEER_MOTOR_GEAR_RATIO = 150.0 / 7; // 24
     public static final double DRIVE_MOTOR_GEAR_RATIO = 6.75;
     public static final double WHEEL_DIAMETER = 0.1;
-    public static final double SPEED_CONSTANT = 0.6; //0.4
+    public static final double SPEED_CONSTANT = 0.6; // 0.4
     public static final double AACORN_SPEED = 0.95;
     public static final double SLOW_SPEED = 0.3;
-    public static final double TURN_CONSTANT = 0.3; //0.3
+    public static final double TURN_CONSTANT = 0.3; // 0.3
 
-    public static double desiredAngle = 0.0;
-    public static double desiredAngleSpeed = 0.0;
-    public static double computedAngleSpeed = 0.0;
-    public static double rotation = 0.0;
-    public static double HEADING = 0;
+    public static double HEADING = 0.0;
     public static boolean SLOW_MODE = false;
     public static boolean AACORN_MODE = true;
-
-    
   }
 
   public static class SwerveConstants {
@@ -74,7 +68,8 @@ public final class Constants {
       throw new IllegalStateException(UTILITY_CLASS);
     }
 
-    public static final boolean isFieldOriented = true;
+    public static final double robotSize = 26; // Keep constant *ideally*
+
     public static final Translation2d frontLeftLocation = new Translation2d(0.263525, -0.263525);
     public static final Translation2d frontRightLocation = new Translation2d(0.263525, 0.263525);
     public static final Translation2d backLeftLocation = new Translation2d(-0.263525, -0.263525);
@@ -84,30 +79,26 @@ public final class Constants {
         frontRightLocation,
         backLeftLocation,
         backRightLocation);
-    public static final Pose2d 
-    STARTING_POSE = new Pose2d(2, 1, new Rotation2d());
+    public static final Pose2d STARTING_POSE = new Pose2d(2, 1, new Rotation2d());
     // STARTING_POSE = new Pose2d(14, 3, new Rotation2d());
     public static final double STATE_SPEED_THRESHOLD = 0.05;
 
-    public static final double CANCoderValue9 = 0.915283 + 0.5; //0.9174805
-    public static final double CANCoderValue10 = 0.327881  ; //0.328613 + 0.5 add 0.5 
-    public static final double CANCoderValue11 = 0.979736 - 0.5; //0.539794 - 0.5
-    public static final double CANCoderValue12 = 0.536133; //0.984863
+    public static final double CANCoderValue9 = 0.915283 + 0.5; // 0.9174805
+    public static final double CANCoderValue10 = 0.327881; // 0.328613 + 0.5 add 0.5
+    public static final double CANCoderValue11 = 0.979736 - 0.5; // 0.539794 - 0.5
+    public static final double CANCoderValue12 = 0.536133; // 0.984863
     public static final double JOYSTICK_DEADBAND = 0.05;
     public static final boolean usingVision = false;
+    public static final boolean isFieldOriented = true;
 
     public static final double DEADBAND = 0.08;
-    public static class PIDConstants{
-      public static final PID STEER_PID = new PID(0.14, 0.00002, 0.008,0);
+
+    public static class PIDConstants {
+      public static final PID STEER_PID = new PID(0.14, 0.00002, 0.008, 0);
       public static final PID DRIVE_PID = new PID(0.01, 0.0, 0.0, 0);
     }
 
     public static final double offBalanceAngleThreshold = 10;
     public static final double onBalanceAngleThreshold = 5;
-  }
-
-  public static class AutoConstants{
-    public static final double AUTO_MAX_SPEED = 1;
-    public static final double AUTO_MAX_ACCELERATION = 1;
   }
 }

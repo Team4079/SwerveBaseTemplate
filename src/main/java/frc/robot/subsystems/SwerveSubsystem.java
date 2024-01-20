@@ -21,6 +21,7 @@ import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -33,6 +34,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.utils.Constants;
 import frc.robot.utils.Constants.MotorConstants;
 import frc.robot.utils.Constants.SwerveConstants;
+
 @SuppressWarnings("unused") // Used in order to remove warnings
 public class SwerveSubsystem extends SubsystemBase {
   // private SwerveModule frontLeft;
@@ -42,7 +44,7 @@ public class SwerveSubsystem extends SubsystemBase {
   private SwerveModule[] modules;
   private SwerveDrivePoseEstimator estimator;
   private double delta;
-  private Rotation2d gyroAngle;
+  private Rotation2d gyroAngle = Rotation2d.fromDegrees(0);
   private Pigeon2 pidggy;
   public SwerveDriveOdometry swerveOdometry;
 
@@ -52,7 +54,15 @@ public class SwerveSubsystem extends SubsystemBase {
   private double turnSpeed = 0;
   private Timer timer;
 
+  public static final HolonomicPathFollowerConfig pathFollowerConfig = new HolonomicPathFollowerConfig(
+      new PIDConstants(0, 0, 0),
+      new PIDConstants(0, 0, 0),
+      MotorConstants.MAX_SPEED,
+      Math.hypot(SwerveConstants.robotSize / 2, SwerveConstants.robotSize / 2),
+      new ReplanningConfig());
+
   private Field2d field = new Field2d();
+
   /** Creates a new DriveTrain. */
   public SwerveSubsystem() {
     pidggy = new Pigeon2(16);
@@ -61,26 +71,26 @@ public class SwerveSubsystem extends SubsystemBase {
             MotorConstants.FRONT_LEFT_DRIVE_ID,
             MotorConstants.FRONT_LEFT_STEER_ID,
             MotorConstants.FRONT_LEFT_CAN_CODER_ID,
-            Constants.SwerveConstants.CANCoderValue9),
+            SwerveConstants.CANCoderValue9),
         new SwerveModule(
             MotorConstants.FRONT_RIGHT_DRIVE_ID,
             MotorConstants.FRONT_RIGHT_STEER_ID,
             MotorConstants.FRONT_RIGHT_CAN_CODER_ID,
-            Constants.SwerveConstants.CANCoderValue10),
+            SwerveConstants.CANCoderValue10),
         new SwerveModule(
             MotorConstants.BACK_LEFT_DRIVE_ID,
             MotorConstants.BACK_LEFT_STEER_ID,
             MotorConstants.BACK_LEFT_CAN_CODER_ID,
-            Constants.SwerveConstants.CANCoderValue11),
+            SwerveConstants.CANCoderValue11),
         new SwerveModule(
             MotorConstants.BACK_RIGHT_DRIVE_ID,
             MotorConstants.BACK_RIGHT_STEER_ID,
             MotorConstants.BACK_RIGHT_CAN_CODER_ID,
-            Constants.SwerveConstants.CANCoderValue12)
-            
+            SwerveConstants.CANCoderValue12)
     };
 
-    swerveOdometry = new SwerveDriveOdometry(Constants.SwerveConstants.kinematics, Rotation2d.fromDegrees(getYaw()), getModulePositions());
+    swerveOdometry = new SwerveDriveOdometry(Constants.SwerveConstants.kinematics, Rotation2d.fromDegrees(getYaw()),
+        getModulePositions());
 
     // Creating my odometry object from the kinematics object and the initial wheel
     // positions.
@@ -91,27 +101,31 @@ public class SwerveSubsystem extends SubsystemBase {
         SwerveConstants.kinematics,
         getRotationPidggy(),
         getModulePositions(),
-        SwerveConstants.STARTING_POSE
-        );
+        SwerveConstants.STARTING_POSE);
 
     addRotorPositionsforModules();
-    MotorConstants.desiredAngle = pgetHeading();
     timer = new Timer();
 
     AutoBuilder.configureHolonomic(
-      this::getPose, // Robot pose supplier
-      this::resetOdometry, // Method to reset odometry (will be called if your auto has a starting pose)
-      this::getAutoSpeeds, // ChassisSpeeds supplier. MUST BE ROBOT RELATIVE
-      this::chassisSpeedsDrive, // Method that will drive the robot given ROBOT RELATIVE ChassisSpeeds
-      new HolonomicPathFollowerConfig( // HolonomicPathFollowerConfig, this should likely live in your Constants class
-        new PIDConstants(0.14, 0.0002, 0.0),
-        new PIDConstants(0.01, 0.0, 0.0),
-        4.96824, // Max module speed, in m/s
-        0.66, // Drive base radius in meters. Distance from robot center to furthest module.
-        new ReplanningConfig() // Default path replanning config. See the API for the options here
-      ),
-      () -> false,
-      this // Reference to this subsystem to set requirements
+        this::getPose, // Robot pose supplier
+        this::resetOdometry, // Method to reset odometry (will be called if your auto has a starting pose)
+        this::getAutoSpeeds, // ChassisSpeeds supplier. MUST BE ROBOT RELATIVE
+        this::chassisSpeedsDrive, // Method that will drive the robot given ROBOT RELATIVE ChassisSpeeds
+        new HolonomicPathFollowerConfig( // HolonomicPathFollowerConfig, this should likely live in your Constants class
+            new PIDConstants(0.14, 0.0002, 0.0),
+            new PIDConstants(0.01, 0.0, 0.0),
+            4.96824, // Max module speed, in m/s
+            SwerveConstants.robotSize / 2, // Drive base radius in meters. Distance from robot center to furthest module.
+            new ReplanningConfig() // Default path replanning config. See the API for the options here
+        ),
+        () -> {
+          var alliance = DriverStation.getAlliance();
+          if (alliance.isPresent()) {
+            return alliance.get() == DriverStation.Alliance.Red;
+          }
+          return false;
+        },
+        this // Reference to this subsystem to set requirements
     );
 
     PathPlannerLogging.setLogActivePathCallback((poses) -> field.getObject("path").setPoses(poses));
@@ -122,12 +136,7 @@ public class SwerveSubsystem extends SubsystemBase {
   public void drive(double forwardSpeed, double leftSpeed, double joyStickInput, boolean isFieldOriented) {
     ChassisSpeeds speeds;
 
-    MotorConstants.desiredAngleSpeed = joyStickInput * Constants.MotorConstants.TURN_CONSTANT;
-    MotorConstants.desiredAngle += MotorConstants.desiredAngleSpeed / 50;
-    // MotorConstants.computedAngleSpeed = MotorConstants.desiredAngleSpeed - (Math.toRadians(getpheading()) - MotorConstants.desiredAngle);
-    delta = MotorConstants.desiredAngle - Math.toRadians(pgetHeading());
-    
-    turnSpeed = joyStickInput * Constants.MotorConstants.TURN_CONSTANT;
+    turnSpeed = joyStickInput * MotorConstants.TURN_CONSTANT;
 
     if (isFieldOriented) {
       speeds = ChassisSpeeds.fromFieldRelativeSpeeds(
@@ -148,7 +157,7 @@ public class SwerveSubsystem extends SubsystemBase {
 
     for (int i = 0; i < modules.length; i++) {
       modules[i].setState(states[i]);
-      
+
       SmartDashboard.putNumber("MotorRot" + i, modules[i].getRotationDegree() % 360);
     }
   }
@@ -161,7 +170,7 @@ public class SwerveSubsystem extends SubsystemBase {
     return positions;
   }
 
-  public Rotation2d getRotationPidggy(){
+  public Rotation2d getRotationPidggy() {
     rot = -pidggy.getRotation2d().getDegrees();
     return Rotation2d.fromDegrees(rot);
     // SmartDashboard.putNumber("Rotation2d", pidggy.getRotation2d().getDegrees());
@@ -178,7 +187,7 @@ public class SwerveSubsystem extends SubsystemBase {
   }
 
   // public void resetPitch(){
-  //   pidggy.setYawPitchRoll(0,0,0);
+  // pidggy.setYawPitchRoll(0,0,0);
   // }
 
   public void resetDriveEncoders() {
@@ -186,51 +195,49 @@ public class SwerveSubsystem extends SubsystemBase {
       modules[i].resetEncoders();
     }
   }
-  public double getYaw(){
+
+  public double getYaw() {
     return pidggy.getYaw().getValue();
   }
 
-  public double pgetHeading(){
-    return(pidggy.getYaw().getValue() % 360);
+  public double pgetHeading() {
+    return (pidggy.getYaw().getValue() % 360);
   }
 
   public void configSlowMode() {
-    Constants.MotorConstants.SLOW_MODE = !Constants.MotorConstants.SLOW_MODE;
+    MotorConstants.SLOW_MODE = !Constants.MotorConstants.SLOW_MODE;
   }
 
-  public boolean getSlowMode(){
-    return Constants.MotorConstants.SLOW_MODE;
+  public boolean getSlowMode() {
+    return MotorConstants.SLOW_MODE;
   }
 
-  public void configAAcornMode() { 
-    Constants.MotorConstants.AACORN_MODE = !Constants.MotorConstants.AACORN_MODE;
+  public void configAAcornMode() {
+    MotorConstants.AACORN_MODE = !Constants.MotorConstants.AACORN_MODE;
   }
 
-  public boolean getAAcornMode(){
-    return Constants.MotorConstants.AACORN_MODE;
+  public boolean getAAcornMode() {
+    return MotorConstants.AACORN_MODE;
   }
 
   // public void updatePosition(){
-  //   this.addVision(limelight.getRobotPosition());
-  // } 
+  // this.addVision(limelight.getRobotPosition());
+  // }
 
   public Pose2d getPose() {
     return swerveOdometry.getPoseMeters();
   }
 
-  
-
   @Override
   public void periodic() {
-      // This method will be called once per scheduler run
-      pidggy.getYaw().refresh();
+    // This method will be called once per scheduler run
+    pidggy.getYaw().refresh();
 
-      swerveOdometry.update(Rotation2d.fromDegrees(getYaw()), getModulePositions()); 
+    swerveOdometry.update(Rotation2d.fromDegrees(getYaw()), getModulePositions());
 
-      if (vision)
-      {
-        // updatePosition();
-      }
+    if (vision) {
+      // updatePosition();
+    }
 
     field.setRobotPose(getPose());
 
@@ -239,7 +246,7 @@ public class SwerveSubsystem extends SubsystemBase {
     estimator.update(gyroAngle, getModulePositions());
   }
 
-  public double getPitch(){
+  public double getPitch() {
     return pidggy.getPitch().getValue();
   }
 
@@ -268,85 +275,68 @@ public class SwerveSubsystem extends SubsystemBase {
     }
   }
 
-  public void updateEstimator(){
+  public void updateEstimator() {
     estimator.update(getRotationPidggy(), getModulePositions());
-    
+
   }
-  public void addVision(){
+
+  public void addVision() {
     estimator.addVisionMeasurement(null, Timer.getFPGATimestamp());
   }
 
-  public Pose2d getOdometry(){
+  public Pose2d getOdometry() {
     return estimator.getEstimatedPosition();
   }
 
   public void resetOdometry(Pose2d pose) {
     swerveOdometry.resetPosition(Rotation2d.fromDegrees(getYaw()), getModulePositions(), pose);
-}
+  }
 
-
-
-
-  // public void driveStraight(double speed){
-  //   this.drive(speed, 0.0, 0.0, true);
-  // }
-
-  // public void driveSide(double speed){
-  //   this.drive(0.0, speed, 0.0, true);
-  // }
-
-  public void addVision(Pose2d visionPose){
+  public void addVision(Pose2d visionPose) {
     estimator.addVisionMeasurement(visionPose, Timer.getFPGATimestamp());
   }
-  
-  public void outputModuleStates(SwerveModuleState[] states){
+
+  public void outputModuleStates(SwerveModuleState[] states) {
     SwerveDriveKinematics.desaturateWheelSpeeds(
-        states, Constants.MotorConstants.MAX_SPEED);
+        states, MotorConstants.MAX_SPEED);
 
     for (int i = 0; i < modules.length; i++) {
       modules[i].setState(states[i]);
     }
   }
 
-  public double getRotorPositions(int moduleNum){
+  public double getRotorPositions(int moduleNum) {
     return modules[moduleNum].steerMotor.getRotorPosition().getValue();
   }
 
-  public double getCanCoderValues(int canID){
+  public double getCanCoderValues(int canID) {
     double[] canCoderValues = new double[modules.length];
     for (int i = 0; i < modules.length; i++) {
       canCoderValues[i] = modules[i].getCanCoderValue();
     }
-    return canCoderValues[canID-9];
+    return canCoderValues[canID - 9];
   }
 
-  public double getX(){
+  public double getX() {
     return estimator.getEstimatedPosition().getTranslation().getX();
   }
 
-  public double getY(){
+  public double getY() {
     return estimator.getEstimatedPosition().getTranslation().getY();
   }
-// }
 
-public ChassisSpeeds getChassisSpeeds() {
-  return ChassisSpeeds.fromRobotRelativeSpeeds(turnSpeed, rot, delta, gyroAngle);
+  public ChassisSpeeds getAutoSpeeds() {
+    return ChassisSpeeds.fromRobotRelativeSpeeds(0, 0, 0, Rotation2d.fromDegrees(0));
+    // return ChassisSpeeds.fromRobotRelativeSpeeds(turnSpeed, rot, delta, gyroAngle);
+  }  
 
-}
+  public void chassisSpeedsDrive(ChassisSpeeds chassisSpeeds) {
+    SwerveModuleState[] states = SwerveConstants.kinematics.toSwerveModuleStates(chassisSpeeds);
+    SwerveDriveKinematics.desaturateWheelSpeeds(
+        states, MotorConstants.MAX_SPEED);
 
-
-public ChassisSpeeds getAutoSpeeds() {
-  return ChassisSpeeds.fromRobotRelativeSpeeds(0, 0, 0, Rotation2d.fromDegrees(0));
-}
-
-
-public void chassisSpeedsDrive(ChassisSpeeds chassisSpeeds){
-  SwerveModuleState[] states = SwerveConstants.kinematics.toSwerveModuleStates(chassisSpeeds);
-  SwerveDriveKinematics.desaturateWheelSpeeds(
-      states, MotorConstants.MAX_SPEED);
-
-  for (int i = 0; i < modules.length; i++) {
-    modules[i].setState(states[i]);
+    for (int i = 0; i < modules.length; i++) {
+      modules[i].setState(states[i]);
+    }
   }
-}
 }
