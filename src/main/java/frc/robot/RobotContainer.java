@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.commands.PadDrive;
+import frc.robot.subsystems.Photonvision;
 import frc.robot.subsystems.SwerveSubsystem;
 import frc.robot.utils.GlobalsValues.SwerveGlobalValues;
 import frc.robot.utils.LogitechGamingPad;
@@ -26,6 +27,7 @@ import frc.robot.utils.LogitechGamingPad;
  */
 public class RobotContainer {
     private final SwerveSubsystem swerveSubsystem;
+    private final Photonvision photonvision;
 
     private final JoystickButton padA;
     private final JoystickButton padB;
@@ -42,7 +44,8 @@ public class RobotContainer {
         padX = new JoystickButton(pad, 3);
         padY = new JoystickButton(pad, 4);
 
-        swerveSubsystem = new SwerveSubsystem();
+        photonvision = new Photonvision();
+        swerveSubsystem = new SwerveSubsystem(photonvision);
         swerveSubsystem.setDefaultCommand(new PadDrive(swerveSubsystem, pad, SwerveGlobalValues.IS_FIELD_ORIENTATED));
 
         configureBindings();

@@ -4,6 +4,8 @@
 
 package frc.robot.utils;
 
+import com.ctre.phoenix6.signals.InvertedValue;
+import com.ctre.phoenix6.signals.SensorDirectionValue;
 import com.pathplanner.lib.util.HolonomicPathFollowerConfig;
 import com.pathplanner.lib.util.PIDConstants;
 import com.pathplanner.lib.util.ReplanningConfig;
@@ -115,8 +117,8 @@ public final class GlobalsValues {
 
     public static final double[] CANCoderValues = { 0.915283 + 0.5, 0.327881, 0.979736 - 0.5, 0.536133 };
     // Whether the motors are inverted
-    public static final boolean DRIVE_MOTOR_INVERETED = false;
-    public static final boolean STEER_MOTOR_INVERTED = false;
+    public static final InvertedValue DRIVE_MOTOR_INVERETED = InvertedValue.CounterClockwise_Positive;
+    public static final InvertedValue STEER_MOTOR_INVERTED = InvertedValue.Clockwise_Positive;
 
     // THe deadband of the joystick to combat drift
     public static final double JOYSTICK_DEADBAND = 0.05;
@@ -130,6 +132,7 @@ public final class GlobalsValues {
 
     public static final double MOTOR_DEADBAND = 0.05;
     public static final boolean IS_FIELD_ORIENTATED = true;
+    public static final double ENCODER_OFFSET = 0 / 360; //TODO add an offset for the canCoder getting the position at the beginning
 
     // RGB Values for LED
     public static final int[] GREEN_LED = { 0, 255, 0 };
