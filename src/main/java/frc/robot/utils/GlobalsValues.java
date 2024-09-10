@@ -129,6 +129,7 @@ public final class GlobalsValues {
     public static final double LIMELIGHT_DEADBAND = 3;
 
     public static final double MOTOR_DEADBAND = 0.05;
+    public static final boolean IS_FIELD_ORIENTATED = true;
 
     // RGB Values for LED
     public static final int[] GREEN_LED = { 0, 255, 0 };

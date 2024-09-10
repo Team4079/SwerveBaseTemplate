@@ -16,7 +16,7 @@ public class PadDrive extends Command {
 
 
   /** Creates a new SwerveJoystick. */
-  public PadDrive() {
+  public PadDrive(SwerveSubsystem swerveSubsystem, LogitechGamingPad pad, boolean isFieldOrientated) {
 
   }
 
