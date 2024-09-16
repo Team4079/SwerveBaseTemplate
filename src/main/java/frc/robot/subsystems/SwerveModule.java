@@ -23,6 +23,7 @@ import com.ctre.phoenix6.signals.SensorDirectionValue;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.utils.GlobalsValues.MotorGlobalValues;
 import frc.robot.utils.GlobalsValues.SwerveGlobalValues;
 import frc.robot.utils.GlobalsValues.SwerveGlobalValues.BasePIDGlobal;
@@ -40,7 +41,7 @@ public class SwerveModule {
   private VelocityTorqueCurrentFOC velocitySetter;
 
   private SwerveModulePosition swerveModulePosition;
-  private SwerveModule state;
+  private SwerveModuleState state;
 
   private double driveVelocity;
   private double drivePosition;
@@ -52,15 +53,6 @@ public class SwerveModule {
     driveMotor = new TalonFX(driveId);
     steerMotor = new TalonFX(steerId);
     canCoder = new CANcoder(canCoderID);
-    
-    positionSetter = new PositionVoltage(0, 0, true, 0, 0, true, false, false);
-    velocitySetter = new VelocityTorqueCurrentFOC(0);
-
-    swerveModulePosition = new SwerveModulePosition();
-
-    TalonFXConfiguration driveConfigs = new TalonFXConfiguration();
-    TalonFXConfiguration steerConfigs = new TalonFXConfiguration();
-    CANcoderConfiguration canCoderConfiguration = new CANcoderConfiguration();
 
     Slot0Configs driveSlot0Configs = new Slot0Configs();
     Slot0Configs turnSlot0Configs = new Slot0Configs();
@@ -68,10 +60,25 @@ public class SwerveModule {
     driveSlot0Configs.kP = BasePIDGlobal.DRIVE_PID.p;
     driveSlot0Configs.kI = BasePIDGlobal.DRIVE_PID.i;
     driveSlot0Configs.kD = BasePIDGlobal.DRIVE_PID.d;
+    
+    turnSlot0Configs.kP = BasePIDGlobal.STEER_PID.p;
+    turnSlot0Configs.kI = BasePIDGlobal.STEER_PID.i;
+    turnSlot0Configs.kD = BasePIDGlobal.STEER_PID.d;
+    
+    positionSetter = new PositionVoltage(0, 0, true, 0.0, 0, true, false, false).withSlot(0);
+    velocitySetter = new VelocityTorqueCurrentFOC(0);
 
-    turnSlot0Configs.kP = BasePIDGlobal.DRIVE_PID.p;
-    turnSlot0Configs.kI = BasePIDGlobal.DRIVE_PID.i;
-    turnSlot0Configs.kD = BasePIDGlobal.DRIVE_PID.d;
+    swerveModulePosition = new SwerveModulePosition();
+    state = new SwerveModuleState(
+      0, Rotation2d.fromDegrees(0));
+
+    TalonFXConfiguration driveConfigs = new TalonFXConfiguration();
+    TalonFXConfiguration steerConfigs = new TalonFXConfiguration();
+    CANcoderConfiguration canCoderConfiguration = new CANcoderConfiguration();
+
+
+
+    // turnSlot0Configs.
 
     driveConfigs.Slot0 = driveSlot0Configs;
     steerConfigs.Slot0 = turnSlot0Configs;
@@ -108,9 +115,7 @@ public class SwerveModule {
     driveVelocity = driveMotor.getVelocity().getValueAsDouble();
     drivePosition = driveMotor.getPosition().getValueAsDouble();
     steerVelocity = steerMotor.getVelocity().getValueAsDouble();
-    steerPosition = steerMotor.getPosition().getValueAsDouble();
-
-    
+    steerPosition = steerMotor.getPosition().getValueAsDouble();    
 
     swerveModulePosition.angle = Rotation2d.fromRotations(steerPosition);
     swerveModulePosition.distanceMeters = drivePosition / (MotorGlobalValues.DRIVE_MOTOR_GEAR_RATIO / MotorGlobalValues.MetersPerRevolution);
@@ -118,14 +123,30 @@ public class SwerveModule {
     return swerveModulePosition;
   }
 
-  public void setState(SwerveModuleState state) {
-    var optimized = SwerveModuleState.optimize(state, swerveModulePosition.angle);
+  public void setState(SwerveModuleState state, int i) {
+    SwerveModulePosition newPosition = getPosition();
+    SmartDashboard.putNumber("desired state before optimize " + i, state.angle.getDegrees());
+    SmartDashboard.putNumber("voltage " + i, steerMotor.getMotorVoltage().getValueAsDouble());
+    SmartDashboard.putNumber("Applived " + i, steerMotor.getSupplyCurrent().getValueAsDouble());
+    var optimized = SwerveModuleState.optimize(state, newPosition.angle);
 
     double angleToSet = optimized.angle.getRotations();
+    SmartDashboard.putNumber("desired state after optimize " + i, optimized.angle.getRotations());
+    SmartDashboard.putNumber("current angle" + i, steerPosition);
+    SmartDashboard.putNumber("steer angle " + i, steerMotor.getPosition().getValueAsDouble());
+
     steerMotor.setControl(positionSetter.withPosition(angleToSet));
 
     double velocityToSet = optimized.speedMetersPerSecond * (MotorGlobalValues.DRIVE_MOTOR_GEAR_RATIO / MotorGlobalValues.MetersPerRevolution);
     driveMotor.setControl(velocitySetter.withVelocity(velocityToSet));
+
+    this.state = state;
   }
   
+  public SwerveModuleState getState() {
+    state.angle = Rotation2d.fromRotations(steerMotor.getPosition().getValueAsDouble());
+    state.speedMetersPerSecond = driveMotor.getVelocity().getValueAsDouble() * (MotorGlobalValues.DRIVE_MOTOR_GEAR_RATIO / MotorGlobalValues.MetersPerRevolution);
+    return state;
+  }
+
 }

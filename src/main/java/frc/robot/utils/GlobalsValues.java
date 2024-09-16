@@ -53,6 +53,8 @@ public final class GlobalsValues {
     public static final int BACK_LEFT_CAN_CODER_ID = 11;
     public static final int BACK_RIGHT_CAN_CODER_ID = 12;
 
+    public static final int PIDGEY_ID = 16;
+
     // Motor Property Values
     public static final double MAX_SPEED = 5.76;
     public static final double MAX_ANGULAR_SPEED = (14 * Math.PI) / 3;
@@ -110,12 +112,11 @@ public final class GlobalsValues {
 
     // The values of the can coders when the wheels are straight according to Mr.
     // Wright
-    public static final double CANCoderValue9 = 0.915283 + 0.5; // 0.9174805
-    public static final double CANCoderValue10 = 0.327881; // 0.328613 + 0.5 add 0.5
-    public static final double CANCoderValue11 = 0.979736 - 0.5; // 0.539794 - 0.5%
-    public static final double CANCoderValue12 = 0.536133; // 0.984863
+    public static final double CANCoderValue9 = -0.419189; // 0.4198189
+    public static final double CANCoderValue10 = -0.825928; // 0.328613 + 0.5 add 0.5
+    public static final double CANCoderValue11 = -0.475098; // 0.539794 - 0.5%
+    public static final double CANCoderValue12 = -0.032959 ; // 0.984863
 
-    public static final double[] CANCoderValues = { 0.915283 + 0.5, 0.327881, 0.979736 - 0.5, 0.536133 };
     // Whether the motors are inverted
     public static final InvertedValue DRIVE_MOTOR_INVERETED = InvertedValue.CounterClockwise_Positive;
     public static final InvertedValue STEER_MOTOR_INVERTED = InvertedValue.Clockwise_Positive;
@@ -140,7 +141,7 @@ public final class GlobalsValues {
     public static final int[] HIGHTIDE_LED = { 0, 182, 174 };
 
     public static class BasePIDGlobal {
-      public static final PID STEER_PID = new PID(0.14, 0.00002, 0.008, 0);
+      public static final PID STEER_PID = new PID(5.0, 0.00002, 0.008, 0);
       // public static final PID STEER_PID = new PID(0.15, 0.0000, 0.000005, 0); //
       // 0.05 P, 0 D
       public static final PID DRIVE_PID = new PID(0.5, 0.0, 0.0); // new PID(0.05, 0.00, 0, 0);
