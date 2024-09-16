@@ -20,7 +20,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 /**
  * The PhotonVision subsystem handles vision processing using PhotonVision cameras.
  */
-public class PhotonVision extends SubsystemBase {
+public class Photonvision extends SubsystemBase {
   // PhotonVision cameras
   PhotonCamera camera1 = new PhotonCamera("Camera One");
   PhotonCamera camera2 = new PhotonCamera("Camera Two");
@@ -41,7 +41,7 @@ public class PhotonVision extends SubsystemBase {
   /**
    * Constructs a new PhotonVision subsystem.
    */
-  public PhotonVision() {
+  public Photonvision() {
     photonPoseEstimator = new PhotonPoseEstimator(aprilTagFieldLayout, PoseStrategy.MULTI_TAG_PNP_ON_COPROCESSOR, camera1, robotToCam);
   }
 
