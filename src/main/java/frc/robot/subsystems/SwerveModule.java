@@ -13,6 +13,7 @@ import com.ctre.phoenix6.controls.PositionVoltage;
 import com.ctre.phoenix6.controls.VelocityTorqueCurrentFOC;
 import com.ctre.phoenix6.hardware.CANcoder;
 import com.ctre.phoenix6.hardware.TalonFX;
+import com.ctre.phoenix6.mechanisms.swerve.SwerveDrivetrain;
 import com.ctre.phoenix6.mechanisms.swerve.SwerveModuleConstants;
 import com.ctre.phoenix6.signals.AbsoluteSensorRangeValue;
 import com.ctre.phoenix6.signals.FeedbackSensorSourceValue;
@@ -129,7 +130,7 @@ public class SwerveModule {
     SmartDashboard.putNumber("voltage " + i, steerMotor.getMotorVoltage().getValueAsDouble());
     SmartDashboard.putNumber("Applived " + i, steerMotor.getSupplyCurrent().getValueAsDouble());
     var optimized = SwerveModuleState.optimize(state, newPosition.angle);
-
+    
     double angleToSet = optimized.angle.getRotations();
     SmartDashboard.putNumber("desired state after optimize " + i, optimized.angle.getRotations());
     SmartDashboard.putNumber("current angle" + i, steerPosition);
