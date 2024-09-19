@@ -1,9 +1,9 @@
 package frc.robot.utils;
 
-import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.Joystick;
 
-public class LogitechGamingPad extends GenericHID {
+public class LogitechGamingPad extends XboxController {
 
   private Joystick gamepad;
 
@@ -24,7 +24,7 @@ public class LogitechGamingPad extends GenericHID {
   private static final int START_BUTTON = 8;
 
   public LogitechGamingPad(int usbPort) {
-    super(0);
+    super(usbPort);
     gamepad = new Joystick(usbPort);
   }
 
