@@ -60,11 +60,18 @@ public class SwerveSubsystem extends SubsystemBase {
     
   }
 
+  public enum Motor {
+    FRONT_LEFT,
+    FRONT_RIGHT,
+    BACK_LEFT,
+    BACK_RIGHT
+  }
+
   public void setModuleStates(SwerveModuleState[] states) {
-    frontLeft.setState(states[0], 0);
-    frontRight.setState(states[1], 1);
-    backLeft.setState(states[2], 2);
-    backRight.setState(states[3], 3);
+    frontLeft.setState(states[0], Motor.FRONT_LEFT);
+    frontRight.setState(states[1], Motor.FRONT_RIGHT);
+    backLeft.setState(states[2], Motor.BACK_LEFT);
+    backRight.setState(states[3], Motor.BACK_RIGHT);
   }
 
   public SwerveModuleState[] getModuleStates(SwerveModuleState[] states) {

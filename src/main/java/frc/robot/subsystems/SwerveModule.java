@@ -116,24 +116,17 @@ public class SwerveModule {
     return swerveModulePosition;
   }
 
-  /**
-   * Sets the desired state of the swerve module.
-   *
-   * @param state The desired state of the swerve module.
-   * @param i The index of the swerve module.
-   */
-  public void setState(SwerveModuleState state, int i) {
-    String motorName = i==0 ? "FrontLeft" : i==1 ? "FrontRight" : i==2 ? "BackLeft" : "BackRight";
+  public void setState(SwerveModuleState state, SwerveSubsystem.Motor motor) {
     SwerveModulePosition newPosition = getPosition();
-    SmartDashboard.putNumber("desired state before optimize " + motorName, state.angle.getDegrees());
-    SmartDashboard.putNumber("voltage " + motorName, steerMotor.getMotorVoltage().getValueAsDouble());
-    SmartDashboard.putNumber("Applied " + motorName, steerMotor.getSupplyCurrent().getValueAsDouble());
+    SmartDashboard.putNumber("desired state before optimize " + motor.name(), state.angle.getDegrees());
+    SmartDashboard.putNumber("voltage " + motor.name(), steerMotor.getMotorVoltage().getValueAsDouble());
+    SmartDashboard.putNumber("Applied " + motor.name(), steerMotor.getSupplyCurrent().getValueAsDouble());
     var optimized = SwerveModuleState.optimize(state, newPosition.angle);
 
     double angleToSet = optimized.angle.getRotations();
-    SmartDashboard.putNumber("desired state after optimize " + motorName, optimized.angle.getRotations());
-    SmartDashboard.putNumber("current angle" + motorName, steerPosition);
-    SmartDashboard.putNumber("steer angle " + motorName, steerMotor.getPosition().getValueAsDouble());
+    SmartDashboard.putNumber("desired state after optimize " + motor.name(), optimized.angle.getRotations());
+    SmartDashboard.putNumber("current angle" + motor.name(), steerPosition);
+    SmartDashboard.putNumber("steer angle " + motor.name(), steerMotor.getPosition().getValueAsDouble());
 
     steerMotor.setControl(positionSetter.withPosition(angleToSet));
 
