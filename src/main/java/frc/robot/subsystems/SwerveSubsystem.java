@@ -1,5 +1,7 @@
 package frc.robot.subsystems;
 
+import java.util.Optional;
+
 import com.ctre.phoenix6.hardware.Pigeon2;
 import com.pathplanner.lib.auto.AutoBuilder;
 
@@ -94,16 +96,15 @@ public class SwerveSubsystem extends SubsystemBase {
         this::getAutoSpeeds, // ChassisSpeeds supplier. MUST BE ROBOT RELATIVE
         this::chassisSpeedsDrive, // Method that will drive the robot given ROBOT RELATIVE ChassisSpeeds
         SwerveGlobalValues.BasePIDGlobal.pathFollower,
-        // TODO remeber to hange back lol
         () -> {
-          var alliance = DriverStation.getAlliance();
+          Optional<DriverStation.Alliance> alliance = DriverStation.getAlliance();
           if (alliance.isPresent()) {
             if (shouldInvert) {
               return (alliance.get() == DriverStation.Alliance.Red);
             }
 
         else {
-              return !(alliance.get() == DriverStation.Alliance.Red);
+              return !(alliance.get() == DriverStation.Alliance.Blue);
             }
 
           }
@@ -123,7 +124,7 @@ public class SwerveSubsystem extends SubsystemBase {
    */
   public void setModuleStates(SwerveModuleState[] states) {
     for (int i = 0; i < states.length; i++) {
-      modules[i].setState(states[i], i);
+      modules[i].setState(states[i]);
     }
   }
 
@@ -245,9 +246,7 @@ public class SwerveSubsystem extends SubsystemBase {
     SwerveModuleState[] states = SwerveGlobalValues.kinematics.toSwerveModuleStates(speeds);
     SwerveDriveKinematics.desaturateWheelSpeeds(
         states, MotorGlobalValues.MAX_SPEED);
-    for (int i = 0; i < modules.length; i++) {
-      modules[i].setState(states[i], i);
-    }
+    setModuleStates(states);
   }
 
   /**
