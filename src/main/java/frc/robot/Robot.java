@@ -6,6 +6,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
@@ -46,8 +47,9 @@ public class Robot extends TimedRobot {
   public void robotPeriodic() {
     CommandScheduler.getInstance().run();
     timesRan++;
-    if(timer.get() == 60){
-      System.out.println("1 minute has passed, times ran is " + timesRan);
+    if(timer.get() == 1){
+      System.out.println("1 second has passed, times ran is " + timesRan);
+      SmartDashboard.putNumber("Hurtz Ketchup", timesRan);
       timer.restart();
     }
   }
