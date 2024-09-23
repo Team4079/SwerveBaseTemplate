@@ -262,6 +262,12 @@ public class SwerveSubsystem extends SubsystemBase {
   }
 
   /**
+   * Prints the module states
+   */
+  private void printModuleStates() {
+    System.out.println("");
+  }
+  /**
    * Gets the module positions.
    * @return SwerveModulePosition[]
    */

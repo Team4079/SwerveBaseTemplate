@@ -25,7 +25,7 @@ import frc.robot.utils.GlobalsValues.SwerveGlobalValues.BasePIDGlobal;
 public class SwerveModule {
   /** Creates a new SwerveModule. */
   private final TalonFX driveMotor;
-
+  private final CANcoder canCoder;
   private final TalonFX steerMotor;
 
   private final PositionVoltage positionSetter;
@@ -51,7 +51,7 @@ public class SwerveModule {
       int driveId, int steerId, int canCoderID, double CANCoderDriveStraightSteerSetPoint) {
     driveMotor = new TalonFX(driveId);
     steerMotor = new TalonFX(steerId);
-    CANcoder canCoder = new CANcoder(canCoderID);
+    canCoder = new CANcoder(canCoderID);
 
     positionSetter = new PositionVoltage(0, 0, true, 0.0, 0, true, false, false).withSlot(0);
     velocitySetter = new VelocityTorqueCurrentFOC(0);
@@ -129,10 +129,11 @@ public class SwerveModule {
     // SmartDashboard.putNumber("desired state before optimize " + motor.name(), state.angle.getDegrees());
     // SmartDashboard.putNumber("voltage " + motor.name(), steerMotor.getMotorVoltage().getValueAsDouble());
     // SmartDashboard.putNumber("Applied " + motor.name(), steerMotor.getSupplyCurrent().getValueAsDouble());
-    var optimized = SwerveModuleState.optimize(state, newPosition.angle);
+    SwerveModuleState optimized = SwerveModuleState.optimize(state, newPosition.angle);
+
 
     double angleToSet = optimized.angle.getRotations();
-    // SmartDashboard.putNumber("desired state after optimize " + motor.name(), optimized.angle.getRotations());
+    SmartDashboard.putNumber("desired state after optimize " + canCoder.getDeviceID(), optimized.angle.getRotations());
     // SmartDashboard.putNumber("current angle " + motor.name(), steerPosition);
     // SmartDashboard.putNumber("steer angle " + motor.name(), steerMotor.getPosition().getValueAsDouble());
 

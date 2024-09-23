@@ -7,21 +7,77 @@ public class LogitechGamingPad extends XboxController {
 
   private Joystick gamepad;
 
-  private static final int LEFT_ANALOG_X_AXIS = 0;
-  private static final int LEFT_ANALOG_Y_AXIS = 1;
-  private static final int RIGHT_ANALOG_X_AXIS = 4;
-  private static final int RIGHT_ANALOG_Y_AXIS = 5;
+  public enum DPad {
+    UP(0), UP_RIGHT(45), RIGHT(90), DOWN_RIGHT(135), DOWN(180), DOWN_LEFT(225), LEFT(270), UP_LEFT(315);
 
-  private static final int LEFT_BUMPER = 5;
-  private static final int RIGHT_BUMPER = 6;
-  private static final int LEFT_TRIGGER_BUTTON = 2;
-  private static final int RIGHT_TRIGGER_BUTTON = 3;
-  private static final int A_BUTTON = 1;
-  private static final int B_BUTTON = 2;
-  private static final int X_BUTTON = 3;
-  private static final int Y_BUTTON = 4;
-  private static final int BACK_BUTTON = 7;
-  private static final int START_BUTTON = 8;
+    private final int angle;
+
+    DPad(int angle) {
+      this.angle = angle;
+    }
+
+    public int getAngle() {
+      return angle;
+    }
+  }
+
+  public enum Button {
+    A(1), B(2), X(3), Y(4), LEFT_BUMPER(5), RIGHT_BUMPER(6), BACK(7), START(8);
+
+    private final int button;
+
+    Button(int button) {
+      this.button = button;
+    }
+
+    public int getButton() {
+      return button;
+    }
+  }
+
+  public enum Axis {
+    LEFT_ANALOG_X(0), LEFT_ANALOG_Y(1), RIGHT_ANALOG_X(4), RIGHT_ANALOG_Y(5);
+
+    private final int axis;
+
+    Axis(int axis) {
+      this.axis = axis;
+    }
+
+    public int getAxis() {
+      return axis;
+    }
+  }
+
+  public enum Trigger {
+    LEFT(2), RIGHT(3);
+
+    private final int trigger;
+
+    Trigger(int trigger) {
+      this.trigger = trigger;
+    }
+
+    public int getTrigger() {
+      return trigger;
+    }
+  }
+
+  // private static final int LEFT_ANALOG_X_AXIS = 0;
+  // private static final int LEFT_ANALOG_Y_AXIS = 1;
+  // private static final int RIGHT_ANALOG_X_AXIS = 4;
+  // private static final int RIGHT_ANALOG_Y_AXIS = 5;
+
+  // private static final int LEFT_BUMPER = 5;
+  // private static final int RIGHT_BUMPER = 6;
+  // private static final int LEFT_TRIGGER_BUTTON = 2;
+  // private static final int RIGHT_TRIGGER_BUTTON = 3;
+  // private static final int A_BUTTON = 1;
+  // private static final int B_BUTTON = 2;
+  // private static final int X_BUTTON = 3;
+  // private static final int Y_BUTTON = 4;
+  // private static final int BACK_BUTTON = 7;
+  // private static final int START_BUTTON = 8;
 
   public LogitechGamingPad(int usbPort) {
     super(usbPort);
@@ -29,59 +85,59 @@ public class LogitechGamingPad extends XboxController {
   }
 
   public boolean getLeftBumper() {
-    return gamepad.getRawButton(LEFT_BUMPER);
+    return gamepad.getRawButton(Button.LEFT_BUMPER.getButton());
   }
 
   public double getLeftTriggerValue() {
-    return gamepad.getRawAxis(LEFT_TRIGGER_BUTTON);
+    return gamepad.getRawAxis(Trigger.LEFT.getTrigger());
   }
 
   public double getLeftAnalogXAxis() {
-    return gamepad.getRawAxis(LEFT_ANALOG_X_AXIS);
+    return gamepad.getRawAxis(Axis.LEFT_ANALOG_X.getAxis());
   }
 
   public double getLeftAnalogYAxis() {
-    return gamepad.getRawAxis(LEFT_ANALOG_Y_AXIS);
+    return gamepad.getRawAxis(Axis.LEFT_ANALOG_Y.getAxis());
   }
 
   public boolean getRightBumper() {
-    return gamepad.getRawButton(RIGHT_BUMPER);
+    return gamepad.getRawButton(Button.RIGHT_BUMPER.getButton());
   }
 
   public double getRightTriggerValue() {
-    return gamepad.getRawAxis(RIGHT_TRIGGER_BUTTON);
+    return gamepad.getRawAxis(Trigger.RIGHT.getTrigger());
   }
 
   public double getRightAnalogXAxis() {
-    return gamepad.getRawAxis(RIGHT_ANALOG_X_AXIS);
+    return gamepad.getRawAxis(Axis.RIGHT_ANALOG_X.getAxis());
   }
 
   public double getRightAnalogYAxis() {
-    return gamepad.getRawAxis(RIGHT_ANALOG_Y_AXIS);
+    return gamepad.getRawAxis(Axis.RIGHT_ANALOG_Y.getAxis());
   }
 
   public boolean getAButton() {
-    return gamepad.getRawButton(A_BUTTON);
+    return gamepad.getRawButton(Button.A.getButton());
   }
 
   public boolean getBButton() {
-    return gamepad.getRawButton(B_BUTTON);
+    return gamepad.getRawButton(Button.B.getButton());
   }
 
   public boolean getXButton() {
-    return gamepad.getRawButton(X_BUTTON);
+    return gamepad.getRawButton(Button.X.getButton());
   }
 
   public boolean getYButton() {
-    return gamepad.getRawButton(Y_BUTTON);
+    return gamepad.getRawButton(Button.Y.getButton());
   }
 
   public boolean getBackButton() {
-    return gamepad.getRawButton(BACK_BUTTON);
+    return gamepad.getRawButton(Button.BACK.getButton());
   }
 
   public boolean getStartButton() {
-    return gamepad.getRawButton(START_BUTTON);
+    return gamepad.getRawButton(Button.START.getButton());
   }
 
   public boolean checkDPad(int index) {
