@@ -118,23 +118,30 @@ public class SwerveModule {
     return swerveModulePosition;
   }
 
+  public enum Motor {
+    FRONT_LEFT,
+    FRONT_RIGHT,
+    BACK_LEFT,
+    BACK_RIGHT,
+  }
+
   /**
    * Sets the desired state of the swerve module.
    *
    * @param state The desired state of the swerve module.
    * @param motor The motor associated with the swerve module.
    */
-  public void setState(SwerveModuleState state) { // SwerveSubsystem.Motor motor
+  public void setState(SwerveModuleState state, Motor motor) { // SwerveSubsystem.Motor motor
     SwerveModulePosition newPosition = getPosition();
-    // SmartDashboard.putNumber("desired state before optimize " + motor.name(), state.angle.getDegrees());
-    // SmartDashboard.putNumber("voltage " + motor.name(), steerMotor.getMotorVoltage().getValueAsDouble());
-    // SmartDashboard.putNumber("Applied " + motor.name(), steerMotor.getSupplyCurrent().getValueAsDouble());
+    SmartDashboard.putNumber("desired state before optimize " + motor.name(), state.angle.getDegrees());
+    SmartDashboard.putNumber("voltage " + motor.name(), steerMotor.getMotorVoltage().getValueAsDouble());
+    SmartDashboard.putNumber("Applied " + motor.name(), steerMotor.getSupplyCurrent().getValueAsDouble());
     var optimized = SwerveModuleState.optimize(state, newPosition.angle);
 
     double angleToSet = optimized.angle.getRotations();
-    // SmartDashboard.putNumber("desired state after optimize " + motor.name(), optimized.angle.getRotations());
-    // SmartDashboard.putNumber("current angle " + motor.name(), steerPosition);
-    // SmartDashboard.putNumber("steer angle " + motor.name(), steerMotor.getPosition().getValueAsDouble());
+    SmartDashboard.putNumber("desired state after optimize " + motor.name(), optimized.angle.getRotations());
+    SmartDashboard.putNumber("current angle " + motor.name(), steerPosition);
+    SmartDashboard.putNumber("steer angle " + motor.name(), steerMotor.getPosition().getValueAsDouble());
 
     steerMotor.setControl(positionSetter.withPosition(angleToSet));
 
