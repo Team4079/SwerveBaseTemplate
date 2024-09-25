@@ -5,8 +5,13 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+
+import java.util.ArrayList;
+import java.util.stream.IntStream;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -19,6 +24,11 @@ public class Robot extends TimedRobot {
 
   private RobotContainer robotContainer;
 
+  private final Timer timer = new Timer();
+  private final Timer avgTimer = new Timer();
+  private int timesRan = 0;
+  private final ArrayList<Integer> timesRanArr = new ArrayList<>();
+
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -27,6 +37,8 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
+    avgTimer.start();
+    timer.start();
     robotContainer = new RobotContainer();
   }
 
@@ -40,6 +52,21 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
     CommandScheduler.getInstance().run();
+    timesRan++;
+
+    if (timer.advanceIfElapsed(1)) {
+      System.out.println("1 second has passed, times ran is " + timesRan);
+      SmartDashboard.putNumber("Hurtz Ketchup", timesRan);
+      timesRanArr.add(timesRan);
+      timesRan = 0;
+    }
+
+    if (avgTimer.advanceIfElapsed(15)) {
+      double avgTimesRan = timesRanArr.stream().mapToInt(a -> a).average().orElse(404); // Something's wrong
+      System.out.println("15 seconds have passed, times ran is " + avgTimesRan);
+      SmartDashboard.putNumber("Hurtz Ketchup Average", avgTimesRan);
+      timesRanArr.clear();
+    }
   }
 
   /** This function is called once each time the robot enters Disabled mode. */

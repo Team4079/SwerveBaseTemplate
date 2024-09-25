@@ -123,8 +123,9 @@ public class SwerveSubsystem extends SubsystemBase {
    * @return void
    */
   public void setModuleStates(SwerveModuleState[] states) {
+    SwerveModule.Motor[] m = SwerveModule.Motor.values();
     for (int i = 0; i < states.length; i++) {
-      modules[i].setState(states[i]);
+      modules[i].setState(states[i], m[i]);
     }
   }
 
