@@ -18,18 +18,10 @@ public class PadDrive extends Command {
   private final LogitechGamingPad pad;
 
   /** Creates a new SwerveJoystick. */
-  public PadDrive(SwerveSubsystem swerveSubsystem,
-      LogitechGamingPad pad,
-      boolean isFieldOriented //,
-      // Limelight limelety,
-      // LED led
-      ) {
+  public PadDrive(SwerveSubsystem swerveSubsystem, LogitechGamingPad pad, boolean isFieldOriented) {
     this.swerveSubsystem = swerveSubsystem;
     this.pad = pad;
     this.isFieldOriented = isFieldOriented;
-    // this.limelety = limelety;
-    // this.led = led;
-
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(this.swerveSubsystem); // this.limelety, this.led
   }
@@ -37,83 +29,25 @@ public class PadDrive extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    System.out.println("hey big boi ********************************************");
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double y;
-    double x;
-    double rotation;
+    double y = -pad.getLeftAnalogYAxis() * MotorGlobalValues.MAX_SPEED;
+    double x = -pad.getLeftAnalogXAxis() * MotorGlobalValues.MAX_SPEED;
+    double rotation = pad.getRightAnalogXAxis() * MotorGlobalValues.MAX_ANGULAR_SPEED;
 
-    SmartDashboard.putNumber("Y Joystick", pad.getLeftAnalogXAxis());
-    SmartDashboard.putNumber("X Dashboard", pad.getLeftAnalogYAxis());
+    SmartDashboard.putNumber("Y Joystick", y);
+    SmartDashboard.putNumber("X Jostick", x);
 
-    if (MotorGlobalValues.SLOW_MODE) {
-      y = pad.getLeftAnalogXAxis() * MotorGlobalValues.MAX_SPEED * MotorGlobalValues.SLOW_SPEED;
-      x = pad.getLeftAnalogYAxis() * -MotorGlobalValues.MAX_SPEED * MotorGlobalValues.SLOW_SPEED;
-    }
-
-    else if (MotorGlobalValues.AACORN_MODE) {
-      y = pad.getLeftAnalogXAxis() * MotorGlobalValues.MAX_SPEED * MotorGlobalValues.AACORN_SPEED;
-      x = pad.getLeftAnalogYAxis() * -MotorGlobalValues.MAX_SPEED * MotorGlobalValues.AACORN_SPEED;
-    }
-
-    else {
-      y = pad.getLeftAnalogXAxis() * MotorGlobalValues.MAX_SPEED * 0.6;
-      x = pad.getLeftAnalogYAxis() * -MotorGlobalValues.MAX_SPEED * 0.6;
-    }
-
-    if (Math.abs(pad.getLeftAnalogXAxis()) < SwerveGlobalValues.JOYSTICK_DEADBAND) {
-      y = 0;
-    }
-
-    if (Math.abs(pad.getLeftAnalogYAxis()) < SwerveGlobalValues.JOYSTICK_DEADBAND) {
-      x = 0;
-    }
-
-    rotation = pad.getRightAnalogXAxis();
-
-    double turn = 0;
-    double heading_deadband = 0.2;
-    double controller_deadband = 0.1;
-
-    // If the right joystick is within the deadband, don't turn
-    if (Math.abs(pad.getRightAnalogXAxis()) <= controller_deadband) {
-      if (MotorGlobalValues.HEADING > (swerveSubsystem.getHeading() + heading_deadband)) {
-        turn = -MotorGlobalValues.MAX_ANGULAR_SPEED;
-      } else if (MotorGlobalValues.HEADING < (swerveSubsystem.getHeading() - heading_deadband)) {
-        turn = MotorGlobalValues.MAX_ANGULAR_SPEED;
-      } else {
-        turn = 0;
-      }
-    } else {
-      turn = pad.getRightAnalogXAxis() * MotorGlobalValues.MAX_ANGULAR_SPEED;
-      MotorGlobalValues.HEADING = swerveSubsystem.getHeading();
-    }
-
-    if (Math.abs(rotation) < 0.05) {
-      rotation = 0;
-    }
-
-    turn = rotation * MotorGlobalValues.MAX_ANGULAR_SPEED * 2 * 1.5;
-
-    if (MotorGlobalValues.AACORN_MODE) {
-      swerveSubsystem.getDriveSpeeds(x * MotorGlobalValues.AACORN_SPEED, y * MotorGlobalValues.AACORN_SPEED, turn, isFieldOriented);
-    }
-
-    else {
-      System.out.println(x + " " + y);
-      swerveSubsystem.getDriveSpeeds(x * MotorGlobalValues.SPEED_CONSTANT, y * MotorGlobalValues.SPEED_CONSTANT,
-          turn, isFieldOriented);
-    }
-
+    swerveSubsystem.getDriveSpeeds(y, x, rotation, isFieldOriented);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+
   }
 
   // Returns true when the command should end.
