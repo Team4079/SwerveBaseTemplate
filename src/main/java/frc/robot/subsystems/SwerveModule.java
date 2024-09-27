@@ -97,6 +97,8 @@ public class SwerveModule {
     drivePosition = driveMotor.getPosition().getValueAsDouble();
     steerVelocity = steerMotor.getVelocity().getValueAsDouble();
     steerPosition = steerMotor.getPosition().getValueAsDouble();
+
+    steerMotor.setInverted(true);
   }
 
   /**
@@ -159,4 +161,5 @@ public class SwerveModule {
             * (MotorGlobalValues.DRIVE_MOTOR_GEAR_RATIO / MotorGlobalValues.MetersPerRevolution);
     return state;
   }
+
 }
