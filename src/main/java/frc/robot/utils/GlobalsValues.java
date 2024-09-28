@@ -309,4 +309,21 @@ public final class GlobalsValues {
 
     public static double distance = 0;
   }
+
+  public static class PhotonVisionConstants {
+    private PhotonVisionConstants() {
+      throw new IllegalStateException(UTILITY_CLASS);
+    }
+    // Offset Values
+    public static double tx = 0.0;
+    public static double ty = 0.0;
+    public static double ta = 0.0;
+    public static double tv = 0.0;
+    // Camera One
+    public static final double CAMERA_ONE_HEIGHT = 0.0;
+    public static final double CAMERA_ONE_ANGLE = 0.0; // up is postive
+    // Camera Two
+    public static final double CAMERA_TWO_HEIGHT = 0.0;
+    public static final double CAMERA_TWO_ANGLE = 0.0; // up is postive
+  }
 }

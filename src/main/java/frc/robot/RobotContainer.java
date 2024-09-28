@@ -44,7 +44,7 @@ public class RobotContainer {
         padY = new JoystickButton(pad, 4);
 
         photonvision = new Photonvision();
-        swerveSubsystem = new SwerveSubsystem(photonvision);
+        swerveSubsystem = new SwerveSubsystem();
         swerveSubsystem.setDefaultCommand(new PadDrive(swerveSubsystem, pad, SwerveGlobalValues.IS_FIELD_ORIENTATED));
 
         configureBindings();

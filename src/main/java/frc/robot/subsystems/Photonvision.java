@@ -2,10 +2,13 @@ package frc.robot.subsystems;
 
 import java.util.Optional;
 
+import edu.wpi.first.math.util.Units;
+import frc.robot.utils.GlobalsValues;
 import org.photonvision.EstimatedRobotPose;
 import org.photonvision.PhotonCamera;
 import org.photonvision.PhotonPoseEstimator;
 import org.photonvision.PhotonPoseEstimator.PoseStrategy;
+import org.photonvision.PhotonUtils;
 import org.photonvision.targeting.PhotonTrackedTarget;
 
 import edu.wpi.first.apriltag.AprilTagFieldLayout;
@@ -38,6 +41,17 @@ public class Photonvision extends SubsystemBase {
   // Transformation from the robot to the camera
   Transform3d robotToCam = new Transform3d(new Translation3d(0.5, 0.0, 0.5), new Rotation3d(0,0,0)); // Cam mounted facing forward, half a meter forward of center, half a meter up from center.
 
+  boolean targetVisible1 = false;
+  double targetYaw1 = 0.0;
+  double targetPoseAmbiguity1 = 0.0;
+  double range1 = 0.0;
+  boolean targetVisible2 = false;
+  double targetYaw2 = 0.0;
+  double targetPoseAmbiguity2 = 0.0;
+  double range2 = 0.0;
+  double targetYaw = 0.0;
+  double rangeToTarget = 0.0;
+
   /**
    * Constructs a new PhotonVision subsystem.
    */
@@ -54,15 +68,71 @@ public class Photonvision extends SubsystemBase {
     var result1 = camera1.getLatestResult();
     var result2 = camera2.getLatestResult();
 
-    if (result1.hasTargets()){
-      target1 = result1.getBestTarget();
-      if (result1.getMultiTagResult().estimatedPose.isPresent) {
-        Transform3d fieldToCamera = result1.getMultiTagResult().estimatedPose.best;
-        SmartDashboard.putNumber("field to camera", fieldToCamera.getX());
+    if (result1.hasTargets()) {
+      // Camera processed a new frame since last
+      // Get the last one in the list.
+
+      for (var tag : result1.getTargets()) {
+        // IMPORTANT: CHANGE DA TAGRGET ID FOR STUFF AND THIGNS LOLOLOLOL
+        if (tag.getFiducialId() == 7) {
+          // Found Tag 7, record its information
+
+          targetPoseAmbiguity1 = tag.getPoseAmbiguity();
+          targetYaw1 = tag.getYaw();
+          targetVisible1 = true;
+
+          range1 = PhotonUtils.calculateDistanceToTargetMeters(
+                  GlobalsValues.PhotonVisionConstants.CAMERA_ONE_HEIGHT,
+                  1.435, // From 2024 game manual for ID 7 | IMPORTANT TO CHANGE
+                  GlobalsValues.PhotonVisionConstants.CAMERA_ONE_ANGLE, // Rotation about Y = Pitch | UP IS POSITIVE
+                  Units.degreesToRadians(tag.getPitch()));
+
+        }
       }
     }
 
-    target2 = result2.hasTargets() ? result2.getBestTarget() : target2;
+    else {
+      targetVisible1 = false;
+      targetPoseAmbiguity1 = 1e9;
+    }
+    if (result2.hasTargets()) {
+      // Camera processed a new frame since last
+      // Get the last one in the list.
+
+      for (var tag : result2.getTargets()) {
+        // IMPORTANT: CHANGE DA TAGRGET ID FOR STUFF AND THIGNS LOLOLOLOL
+        if (tag.getFiducialId() == 7) {
+          // Found Tag 7, record its information
+
+          targetPoseAmbiguity2 = tag.getPoseAmbiguity();
+          targetYaw2 = tag.getYaw();
+          targetVisible2 = true;
+
+          range2 = PhotonUtils.calculateDistanceToTargetMeters(
+                  GlobalsValues.PhotonVisionConstants.CAMERA_TWO_HEIGHT,
+                  1.435, // From 2024 game manual for ID 7 | IMPORTANT TO CHANGE
+                  GlobalsValues.PhotonVisionConstants.CAMERA_TWO_ANGLE, // Rotation about Y = Pitch | UP IS POSITIVE
+                  Units.degreesToRadians(tag.getPitch()));
+        }
+      }
+    }
+
+    else {
+      targetVisible2 = false;
+      targetPoseAmbiguity2 = 1e9;
+    }
+
+    if (targetPoseAmbiguity1 > targetPoseAmbiguity2)
+    {
+      targetYaw = targetYaw1;
+      rangeToTarget = range1;
+    }
+    else
+    {
+      targetYaw = targetYaw2;
+      rangeToTarget = range2;
+    }
+
   }
 
   /**
