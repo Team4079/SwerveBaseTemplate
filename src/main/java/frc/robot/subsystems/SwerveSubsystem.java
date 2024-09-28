@@ -24,22 +24,35 @@ import frc.robot.utils.GlobalsValues.SwerveGlobalValues;
  * The {@link SwerveSubsystem} class includes all the motors to drive the robot.
  */
 public class SwerveSubsystem extends SubsystemBase {
+  /** Pose estimator for the swerve drive. */
   private SwerveDrivePoseEstimator poseEstimator;
+
+  /** Field representation for the robot. */
   private Field2d field;
 
+  /** Pigeon2 IMU for orientation. */
   private Pigeon2 pidgey;
+
+  /** Array of swerve module states. */
   private SwerveModuleState[] states;
+
+  /** Array of swerve modules. */
   private SwerveModule[] modules;
 
+  /** Photonvision instance for vision processing. */
   private Photonvision photonvision;
 
+  /** Turn speed of the robot. */
   double turnSpeed;
 
+  /** Rotation value for the robot. */
   private double rot;
+
+  /** Flag to determine if the robot should invert its controls. */
   private boolean shouldInvert = false;
 
   /** Creates a new DriveTrain. */
-  public SwerveSubsystem() {
+  public SwerveSubsystem(Photonvision photonvision) {
     modules = new SwerveModule[] {
         new SwerveModule(
             MotorGlobalValues.FRONT_LEFT_DRIVE_ID,
@@ -78,15 +91,12 @@ public class SwerveSubsystem extends SubsystemBase {
         SwerveGlobalValues.BasePIDGlobal.pathFollower,
         () -> {
           Optional<DriverStation.Alliance> alliance = DriverStation.getAlliance();
-          if (alliance.isPresent()) {
+          if (alliance isPresent()) {
             if (shouldInvert) {
               return (alliance.get() == DriverStation.Alliance.Red);
-            }
-
-        else {
+            } else {
               return !(alliance.get() == DriverStation.Alliance.Blue);
             }
-
           }
           return false;
         },
@@ -263,5 +273,4 @@ public class SwerveSubsystem extends SubsystemBase {
 
     return positions;
   }
-
 }
