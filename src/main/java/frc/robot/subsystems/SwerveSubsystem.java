@@ -1,8 +1,10 @@
 package frc.robot.subsystems;
 
-import com.ctre.phoenix6.configs.Slot0Configs;
 import com.ctre.phoenix6.hardware.Pigeon2;
 import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.config.PIDConstants;
+import com.pathplanner.lib.config.RobotConfig;
+import com.pathplanner.lib.controllers.PPHolonomicDriveController;
 import edu.wpi.first.math.VecBuilder;
 import edu.wpi.first.math.estimator.SwerveDrivePoseEstimator;
 import edu.wpi.first.math.geometry.Pose2d;
@@ -14,17 +16,17 @@ import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.utils.GlobalsValues;
-import frc.robot.utils.PID;
 import frc.robot.utils.GlobalsValues.MotorGlobalValues;
 import frc.robot.utils.GlobalsValues.SwerveGlobalValues;
 import frc.robot.utils.GlobalsValues.SwerveGlobalValues.BasePIDGlobal;
-
+import frc.robot.utils.PID;
+import java.io.IOException;
 import java.util.Optional;
+import org.json.simple.parser.ParseException;
 import org.photonvision.EstimatedRobotPose;
 
 /** The {@link SwerveSubsystem} class includes all the motors to drive the robot. */
@@ -39,7 +41,11 @@ public class SwerveSubsystem extends SubsystemBase {
   private final Photonvision photonvision;
 
   private static final boolean SHOULD_INVERT = false;
-  private PID pid = new PID(SmartDashboard.getNumber("AUTO: P", SwerveGlobalValues.BasePIDGlobal.DRIVE_PID_AUTO.p), SmartDashboard.getNumber("AUTO: I", SwerveGlobalValues.BasePIDGlobal.DRIVE_PID_AUTO.i), SmartDashboard.getNumber("AUTO: D", SwerveGlobalValues.BasePIDGlobal.DRIVE_PID_AUTO.d));
+  private PID pid =
+      new PID(
+          SmartDashboard.getNumber("AUTO: P", SwerveGlobalValues.BasePIDGlobal.DRIVE_PID_AUTO.p),
+          SmartDashboard.getNumber("AUTO: I", SwerveGlobalValues.BasePIDGlobal.DRIVE_PID_AUTO.i),
+          SmartDashboard.getNumber("AUTO: D", SwerveGlobalValues.BasePIDGlobal.DRIVE_PID_AUTO.d));
   private double velocity;
 
   /**
@@ -47,7 +53,7 @@ public class SwerveSubsystem extends SubsystemBase {
    *
    * @param photonvision The Photonvision instance used for vision processing.
    */
-  public SwerveSubsystem(Photonvision photonvision) {
+  public SwerveSubsystem(Photonvision photonvision) throws IOException, ParseException {
     modules =
         new SwerveModule[] {
           new SwerveModule(
@@ -88,13 +94,17 @@ public class SwerveSubsystem extends SubsystemBase {
             VecBuilder.fill(0.05, 0.05, Units.degreesToRadians(5)),
             VecBuilder.fill(0.5, 0.5, Units.degreesToRadians(30)));
 
-    AutoBuilder.configureHolonomic(
+    AutoBuilder.configure(
         this::getPose, // Robot pose supplier
         this::newPose, // Method to reset odometry (will be called if your auto has a starting pose)
         this::getAutoSpeeds, // ChassisSpeeds supplier. MUST BE ROBOT RELATIVE
         this::chassisSpeedsDrive, // Method that will drive the robot given ROBOT RELATIVE
-        // ChassisSpeeds
-        SwerveGlobalValues.BasePIDGlobal.pathFollower,
+        new PPHolonomicDriveController( // PPHolonomicController is the built in path following
+                                        // controller for holonomic drive trains
+            new PIDConstants(5.0, 0.0, 0.0), // Translation PID constants
+            new PIDConstants(5.0, 0.0, 0.0) // Rotation PID constants
+            ),
+        RobotConfig.fromGUISettings(),
         () -> {
           Optional<DriverStation.Alliance> alliance = DriverStation.getAlliance();
           if (alliance.isPresent()) {
@@ -119,11 +129,10 @@ public class SwerveSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
 
-    if (DriverStation.isTeleop())
-    {
+    if (DriverStation.isTeleop()) {
       Optional<EstimatedRobotPose> visionMeasurement3d =
           photonvision.getEstimatedGlobalPose(poseEstimator.getEstimatedPosition());
-      if (!visionMeasurement3d.isEmpty()) {
+      if (visionMeasurement3d.isPresent()) {
         double timestamp = visionMeasurement3d.get().timestampSeconds;
         Pose3d estimatedPose = visionMeasurement3d.get().estimatedPose;
         Pose2d visionMeasurement2d = estimatedPose.toPose2d();
@@ -131,20 +140,20 @@ public class SwerveSubsystem extends SubsystemBase {
         poseEstimator.getEstimatedPosition();
         SwerveGlobalValues.currentPose = poseEstimator.getEstimatedPosition();
       }
-  }
+    }
 
     poseEstimator.update(getPidgeyRotation(), getModulePositions());
 
     field.setRobotPose(poseEstimator.getEstimatedPosition());
     // Pidgeon Stuff
     // Global Boolean Value called TEST_MODE if true graph all smartdashboard values
-    if(BasePIDGlobal.TEST_MODE == true) {
-        SmartDashboard.putData("Robot Pose", field);
-        SmartDashboard.putNumber("Pitch", pidgey.getPitch().getValueAsDouble());
-        SmartDashboard.putNumber("Heading", pidgey.getAngle());
-        SmartDashboard.putNumber("Yaw", pidgey.getYaw().getValueAsDouble());
-        SmartDashboard.putNumber("Roll", pidgey.getRoll().getValueAsDouble());
-        // SmartDashboard.putData("Pose", getPose().getTranslation().get);
+    if (BasePIDGlobal.TEST_MODE) {
+      SmartDashboard.putData("Robot Pose", field);
+      SmartDashboard.putNumber("Pitch", pidgey.getPitch().getValueAsDouble());
+      SmartDashboard.putNumber("Heading", pidgey.getAngle());
+      SmartDashboard.putNumber("Yaw", pidgey.getYaw().getValueAsDouble());
+      SmartDashboard.putNumber("Roll", pidgey.getRoll().getValueAsDouble());
+      // SmartDashboard.putData("Pose", getPose().getTranslation().get);
     }
   }
 
@@ -161,6 +170,7 @@ public class SwerveSubsystem extends SubsystemBase {
 
   /**
    * Sets the drive speeds for the robot.F
+   *
    * @param forwardSpeed The forward speed.
    * @param leftSpeed The left speed.
    * @param turnSpeed The turn speed.
@@ -170,11 +180,11 @@ public class SwerveSubsystem extends SubsystemBase {
       double forwardSpeed, double leftSpeed, double turnSpeed, boolean isFieldOriented) {
     ChassisSpeeds speeds;
 
-  if(BasePIDGlobal.TEST_MODE == true) {
-    SmartDashboard.putNumber("Forward speed", forwardSpeed);
-    SmartDashboard.putNumber("Left speed", leftSpeed);
-    SmartDashboard.putNumber("Pidgey Heading", getHeading());
-  }
+    if (BasePIDGlobal.TEST_MODE) {
+      SmartDashboard.putNumber("Forward speed", forwardSpeed);
+      SmartDashboard.putNumber("Left speed", leftSpeed);
+      SmartDashboard.putNumber("Pidgey Heading", getHeading());
+    }
 
     if (isFieldOriented) {
       speeds =
@@ -215,8 +225,7 @@ public class SwerveSubsystem extends SubsystemBase {
     Optional<DriverStation.Alliance> alliance = DriverStation.getAlliance();
     if (alliance.get() == DriverStation.Alliance.Red) {
       pidgey.setYaw(27.4);
-    }
-    else {
+    } else {
       pidgey.setYaw(-27.4);
     }
   }
@@ -340,12 +349,12 @@ public class SwerveSubsystem extends SubsystemBase {
   }
 
   public void setCustomDrivePID() {
-    for (int i = 0; i < modules.length; i++) {
-      pid.p = SmartDashboard.getNumber("AUTO: P", SwerveGlobalValues.BasePIDGlobal.DRIVE_PID_AUTO.p);
-      pid.i = SmartDashboard.getNumber("AUTO: I", SwerveGlobalValues.BasePIDGlobal.DRIVE_PID_AUTO.i);
-      pid.d = SmartDashboard.getNumber("AUTO: D", SwerveGlobalValues.BasePIDGlobal.DRIVE_PID_AUTO.d);
-      velocity = SmartDashboard.getNumber("AUTO: V", SwerveGlobalValues.BasePIDGlobal.DRIVE_PID_V_AUTO);
-      modules[i].setAUTOPID(pid, velocity);
+    for (SwerveModule module : modules) {
+      pid.p = SmartDashboard.getNumber("AUTO: P", BasePIDGlobal.DRIVE_PID_AUTO.p);
+      pid.i = SmartDashboard.getNumber("AUTO: I", BasePIDGlobal.DRIVE_PID_AUTO.i);
+      pid.d = SmartDashboard.getNumber("AUTO: D", BasePIDGlobal.DRIVE_PID_AUTO.d);
+      velocity = SmartDashboard.getNumber("AUTO: V", BasePIDGlobal.DRIVE_PID_V_AUTO);
+      module.setAUTOPID(pid, velocity);
     }
   }
 }

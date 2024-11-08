@@ -1,8 +1,8 @@
-
 package frc.robot.subsystems;
 
 import com.ctre.phoenix6.configs.CANcoderConfiguration;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
+import com.ctre.phoenix6.configs.TorqueCurrentConfigs;
 import com.ctre.phoenix6.controls.PositionVoltage;
 import com.ctre.phoenix6.controls.VelocityTorqueCurrentFOC;
 import com.ctre.phoenix6.hardware.CANcoder;
@@ -41,6 +41,8 @@ public class SwerveModule {
   private TalonFXConfiguration driveConfigs;
   private TalonFXConfiguration steerConfigs;
 
+  private TorqueCurrentConfigs driveTorqueConfigs;
+
   /**
    * Constructs a new SwerveModule.
    *
@@ -65,6 +67,7 @@ public class SwerveModule {
 
     driveConfigs = new TalonFXConfiguration();
     steerConfigs = new TalonFXConfiguration();
+    driveTorqueConfigs = new TorqueCurrentConfigs();
     CANcoderConfiguration canCoderConfiguration = new CANcoderConfiguration();
 
     driveConfigs.Slot0.kP = BasePIDGlobal.DRIVE_PID_AUTO.p;
@@ -104,6 +107,10 @@ public class SwerveModule {
     steerConfigs.CurrentLimits.SupplyTimeThreshold = MotorGlobalValues.STEER_TIME_THRESHOLD;
     steerConfigs.CurrentLimits.SupplyCurrentLimitEnable = true;
 
+    // driveTorqueConfigs.PeakForwardTorqueCurrent = 45;
+    // driveTorqueConfigs.PeakReverseTorqueCurrent = 45;
+    // driveTorqueConfigs.TorqueNeutralDeadband = 0;
+
     canCoderConfiguration.MagnetSensor.AbsoluteSensorRange =
         AbsoluteSensorRangeValue.Signed_PlusMinusHalf;
     canCoderConfiguration.MagnetSensor.SensorDirection =
@@ -137,13 +144,13 @@ public class SwerveModule {
 
     swerveModulePosition.angle =
         Rotation2d.fromDegrees(
-            ((360 * canCoder.getAbsolutePosition().getValue()) % 360 + 360) % 360);
+            ((360 * canCoder.getAbsolutePosition().getValueAsDouble()) % 360 + 360) % 360);
     swerveModulePosition.distanceMeters =
         drivePosition
             / MotorGlobalValues.DRIVE_MOTOR_GEAR_RATIO
             * MotorGlobalValues.MetersPerRevolution;
     // System.out.println(swerveModulePosition.distanceMeters);
-    return swerveModulePosition; 
+    return swerveModulePosition;
   }
 
   /**
@@ -154,28 +161,31 @@ public class SwerveModule {
   public void setState(SwerveModuleState state) {
     SwerveModulePosition newPosition = getPosition();
     SwerveModuleState optimized = SwerveModuleState.optimize(state, newPosition.angle);
-  
+
     double angleToSet = optimized.angle.getRotations();
-    SmartDashboard.putNumber(
-        "desired state after optimize " + canCoder.getDeviceID(), optimized.angle.getRotations());
     steerMotor.setControl(positionSetter.withPosition(angleToSet));
-  
+
     double velocityToSet =
         optimized.speedMetersPerSecond
             * (MotorGlobalValues.DRIVE_MOTOR_GEAR_RATIO / MotorGlobalValues.MetersPerRevolution);
     driveMotor.setControl(velocitySetter.withVelocity(velocityToSet));
 
-    SmartDashboard.putNumber(
-        "drive actual speed " + canCoder.getDeviceID(), driveMotor.getVelocity().getValueAsDouble());
-      
-    SmartDashboard.putNumber(
-        "drive set speed " + canCoder.getDeviceID(), velocityToSet);
+    if (BasePIDGlobal.TEST_MODE) {
+      SmartDashboard.putNumber(
+          "drive actual speed " + canCoder.getDeviceID(), driveMotor.getVelocity().getValueAsDouble());
 
-    SmartDashboard.putNumber(
-        "steer actual angle " + canCoder.getDeviceID(), steerMotor.getRotorPosition().getValueAsDouble());
-      
-    SmartDashboard.putNumber(
-        "steer set angle " + canCoder.getDeviceID(), angleToSet);
+      SmartDashboard.putNumber(
+          "drive set speed " + canCoder.getDeviceID(), velocityToSet);
+
+      SmartDashboard.putNumber(
+          "steer actual angle " + canCoder.getDeviceID(), steerMotor.getRotorPosition().getValueAsDouble());
+
+      SmartDashboard.putNumber(
+          "steer set angle " + canCoder.getDeviceID(), angleToSet);
+
+      SmartDashboard.putNumber(
+          "desired state after optimize " + canCoder.getDeviceID(), optimized.angle.getRotations());
+    }
 
     this.state = state;
   }
