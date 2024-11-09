@@ -6,6 +6,7 @@ package frc.robot.utils;
 
 import com.ctre.phoenix6.signals.InvertedValue;
 import com.pathplanner.lib.config.PIDConstants;
+import com.pathplanner.lib.config.RobotConfig;
 import com.pathplanner.lib.controllers.PPHolonomicDriveController;
 
 import edu.wpi.first.math.geometry.Pose2d;
@@ -155,12 +156,22 @@ public final class GlobalsValues {
       public static final PID PASS_ROTATIONAL_PID = new PID(0.1, 0000, 0.00, 0);
 
       // PathPlanner Push Variable Turn smartdasboard on or off
-      public static boolean TEST_MODE = false;
+      public static boolean TEST_MODE = true;
 
       public static PPHolonomicDriveController pathFollower =
           new PPHolonomicDriveController(
               new PIDConstants(5, 0.00, 0), // translation
               new PIDConstants(5, 0.0, 0)); // rotation); // Default path replanning config. See the API for the options here
+
+      public static RobotConfig config;
+      {
+        try {
+          config = RobotConfig.fromGUISettings();
+        } catch (Exception e) {
+          // Handle exception as needed
+          e.printStackTrace();
+        }
+      }
     }
 
     // Controller X and Y deadbands

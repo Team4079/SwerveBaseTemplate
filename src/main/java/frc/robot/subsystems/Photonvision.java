@@ -15,43 +15,43 @@ import org.photonvision.EstimatedRobotPose;
 import org.photonvision.PhotonCamera;
 import org.photonvision.PhotonPoseEstimator;
 import org.photonvision.PhotonPoseEstimator.PoseStrategy;
+import org.photonvision.targeting.MultiTargetPNPResult;
 import org.photonvision.targeting.PhotonPipelineResult;
 import org.photonvision.targeting.PhotonTrackedTarget;
 
 /** The PhotonVision subsystem handles vision processing using PhotonVision cameras. */
 public class Photonvision extends SubsystemBase {
   // PhotonVision cameras
-  PhotonCamera cameraleft = new PhotonCamera("Left");
+  PhotonCamera camera = new PhotonCamera("Camera");
 
   // Pose estimator for determining the robot's position on the field
-  PhotonPoseEstimator photonPoseEstimatorleft;
+  PhotonPoseEstimator photonPoseEstimator;
 
   private Translation2d cameraTrans = new Translation2d(0.31, 0);
 
   // AprilTag field layout for the 2024 Crescendo field
-  AprilTagFieldLayout aprilTagFieldLayout = AprilTagFields.k2024Crescendo.loadAprilTagLayoutField();
+  AprilTagFieldLayout aprilTagFieldLayout = AprilTagFieldLayout.loadField(AprilTagFields.k2024Crescendo);
 
   // Transformation from the robot to the camera
   // TODO: Make function to convert Translation2d to Translation3d
-  Transform3d leftCameraPos =
+  Transform3d CameraPos =
       new Transform3d(
           conv2dTo3d(cameraTrans, PhotonVisionConstants.CAMERA_ONE_HEIGHT_METER),
           new Rotation3d(0, Math.toRadians(360 - PhotonVisionConstants.CAMERA_ONE_ANGLE_DEG), Math.toRadians(180)));
 
-  PhotonTrackedTarget targetleft;
-  boolean targetVisibleleft = false;
-  double targetYawleft = -15.0;
-  double targetPoseAmbiguityleft = 7157;
-  double rangeleft = 0.0;
+  PhotonTrackedTarget target;
+  boolean targetVisible = false;
+  double targetYaw = -15.0;
+  double targetPoseAmbiguity = 7157;
+  double range = 0.0;
 
 
-  double targetYaw = 0.0;
   double rangeToTarget = 0.0;
 
-  PhotonPipelineResult resultleft;
+  List<PhotonPipelineResult> result;
   PhotonPipelineResult currentResult;
 
-  boolean camleftTag = false;
+  boolean camTag = false;
 
   Translation3d currentPose;
 
@@ -59,12 +59,13 @@ public class Photonvision extends SubsystemBase {
 
   /** Constructs a new PhotonVision subsystem. */
   public Photonvision() {
-    resultleft = new PhotonPipelineResult();
-    photonPoseEstimatorleft =
+    // Intialize result
+    result = camera.getAllUnreadResults();
+    photonPoseEstimator =
         new PhotonPoseEstimator(
             aprilTagFieldLayout,
             PoseStrategy.MULTI_TAG_PNP_ON_COPROCESSOR,
-            leftCameraPos);
+            CameraPos);
   }
   /**
    * This method is called periodically by the scheduler. It updates the tracked targets and
@@ -72,13 +73,18 @@ public class Photonvision extends SubsystemBase {
    */
   @Override
   public void periodic() {
-    resultleft = cameraleft.getAllUnreadResults();
-    photonPoseEstimatorleft.update();
+    result = camera.getAllUnreadResults();
+    if (result.isEmpty()) {
+      return;
+    }
+    currentResult = result.get(0);
 
-    if (resultleft.hasTargets()) {
-      targetleft = resultleft.getBestTarget();
-      targetPoseAmbiguityleft = targetleft.getPoseAmbiguity();
-      // SmartDashboard.putNumber("distleft", distleft);
+    photonPoseEstimator.update(currentResult);
+
+    if (currentResult.hasTargets()) {
+      target = currentResult.getBestTarget();
+      targetPoseAmbiguity = target.getPoseAmbiguity();
+      // SmartDashboard.putNumber("dist", dist);
 
 
 
@@ -89,12 +95,12 @@ public class Photonvision extends SubsystemBase {
       // }
       // return 4079;
 
-      // if (resultleft.getMultiTagResult().estimatedPose.isPresent) {
-      //     Transform3d fieldToCamera = resultleft.getMultiTagResult().estimatedPose.best;
+      // if (result.getMultiTagResult().estimatedPose.isPresent) {
+      //     Transform3d fieldToCamera = result.getMultiTagResult().estimatedPose.best;
       //     SmartDashboard.putNumber("field to camera", fieldToCamera.getX());
       // }
     } else {
-      targetPoseAmbiguityleft = 7157;
+      targetPoseAmbiguity = 7157;
     }
 
     if(BasePIDGlobal.TEST_MODE == true) {
@@ -102,15 +108,13 @@ public class Photonvision extends SubsystemBase {
       SmartDashboard.putNumber("range target", rangeToTarget);
       SmartDashboard.putNumber("april tag distance", getDistanceSubwoofer());
       SmartDashboard.putNumber("april tag yaw", getSubwooferYaw());
-      SmartDashboard.putNumber("left cam ambiguity", targetPoseAmbiguityleft);
-      SmartDashboard.putBoolean("left_targets", resultleft.hasTargets());
+      SmartDashboard.putNumber(" cam ambiguity", targetPoseAmbiguity);
+      SmartDashboard.putBoolean("_targets", currentResult.hasTargets());
     }
 
-
-    List<PhotonTrackedTarget> results = cameraleft.getLatestResult().getTargets();
     // boolean frontOfSubwoofer = false;
 
-    for (PhotonTrackedTarget tag : results) {
+    for (PhotonTrackedTarget tag : currentResult.getTargets()) {
       if (tag.getFiducialId() == 7 || tag.getFiducialId() == 4) {
         targetYaw = tag.getYaw();
         // } else {
@@ -124,7 +128,7 @@ public class Photonvision extends SubsystemBase {
 
   public boolean hasTag()
   {
-    if (resultleft.hasTargets())
+    if (currentResult.hasTargets())
     {
       return true;
     }
@@ -139,20 +143,18 @@ public class Photonvision extends SubsystemBase {
    *     estimated.
    */
   public Optional<EstimatedRobotPose> getEstimatedGlobalPose(Pose2d prevEstimatedRobotPose) {
-    photonPoseEstimatorleft.setReferencePose(prevEstimatedRobotPose);
-    return photonPoseEstimatorleft.update();
+    photonPoseEstimator.setReferencePose(prevEstimatedRobotPose);
+    return photonPoseEstimator.update(currentResult);
   }
 
   public Transform3d getEstimatedGlobalPose() {
-    if (resultleft.getMultiTagResult().estimatedPose.isPresent) {
-      Transform3d fieldToCamera = resultleft.getMultiTagResult().estimatedPose.best;
-      return resultleft.getMultiTagResult().estimatedPose.best;
-      // System.out.println(photonPoseEstimatorleft.getReferencePose().getX());
+    if (currentResult.getMultiTagResult() != null) {
+      Transform3d fieldToCamera = currentResult.getMultiTagResult().get().estimatedPose.best;
+      return fieldToCamera;
     }
-    // return photonPoseEstimatorleft.getReferencePose();
+    // return photonPoseEstimator.getReferencePose();
     return new Transform3d(0, 0, 0, new Rotation3d());
   }
-
   /**
    * Horizontal
    *
@@ -199,24 +201,6 @@ public class Photonvision extends SubsystemBase {
   public Translation3d conv2dTo3d(Translation2d translation2d, double z) {
     return new Translation3d(translation2d.getX(), translation2d.getY(), z);
   }
-
-  // public double getYaw(PhotonCamera camera) {
-  //   List<PhotonTrackedTarget> results = camera.getLatestResult().getTargets();
-  //   boolean frontOfSubwoofer = false;
-
-  //   for (PhotonTrackedTarget tag : results) {
-  //     if (tag.getFiducialId() == 7 || tag.getFiducialId() == 4) {
-  //       frontOfSubwoofer = true;
-  //     }
-  //   }
-
-  //   SmartDashboard.putBoolean("front of subwoofer", frontOfSubwoofer);
-
-  //   if (camera.getLatestResult().hasTargets()) {
-  //     return camera.getLatestResult().getBestTarget().getYaw();
-  //   }
-  //   return 4079;
-  // }
 
   public double getDistanceSubwoofer() {
     currentPose = getEstimatedGlobalPose().getTranslation();

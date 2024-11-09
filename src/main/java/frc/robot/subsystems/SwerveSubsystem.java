@@ -53,7 +53,7 @@ public class SwerveSubsystem extends SubsystemBase {
    *
    * @param photonvision The Photonvision instance used for vision processing.
    */
-  public SwerveSubsystem(Photonvision photonvision) throws IOException, ParseException {
+  public SwerveSubsystem(Photonvision photonvision){
     modules =
         new SwerveModule[] {
           new SwerveModule(
@@ -104,7 +104,7 @@ public class SwerveSubsystem extends SubsystemBase {
             new PIDConstants(5.0, 0.0, 0.0), // Translation PID constants
             new PIDConstants(5.0, 0.0, 0.0) // Rotation PID constants
             ),
-        RobotConfig.fromGUISettings(),
+        BasePIDGlobal.config,
         () -> {
           Optional<DriverStation.Alliance> alliance = DriverStation.getAlliance();
           if (alliance.isPresent()) {
@@ -150,7 +150,7 @@ public class SwerveSubsystem extends SubsystemBase {
     if (BasePIDGlobal.TEST_MODE) {
       SmartDashboard.putData("Robot Pose", field);
       SmartDashboard.putNumber("Pitch", pidgey.getPitch().getValueAsDouble());
-      SmartDashboard.putNumber("Heading", pidgey.getAngle());
+      SmartDashboard.putNumber("Heading", -pidgey.getYaw().getValueAsDouble());
       SmartDashboard.putNumber("Yaw", pidgey.getYaw().getValueAsDouble());
       SmartDashboard.putNumber("Roll", pidgey.getRoll().getValueAsDouble());
       // SmartDashboard.putData("Pose", getPose().getTranslation().get);
@@ -214,7 +214,7 @@ public class SwerveSubsystem extends SubsystemBase {
    * @return double The current angle of the pidgey.
    */
   public double getHeading() {
-    return pidgey.getAngle();
+    return -pidgey.getYaw().getValueAsDouble();
   }
 
   public double getPidgeyYaw() {
