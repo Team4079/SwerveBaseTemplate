@@ -5,9 +5,8 @@
 package frc.robot.utils;
 
 import com.ctre.phoenix6.signals.InvertedValue;
-import com.pathplanner.lib.util.HolonomicPathFollowerConfig;
 import com.pathplanner.lib.config.PIDConstants;
-import com.pathplanner.lib.util.ReplanningConfig;
+import com.pathplanner.lib.controllers.PPHolonomicDriveController;
 
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -76,31 +75,6 @@ public final class GlobalsValues {
     // Motor Speed Manipulation Values
     public static boolean SLOW_MODE = false;
     public static boolean AACORN_MODE = true;
-  }
-
-  public static class ElevatorGlobalValues {
-    public static final int ELEVATOR_NEO_ID = 21;
-    public static final int PASS_NEO_ID = 22;
-    public static final double closedLoopRampRate = 0.5;
-    public static final double passClosedLoopRampRate = 0.1;
-    public static final double ELEVATOR_UP = 7; // TODO: git gud
-    public static final double ELEVATOR_DOWN = 0.5;
-    public static final double ELEVATOR_CLIMB = 7.4;
-    public static final double kP = 0.000045; // TODO: git gud
-    public static final double kI = 0.000000; // TODO: git gud
-    public static final double kD = 0.0; // TODO: git gud
-    public static final double kIz = 0.0;
-    public static final double kFF = 0.0002;
-    public static final double kMaxOutput = 0.8;
-    public static final double kMinOutput = -0.1;
-
-    public static final double PasskP = 0.001; // TODO: git gud
-    public static final double PasskI = 0; // TODO: git gud
-    public static final double PasskD = 0; // TODO: git gud
-    public static final float SOFTLIMIT_FOWARD = 7.5f;
-    public static final float SOFTLIMIT_REVERSE = -1.0f;
-
-    public static final boolean ELEVATOR_JOYSTICKS = false;
   }
 
   public static class SwerveGlobalValues {
@@ -183,18 +157,10 @@ public final class GlobalsValues {
       // PathPlanner Push Variable Turn smartdasboard on or off
       public static boolean TEST_MODE = false;
 
-      public static HolonomicPathFollowerConfig pathFollower =
-          new HolonomicPathFollowerConfig(
+      public static PPHolonomicDriveController pathFollower =
+          new PPHolonomicDriveController(
               new PIDConstants(5, 0.00, 0), // translation
-              new PIDConstants(5, 0.0, 0), // rotation
-              4, // Max module speed, in m/s
-              SwerveGlobalValues
-                  .ROBOT_SIZE, // Drive base radius in meters. Distance from robot center to
-              // furthest //
-              // module.
-              new ReplanningConfig(
-                  false,
-                  false)); // Default path replanning config. See the API for the options here
+              new PIDConstants(5, 0.0, 0)); // rotation); // Default path replanning config. See the API for the options here
     }
 
     // Controller X and Y deadbands
@@ -203,162 +169,6 @@ public final class GlobalsValues {
 
     public static final double offBalanceAngleThreshold = 10;
     public static final double onBalanceAngleThreshold = 5;
-  }
-
-  public static class IntakeGlobalValues {
-    private IntakeGlobalValues() {
-      throw new IllegalStateException(UTILITY_CLASS);
-    }
-
-    // Intake Motor Values
-    public static final boolean isInverted = false;
-
-    public static final int INTAKE_MOTOR_ID = 17;
-
-    public static final double INTAKE_SPEED = 60;
-
-    // Intake PID Values
-    public static final double INTAKE_PID_V = 0.1;
-    public static final double INTAKE_PID_P = 0.0002;
-    public static final double INTAKE_PID_I = 0.0;
-    public static final double INTAKE_PID_D = 0.0;
-
-    // Reverse Intake Values
-    public static final double REVERSE_INTAKE_SPEED = 20.0;
-  }
-
-  public static class PivotGlobalValues {
-    private PivotGlobalValues() {
-      throw new IllegalStateException(UTILITY_CLASS);
-    }
-
-    // Pivot Motor Values
-    public static final boolean IS_INVERTED = false;
-    public static final double PIVOT_GEAR_RATIO = 198.0;
-
-    // Pivot Motor CAN ID Values
-    public static final int PIVOT_MOTOR_LEFT_ID = 14;
-    public static final int PIVOT_MOTOR_RIGHT_ID = 15;
-
-    // Pivot PID Values
-    public static final double PIVOT_PID_LEFT_P = 0.3;
-    public static final double PIVOT_PID_LEFT_I = 0.0005;
-    public static final double PIVOT_PID_LEFT_D = 0.0;
-    public static final double PIVOT_PID_LEFT_V = 0.5;
-    public static final double PIVOT_PID_LEFT_F = 0.1;
-
-    public static final double PIVOT_PID_RIGHT_P = 0.3;
-    public static final double PIVOT_PID_RIGHT_I = 0.0005;
-    public static final double PIVOT_PID_RIGHT_D = 0.0;
-    public static final double PIVOT_PID_RIGHT_V = 0.5;
-    public static final double PIVOT_PID_RIGHT_F = 0.1;
-
-    // SetPivot PID Controller
-    public static final double SETPIVOT_PID_P = 0.00825;
-    public static final double SETPIVOT_PID_I = 0;
-    public static final double SETPIVOT_PID_D = 0.00035;
-
-    public static final double PIVOT_NEUTRAL_ANGLE = (0.5 + PivotGlobalValues.offset); // All 3\
-    // public static final double PIVOT_AMP_ANGLE = (46 + PivotGlobalValues.offset);
-    // //Ued to be 49.55
-    public static final double PIVOT_AMP_ANGLE = 19;
-    public static final double PIVOT_SUBWOOFER_ANGLE = (13.4 + PivotGlobalValues.offset);
-    // public static final double PIVOT_SOURCE = 93;
-    public static final double PIVOT_FENDER_ANGLE =
-        (30.5 + PivotGlobalValues.offset); // 305 instead of 30.5
-    // public static final double PIVOT_MAX_ANGLE = (55 + PivotGlobalValues.offset);
-    // public static final double PIVOT_MIN_ANGLE = (0 + PivotGlobalValues.offset);
-
-    public static final double PIVOT_PASS_ANGLE = (PivotGlobalValues.offset);
-
-    // Pivot Motor Speed Values
-    public static boolean IS_NEUTRAL = true;
-    public static boolean soft_limit_enabled = true;
-
-    // Pivot Motor Encoder ID
-    public static final int ENCODER_ID = 9;
-
-    // Pivot Softlimit Values
-    public static boolean is_SOFTLIMIT = true;
-    public static double offset = 0;
-    public static double manual_offset = 1045;
-  }
-
-  public static class ShooterGlobalValues {
-    private ShooterGlobalValues() {
-      throw new IllegalStateException(UTILITY_CLASS);
-    }
-
-    // Shooter CAN ID Values
-    public static final int FALCON_LEFT_ID = 18;
-    public static final int FALCON_RIGHT_ID = 13;
-
-    public static final int KRAKEN_ID = 20;
-
-    // Shooter PID Values
-    public static final double SHOOTER_PID_LEFT_P = 0.0002;
-    public static final double SHOOTER_PID_LEFT_I = 0.0;
-    public static final double SHOOTER_PID_LEFT_D = 0.0;
-    public static final double SHOOTER_PID_LEFT_V = 0.5;
-
-    public static final double SHOOTER_PID_RIGHT_P = 0.0002;
-    public static final double SHOOTER_PID_RIGHT_I = 0.0;
-    public static final double SHOOTER_PID_RIGHT_D = 0.0;
-    public static final double SHOOTER_PID_RIGHT_V = 0.5;
-
-    public static final double KRAKEN_P = 0.0002;
-    public static final double KRAKEN_I = 0.0;
-    public static final double KRAKEN_D = 0.0;
-    public static final double KRAKEN_V = 0.1;
-
-    // Shooter Motor Speed Values
-    public static final double SHOOTER_SPEED = 30.0;
-    public static double AMP_SPEED = 5;
-    public static boolean AMP_SPEED_JESSICA = true;
-    public static final double KRAKEN_SPEED = 15.0;
-
-    // Shooter Motor Speeds
-    public static final double SHOOTER_RPS = -40.0;
-    public static final double SHOOTER_PASS = -8.0; // Positive is shooting, negative is intake
-    public static final double STAGE_PASS_RPS = -15.0;
-    public static final double PASSTHROUGH_RPS = -30.0;
-    public static final double PUSH_UP_RPS = -10.0; // Positive is shooting, negative is intake
-    public static final double AUTO_PASSTHROUGH_RPS =
-        -35.0; // Positive is shooting, negative is intake
-    public static final double PUSH_RING_AMP_RPS = -30;
-    public static final double PUSH_RING_RPS = -30;
-
-    // Shooter Misc Values
-    public static boolean HAS_PIECE = false;
-    public static double SHOOTING_DEADBAND = 0.3;
-    public static double RPM_THRESHOLD = 25;
-
-    public static final int RING_SENSOR_PORT = 8;
-
-    // Side Angles
-    public static final double blueSideAngle = -25.0;
-    public static final double redSideAngle = 25.0;
-  }
-
-  public static class LimelightGlobalValues {
-    private LimelightGlobalValues() {
-      throw new IllegalStateException(UTILITY_CLASS);
-    }
-
-    // Offset Values
-    public static double tx = 0.0;
-    public static double ty = 0.0;
-    public static double ta = 0.0;
-    public static double tv = 0.0;
-
-    // Limelight Misc Values
-    // Limelihgt is 30 degrees
-    public static double[] robotPoseTargetSpace = new double[6];
-    public static double tagIDAvailable = 0.0;
-
-    public static boolean hasTarget = false;
-
-    public static double distance = 0;
   }
 
   public static class PhotonVisionConstants {

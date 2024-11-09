@@ -57,7 +57,7 @@ public class SwerveModule {
     steerMotor = new TalonFX(steerId);
     canCoder = new CANcoder(canCoderID);
 
-    positionSetter = new PositionVoltage(0, 0, true, 0.0, 0, true, false, false).withSlot(0);
+    positionSetter = new PositionVoltage(0).withSlot(0);
     velocitySetter = new VelocityTorqueCurrentFOC(0);
 
     positionSetter.EnableFOC = true;
@@ -95,16 +95,12 @@ public class SwerveModule {
     steerConfigs.ClosedLoopGeneral.ContinuousWrap = true;
 
     driveConfigs.CurrentLimits.SupplyCurrentLimit = MotorGlobalValues.DRIVE_SUPPLY_LIMIT;
-    driveConfigs.CurrentLimits.SupplyCurrentThreshold = MotorGlobalValues.DRIVE_SUPPLY_THRESHOLD;
-    driveConfigs.CurrentLimits.SupplyTimeThreshold = MotorGlobalValues.DRIVE_TIME_THRESHOLD;
     driveConfigs.CurrentLimits.SupplyCurrentLimitEnable = true;
 
     driveConfigs.CurrentLimits.StatorCurrentLimit = MotorGlobalValues.DRIVE_STATOR_LIMIT;
     driveConfigs.CurrentLimits.StatorCurrentLimitEnable = true;
 
     steerConfigs.CurrentLimits.SupplyCurrentLimit = MotorGlobalValues.STEER_SUPPLY_LIMIT;
-    steerConfigs.CurrentLimits.SupplyCurrentThreshold = MotorGlobalValues.STEER_SUPPLY_THRESHOLD;
-    steerConfigs.CurrentLimits.SupplyTimeThreshold = MotorGlobalValues.STEER_TIME_THRESHOLD;
     steerConfigs.CurrentLimits.SupplyCurrentLimitEnable = true;
 
     // driveTorqueConfigs.PeakForwardTorqueCurrent = 45;

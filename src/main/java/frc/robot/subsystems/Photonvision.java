@@ -64,7 +64,6 @@ public class Photonvision extends SubsystemBase {
         new PhotonPoseEstimator(
             aprilTagFieldLayout,
             PoseStrategy.MULTI_TAG_PNP_ON_COPROCESSOR,
-            cameraleft,
             leftCameraPos);
   }
   /**
@@ -73,7 +72,7 @@ public class Photonvision extends SubsystemBase {
    */
   @Override
   public void periodic() {
-    resultleft = cameraleft.getLatestResult();
+    resultleft = cameraleft.getAllUnreadResults();
     photonPoseEstimatorleft.update();
 
     if (resultleft.hasTargets()) {
