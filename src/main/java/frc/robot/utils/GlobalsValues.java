@@ -164,7 +164,7 @@ public final class GlobalsValues {
               new PIDConstants(5, 0.0, 0)); // rotation); // Default path replanning config. See the API for the options here
 
       public static RobotConfig config;
-      {
+      static {
         try {
           config = RobotConfig.fromGUISettings();
         } catch (Exception e) {
@@ -172,6 +172,7 @@ public final class GlobalsValues {
           e.printStackTrace();
         }
       }
+      
     }
 
     // Controller X and Y deadbands
