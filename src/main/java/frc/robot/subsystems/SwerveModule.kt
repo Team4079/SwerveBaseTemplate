@@ -14,11 +14,11 @@ import com.ctre.phoenix6.signals.SensorDirectionValue
 import edu.wpi.first.math.geometry.Rotation2d
 import edu.wpi.first.math.kinematics.SwerveModulePosition
 import edu.wpi.first.math.kinematics.SwerveModuleState
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard
-import frc.robot.utils.GlobalsValues.MotorGlobalValues
-import frc.robot.utils.GlobalsValues.SwerveGlobalValues
-import frc.robot.utils.GlobalsValues.SwerveGlobalValues.BasePIDGlobal
 import frc.robot.utils.PID
+import frc.robot.utils.RobotParameters.MotorParameters
+import frc.robot.utils.RobotParameters.SwerveParameters
+import frc.robot.utils.RobotParameters.SwerveParameters.PIDParameters
+import frc.robot.utils.dash
 
 /** The [SwerveModule] class includes all the motors to control the swerve drive. */
 class SwerveModule(
@@ -35,13 +35,13 @@ class SwerveModule(
   private val positionSetter: PositionVoltage = PositionVoltage(0.0).withSlot(0)
   private val velocitySetter = VelocityTorqueCurrentFOC(0.0)
 
-  private val swerveModulePosition: SwerveModulePosition = TODO()
-  var state: SwerveModuleState = TODO()
+  private val swerveModulePosition = SwerveModulePosition()
+  var state = SwerveModuleState(0.0, Rotation2d.fromDegrees(0.0))
     get() {
       state.angle = Rotation2d.fromRotations(steerMotor.position.valueAsDouble)
       state.speedMetersPerSecond =
-        (driveMotor.rotorVelocity.valueAsDouble / MotorGlobalValues.DRIVE_MOTOR_GEAR_RATIO *
-          MotorGlobalValues.MetersPerRevolution)
+        (driveMotor.rotorVelocity.valueAsDouble / MotorParameters.DRIVE_MOTOR_GEAR_RATIO *
+          MotorParameters.METERS_PER_REV)
       return field
     }
     set(value) {
@@ -53,29 +53,16 @@ class SwerveModule(
 
       val velocityToSet =
         (optimized.speedMetersPerSecond *
-          (MotorGlobalValues.DRIVE_MOTOR_GEAR_RATIO / MotorGlobalValues.MetersPerRevolution))
+          (MotorParameters.DRIVE_MOTOR_GEAR_RATIO / MotorParameters.METERS_PER_REV))
       driveMotor.setControl(velocitySetter.withVelocity(velocityToSet))
 
-      if (BasePIDGlobal.TEST_MODE) {
-        SmartDashboard.putNumber(
-          "drive actual speed " + canCoder.deviceID,
-          driveMotor.velocity.valueAsDouble,
-        )
-
-        SmartDashboard.putNumber("drive set speed " + canCoder.deviceID, velocityToSet)
-
-        SmartDashboard.putNumber(
-          "steer actual angle " + canCoder.deviceID,
-          steerMotor.rotorPosition.valueAsDouble,
-        )
-
-        SmartDashboard.putNumber("steer set angle " + canCoder.deviceID, angleToSet)
-
-        SmartDashboard.putNumber(
-          "desired state after optimize " + canCoder.deviceID,
-          optimized.angle.rotations,
-        )
-      }
+      dash(
+        "drive actual speed " + canCoder.deviceID to driveMotor.velocity.valueAsDouble,
+        "drive set speed " + canCoder.deviceID to velocityToSet,
+        "steer actual angle " + canCoder.deviceID to steerMotor.rotorPosition.valueAsDouble,
+        "steer set angle " + canCoder.deviceID to angleToSet,
+        "desired state after optimize " + canCoder.deviceID to optimized.angle.rotations,
+      )
 
       field = value
     }
@@ -93,22 +80,19 @@ class SwerveModule(
   init {
     positionSetter.EnableFOC = true
 
-    swerveModulePosition = SwerveModulePosition()
-    state = SwerveModuleState(0.0, Rotation2d.fromDegrees(0.0))
-
     driveConfigs = TalonFXConfiguration()
     steerConfigs = TalonFXConfiguration()
     driveTorqueConfigs = TorqueCurrentConfigs()
     val canCoderConfiguration = CANcoderConfiguration()
 
-    driveConfigs.Slot0.kP = BasePIDGlobal.DRIVE_PID_AUTO.p
-    driveConfigs.Slot0.kI = BasePIDGlobal.DRIVE_PID_AUTO.i
-    driveConfigs.Slot0.kD = BasePIDGlobal.DRIVE_PID_AUTO.d
-    driveConfigs.Slot0.kV = BasePIDGlobal.DRIVE_PID_V_AUTO
+    driveConfigs.Slot0.kP = PIDParameters.DRIVE_PID_AUTO.p
+    driveConfigs.Slot0.kI = PIDParameters.DRIVE_PID_AUTO.i
+    driveConfigs.Slot0.kD = PIDParameters.DRIVE_PID_AUTO.d
+    driveConfigs.Slot0.kV = PIDParameters.DRIVE_PID_V_AUTO
 
-    steerConfigs.Slot0.kP = BasePIDGlobal.STEER_PID_AUTO.p
-    steerConfigs.Slot0.kI = BasePIDGlobal.STEER_PID_AUTO.i
-    steerConfigs.Slot0.kD = BasePIDGlobal.STEER_PID_AUTO.d
+    steerConfigs.Slot0.kP = PIDParameters.STEER_PID_AUTO.p
+    steerConfigs.Slot0.kI = PIDParameters.STEER_PID_AUTO.i
+    steerConfigs.Slot0.kD = PIDParameters.STEER_PID_AUTO.d
     steerConfigs.Slot0.kV = 0.0
 
     driveConfigs.MotorOutput.NeutralMode = NeutralModeValue.Brake
@@ -116,21 +100,21 @@ class SwerveModule(
 
     // driveConfigs.MotorOutput.DutyCycleNeutralDeadband = 0.02;
     // steerConfigs.MotorOutput.DutyCycleNeutralDeadband = 0.001;
-    driveConfigs.MotorOutput.Inverted = SwerveGlobalValues.DRIVE_MOTOR_INVERETED
-    steerConfigs.MotorOutput.Inverted = SwerveGlobalValues.STEER_MOTOR_INVERTED
+    driveConfigs.MotorOutput.Inverted = SwerveParameters.Thresholds.DRIVE_MOTOR_INVERETED
+    steerConfigs.MotorOutput.Inverted = SwerveParameters.Thresholds.STEER_MOTOR_INVERTED
 
     steerConfigs.Feedback.FeedbackRemoteSensorID = canCoderID
     steerConfigs.Feedback.FeedbackSensorSource = FeedbackSensorSourceValue.FusedCANcoder
-    steerConfigs.Feedback.RotorToSensorRatio = MotorGlobalValues.STEER_MOTOR_GEAR_RATIO
+    steerConfigs.Feedback.RotorToSensorRatio = MotorParameters.STEER_MOTOR_GEAR_RATIO
     steerConfigs.ClosedLoopGeneral.ContinuousWrap = true
 
-    driveConfigs.CurrentLimits.SupplyCurrentLimit = MotorGlobalValues.DRIVE_SUPPLY_LIMIT
+    driveConfigs.CurrentLimits.SupplyCurrentLimit = MotorParameters.DRIVE_SUPPLY_LIMIT
     driveConfigs.CurrentLimits.SupplyCurrentLimitEnable = true
 
-    driveConfigs.CurrentLimits.StatorCurrentLimit = MotorGlobalValues.DRIVE_STATOR_LIMIT
+    driveConfigs.CurrentLimits.StatorCurrentLimit = MotorParameters.DRIVE_STATOR_LIMIT
     driveConfigs.CurrentLimits.StatorCurrentLimitEnable = true
 
-    steerConfigs.CurrentLimits.SupplyCurrentLimit = MotorGlobalValues.STEER_SUPPLY_LIMIT
+    steerConfigs.CurrentLimits.SupplyCurrentLimit = MotorParameters.STEER_SUPPLY_LIMIT
     steerConfigs.CurrentLimits.SupplyCurrentLimitEnable = true
 
     // driveTorqueConfigs.PeakForwardTorqueCurrent = 45;
@@ -141,7 +125,7 @@ class SwerveModule(
     canCoderConfiguration.MagnetSensor.SensorDirection =
       SensorDirectionValue.CounterClockwise_Positive
     canCoderConfiguration.MagnetSensor.MagnetOffset =
-      SwerveGlobalValues.ENCODER_OFFSET + canCoderDriveStraightSteerSetPoint
+      SwerveParameters.Thresholds.ENCODER_OFFSET + canCoderDriveStraightSteerSetPoint
 
     driveMotor.configurator.apply(driveConfigs)
     steerMotor.configurator.apply(steerConfigs)
@@ -169,8 +153,7 @@ class SwerveModule(
       swerveModulePosition.angle =
         Rotation2d.fromDegrees(((360 * canCoder.absolutePosition.valueAsDouble) % 360 + 360) % 360)
       swerveModulePosition.distanceMeters =
-        (drivePosition / MotorGlobalValues.DRIVE_MOTOR_GEAR_RATIO *
-          MotorGlobalValues.MetersPerRevolution)
+        (drivePosition / MotorParameters.DRIVE_MOTOR_GEAR_RATIO * MotorParameters.METERS_PER_REV)
       return swerveModulePosition
     }
 
@@ -180,14 +163,14 @@ class SwerveModule(
   }
 
   fun setTELEPID() {
-    driveConfigs.Slot0.kP = BasePIDGlobal.DRIVE_PID_TELE.p
-    driveConfigs.Slot0.kI = BasePIDGlobal.DRIVE_PID_TELE.i
-    driveConfigs.Slot0.kD = BasePIDGlobal.DRIVE_PID_TELE.d
-    driveConfigs.Slot0.kV = BasePIDGlobal.DRIVE_PID_V_TELE
+    driveConfigs.Slot0.kP = PIDParameters.DRIVE_PID_TELE.p
+    driveConfigs.Slot0.kI = PIDParameters.DRIVE_PID_TELE.i
+    driveConfigs.Slot0.kD = PIDParameters.DRIVE_PID_TELE.d
+    driveConfigs.Slot0.kV = PIDParameters.DRIVE_PID_V_TELE
 
-    steerConfigs.Slot0.kP = BasePIDGlobal.STEER_PID_TELE.p
-    steerConfigs.Slot0.kI = BasePIDGlobal.STEER_PID_TELE.i
-    steerConfigs.Slot0.kD = BasePIDGlobal.STEER_PID_TELE.d
+    steerConfigs.Slot0.kP = PIDParameters.STEER_PID_TELE.p
+    steerConfigs.Slot0.kI = PIDParameters.STEER_PID_TELE.i
+    steerConfigs.Slot0.kD = PIDParameters.STEER_PID_TELE.d
     steerConfigs.Slot0.kV = 0.0
 
     driveMotor.configurator.apply(driveConfigs)
@@ -204,10 +187,10 @@ class SwerveModule(
   }
 
   fun setAUTOPID() {
-    driveConfigs.Slot0.kP = BasePIDGlobal.DRIVE_PID_AUTO.p
-    driveConfigs.Slot0.kI = BasePIDGlobal.DRIVE_PID_AUTO.i
-    driveConfigs.Slot0.kD = BasePIDGlobal.DRIVE_PID_AUTO.d
-    driveConfigs.Slot0.kV = BasePIDGlobal.DRIVE_PID_V_AUTO
+    driveConfigs.Slot0.kP = PIDParameters.DRIVE_PID_AUTO.p
+    driveConfigs.Slot0.kI = PIDParameters.DRIVE_PID_AUTO.i
+    driveConfigs.Slot0.kD = PIDParameters.DRIVE_PID_AUTO.d
+    driveConfigs.Slot0.kV = PIDParameters.DRIVE_PID_V_AUTO
 
     driveMotor.configurator.apply(driveConfigs)
   }

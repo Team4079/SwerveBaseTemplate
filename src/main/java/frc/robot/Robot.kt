@@ -5,9 +5,9 @@ package frc.robot
 
 import edu.wpi.first.wpilibj.TimedRobot
 import edu.wpi.first.wpilibj.Timer
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard
 import edu.wpi.first.wpilibj2.command.Command
 import edu.wpi.first.wpilibj2.command.CommandScheduler
+import frc.robot.utils.dash
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -30,8 +30,6 @@ class Robot : TimedRobot() {
    * initialization code.
    */
   override fun robotInit() {
-    // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
-    // autonomous chooser on the dashboard.
     avgTimer.start()
     timer.start()
     robotContainer = RobotContainer()
@@ -50,7 +48,7 @@ class Robot : TimedRobot() {
 
     if (timer.advanceIfElapsed(1.0)) {
       println("1 second has passed, times ran is $timesRan")
-      SmartDashboard.putNumber("Hurtz Ketchup", timesRan.toDouble())
+      dash("Hurtz Ketchup" to timesRan)
       timesRanArr.add(timesRan)
       timesRan = 0
     }
@@ -63,7 +61,7 @@ class Robot : TimedRobot() {
           .average()
           .orElse(404.0) // Something's wrong
       println("15 seconds have passed, times ran is $avgTimesRan")
-      SmartDashboard.putNumber("Hurtz Ketchup Average", avgTimesRan)
+      dash("Hurtz Ketchup Average" to avgTimesRan)
       timesRanArr.clear()
     }
   }
@@ -75,22 +73,13 @@ class Robot : TimedRobot() {
 
   /** This autonomous runs the autonomous command selected by your [RobotContainer] class. */
   override fun autonomousInit() {
-    autonomousCommand = robotContainer!!.autonomousCommand
-
-    // schedule the autonomous command (example)
-    if (autonomousCommand != null) {
-      autonomousCommand!!.schedule()
-    }
+    autonomousCommand = robotContainer!!.autonomousCommand.also { it.schedule() }
   }
 
   /** This function is called periodically during autonomous. */
   override fun autonomousPeriodic() {}
 
   override fun teleopInit() {
-    // This makes sure that the autonomous stops running when
-    // teleop starts running. If you want the autonomous to
-    // continue until interrupted by another command, remove
-    // this line or comment it out.
     if (autonomousCommand != null) {
       autonomousCommand!!.cancel()
     }
@@ -100,7 +89,6 @@ class Robot : TimedRobot() {
   override fun teleopPeriodic() {}
 
   override fun testInit() {
-    // Cancels all running commands at the start of test mode.
     CommandScheduler.getInstance().cancelAll()
   }
 

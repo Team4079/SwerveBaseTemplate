@@ -1,3 +1,5 @@
+//file:noinspection DependencyNotationArgument
+
 import edu.wpi.first.gradlerio.GradleRIOPlugin
 
 plugins {
@@ -31,6 +33,7 @@ deploy {
 
                 // Static files artifact
                 frcStaticFileDeploy(getArtifactTypeClass('FileTreeArtifact')) {
+                    //noinspection GroovyAssignabilityCheck
                     files = project.fileTree('src/main/deploy')
                     directory = '/home/lvuser/deploy'
                 }
@@ -89,7 +92,7 @@ wpi.sim.addDriverstation()
 jar {
     from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
     from sourceSets.main.allSource
-    manifest GradleRIOPlugin.javaManifest(ROBOT_MAIN_CLASS)
+    manifest GradleRIOPlugin.javaManifest(ROBOT_MAIN_CLASS) as Action<? super Manifest>
     duplicatesStrategy = DuplicatesStrategy.INCLUDE
 }
 
@@ -99,7 +102,7 @@ wpi.java.configureExecutableTasks(jar)
 wpi.java.configureTestTasks(test)
 
 // Configure string concat to always inline compile
-tasks.withType(JavaCompile) {
+tasks.withType(JavaCompile).configureEach {
     options.compilerArgs.add '-XDstringConcat=inline'
 }
 
@@ -114,5 +117,8 @@ kotlin {
 spotless {
     kotlin {
         ktfmt().googleStyle()
+    }
+    java {
+        googleJavaFormat()
     }
 }

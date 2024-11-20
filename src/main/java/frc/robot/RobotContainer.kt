@@ -9,8 +9,8 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton
 import frc.robot.commands.PadDrive
 import frc.robot.subsystems.Photonvision
 import frc.robot.subsystems.SwerveSubsystem
-import frc.robot.utils.GlobalsValues.SwerveGlobalValues
 import frc.robot.utils.LogitechGamingPad
+import frc.robot.utils.RobotParameters.SwerveParameters
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -38,7 +38,7 @@ class RobotContainer {
     photonvision = Photonvision()
     swerveSubsystem = SwerveSubsystem(photonvision)
     swerveSubsystem.defaultCommand =
-      PadDrive(swerveSubsystem, pad, SwerveGlobalValues.IS_FIELD_ORIENTATED)
+      PadDrive(swerveSubsystem, pad, SwerveParameters.IS_FIELD_ORIENTATED)
 
     configureBindings()
   }

@@ -1,3 +1,5 @@
+@file:Suppress("MemberVisibilityCanBePrivate", "unused")
+
 package frc.robot.subsystems
 
 import com.ctre.phoenix6.hardware.Pigeon2
@@ -18,43 +20,46 @@ import edu.wpi.first.wpilibj.DriverStation.Alliance
 import edu.wpi.first.wpilibj.smartdashboard.Field2d
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard
 import edu.wpi.first.wpilibj2.command.SubsystemBase
-import frc.robot.utils.GlobalsValues.MotorGlobalValues
-import frc.robot.utils.GlobalsValues.SwerveGlobalValues
-import frc.robot.utils.GlobalsValues.SwerveGlobalValues.BasePIDGlobal
 import frc.robot.utils.PID
+import frc.robot.utils.RobotParameters.MotorParameters
+import frc.robot.utils.RobotParameters.SwerveParameters
+import frc.robot.utils.RobotParameters.SwerveParameters.PIDParameters
+import frc.robot.utils.RobotParameters.SwerveParameters.Thresholds.SHOULD_INVERT
+import frc.robot.utils.dash
+import frc.robot.utils.dashPID
 
 /** The [SwerveSubsystem] class includes all the motors to drive the robot. */
 class SwerveSubsystem(photonvision: Photonvision) : SubsystemBase() {
   private val poseEstimator: SwerveDrivePoseEstimator
   private val field = Field2d()
 
-  private val pidgey = Pigeon2(MotorGlobalValues.PIDGEY_ID)
+  private val pidgey = Pigeon2(MotorParameters.PIDGEY_ID)
   private val states: Array<SwerveModuleState?>
   private val modules =
     arrayOf(
       SwerveModule(
-        MotorGlobalValues.FRONT_LEFT_DRIVE_ID,
-        MotorGlobalValues.FRONT_LEFT_STEER_ID,
-        MotorGlobalValues.FRONT_LEFT_CAN_CODER_ID,
-        SwerveGlobalValues.CANCoderValue9,
+        MotorParameters.FRONT_LEFT_DRIVE_ID,
+        MotorParameters.FRONT_LEFT_STEER_ID,
+        MotorParameters.FRONT_LEFT_CAN_CODER_ID,
+        SwerveParameters.Thresholds.CANCODER_VAL9,
       ),
       SwerveModule(
-        MotorGlobalValues.FRONT_RIGHT_DRIVE_ID,
-        MotorGlobalValues.FRONT_RIGHT_STEER_ID,
-        MotorGlobalValues.FRONT_RIGHT_CAN_CODER_ID,
-        SwerveGlobalValues.CANCoderValue10,
+        MotorParameters.FRONT_RIGHT_DRIVE_ID,
+        MotorParameters.FRONT_RIGHT_STEER_ID,
+        MotorParameters.FRONT_RIGHT_CAN_CODER_ID,
+        SwerveParameters.Thresholds.CANCODER_VAL10,
       ),
       SwerveModule(
-        MotorGlobalValues.BACK_LEFT_DRIVE_ID,
-        MotorGlobalValues.BACK_LEFT_STEER_ID,
-        MotorGlobalValues.BACK_LEFT_CAN_CODER_ID,
-        SwerveGlobalValues.CANCoderValue11,
+        MotorParameters.BACK_LEFT_DRIVE_ID,
+        MotorParameters.BACK_LEFT_STEER_ID,
+        MotorParameters.BACK_LEFT_CAN_CODER_ID,
+        SwerveParameters.Thresholds.CANCODER_VAL11,
       ),
       SwerveModule(
-        MotorGlobalValues.BACK_RIGHT_DRIVE_ID,
-        MotorGlobalValues.BACK_RIGHT_STEER_ID,
-        MotorGlobalValues.BACK_RIGHT_CAN_CODER_ID,
-        SwerveGlobalValues.CANCoderValue12,
+        MotorParameters.BACK_RIGHT_DRIVE_ID,
+        MotorParameters.BACK_RIGHT_STEER_ID,
+        MotorParameters.BACK_RIGHT_CAN_CODER_ID,
+        SwerveParameters.Thresholds.CANCODER_VAL12,
       ),
     )
 
@@ -62,9 +67,9 @@ class SwerveSubsystem(photonvision: Photonvision) : SubsystemBase() {
 
   private val pid =
     PID(
-      SmartDashboard.getNumber("AUTO: P", BasePIDGlobal.DRIVE_PID_AUTO.p),
-      SmartDashboard.getNumber("AUTO: I", BasePIDGlobal.DRIVE_PID_AUTO.i),
-      SmartDashboard.getNumber("AUTO: D", BasePIDGlobal.DRIVE_PID_AUTO.d),
+      SmartDashboard.getNumber("AUTO: P", PIDParameters.DRIVE_PID_AUTO.p),
+      SmartDashboard.getNumber("AUTO: I", PIDParameters.DRIVE_PID_AUTO.i),
+      SmartDashboard.getNumber("AUTO: D", PIDParameters.DRIVE_PID_AUTO.d),
     )
   private var velocity = 0.0
 
@@ -75,7 +80,7 @@ class SwerveSubsystem(photonvision: Photonvision) : SubsystemBase() {
 
     poseEstimator =
       SwerveDrivePoseEstimator(
-        SwerveGlobalValues.kinematics,
+        SwerveParameters.PhysicalParameters.kinematics,
         Rotation2d.fromDegrees(heading),
         modulePositions,
         Pose2d(0.0, 0.0, Rotation2d.fromDegrees(0.0)),
@@ -97,17 +102,18 @@ class SwerveSubsystem(photonvision: Photonvision) : SubsystemBase() {
         PIDConstants(5.0, 0.0, 0.0), // Translation PID constants
         PIDConstants(5.0, 0.0, 0.0), // Rotation PID constants
       ),
-      BasePIDGlobal.config,
+      PIDParameters.config,
       {
         val alliance = DriverStation.getAlliance()
-        if (alliance.isPresent) {
-          if (SHOULD_INVERT) {
-            return@configure alliance.get() == Alliance.Red
-          } else {
-            return@configure alliance.get() != Alliance.Blue
+        alliance
+          .map {
+            if (SHOULD_INVERT) {
+              it == Alliance.Red
+            } else {
+              it != Alliance.Blue
+            }
           }
-        }
-        false
+          .orElse(false)
       },
       this, // Reference to this subsystem to set requirements
     )
@@ -116,14 +122,15 @@ class SwerveSubsystem(photonvision: Photonvision) : SubsystemBase() {
   // This method will be called once per scheduler run
   override fun periodic() {
     if (DriverStation.isTeleop()) {
-      val visionMeasurement3d = photonvision.getEstimatedGlobalPose(poseEstimator.estimatedPosition)
-      if (visionMeasurement3d.isPresent) {
-        val timestamp = visionMeasurement3d.get().timestampSeconds
-        val estimatedPose = visionMeasurement3d.get().estimatedPose
-        val visionMeasurement2d = estimatedPose.toPose2d()
-        poseEstimator.addVisionMeasurement(visionMeasurement2d, timestamp)
-        poseEstimator.estimatedPosition
-        SwerveGlobalValues.currentPose = poseEstimator.estimatedPosition
+      photonvision.getEstimatedGlobalPose(poseEstimator.estimatedPosition).apply {
+        if (isPresent) {
+          val timestamp = get().timestampSeconds
+          val estimatedPose = get().estimatedPose
+          val visionMeasurement2d = estimatedPose.toPose2d()
+          poseEstimator.addVisionMeasurement(visionMeasurement2d, timestamp)
+          poseEstimator.estimatedPosition
+          SwerveParameters.Thresholds.currentPose = poseEstimator.estimatedPosition
+        }
       }
     }
 
@@ -132,14 +139,13 @@ class SwerveSubsystem(photonvision: Photonvision) : SubsystemBase() {
     field.robotPose = poseEstimator.estimatedPosition
     // Pidgeon Stuff
     // Global Boolean Value called TEST_MODE if true graph all smartdashboard values
-    if (BasePIDGlobal.TEST_MODE) {
-      SmartDashboard.putData("Robot Pose", field)
-      SmartDashboard.putNumber("Pitch", pidgey.pitch.valueAsDouble)
-      SmartDashboard.putNumber("Heading", -pidgey.yaw.valueAsDouble)
-      SmartDashboard.putNumber("Yaw", pidgey.yaw.valueAsDouble)
-      SmartDashboard.putNumber("Roll", pidgey.roll.valueAsDouble)
-      // SmartDashboard.putData("Pose", getPose().getTranslation().get);
-    }
+    dash(
+      "Pitch" to pidgey.pitch.valueAsDouble,
+      "Heading" to -pidgey.yaw.valueAsDouble,
+      "Yaw" to pidgey.yaw.valueAsDouble,
+      "Roll" to pidgey.roll.valueAsDouble,
+      "Robot Pose" to field,
+    )
   }
 
   /**
@@ -156,21 +162,15 @@ class SwerveSubsystem(photonvision: Photonvision) : SubsystemBase() {
     turnSpeed: Double,
     isFieldOriented: Boolean,
   ) {
-    if (BasePIDGlobal.TEST_MODE) {
-      SmartDashboard.putNumber("Forward speed", forwardSpeed)
-      SmartDashboard.putNumber("Left speed", leftSpeed)
-      SmartDashboard.putNumber("Pidgey Heading", heading)
-    }
+    dash("Forward speed" to forwardSpeed, "Left speed" to leftSpeed, "Pidgey Heading" to heading)
 
+    //
     val speeds =
-      if (isFieldOriented) {
-        ChassisSpeeds.fromFieldRelativeSpeeds(forwardSpeed, leftSpeed, turnSpeed, pidgeyRotation)
-      } else {
-        ChassisSpeeds(forwardSpeed, leftSpeed, turnSpeed)
-      }
+      ChassisSpeeds(forwardSpeed, leftSpeed, turnSpeed).takeUnless { isFieldOriented }
+        ?: ChassisSpeeds.fromFieldRelativeSpeeds(forwardSpeed, leftSpeed, turnSpeed, pidgeyRotation)
 
-    val states2 = SwerveGlobalValues.kinematics.toSwerveModuleStates(speeds)
-    SwerveDriveKinematics.desaturateWheelSpeeds(states2, MotorGlobalValues.MAX_SPEED)
+    val states2 = SwerveParameters.PhysicalParameters.kinematics.toSwerveModuleStates(speeds)
+    SwerveDriveKinematics.desaturateWheelSpeeds(states2, MotorParameters.MAX_SPEED)
     moduleStates = states2
   }
 
@@ -178,7 +178,7 @@ class SwerveSubsystem(photonvision: Photonvision) : SubsystemBase() {
     /**
      * Gets the pidgey rotation.
      *
-     * @return Rotation2d The current rotation of the pidgey.
+     * @return [Rotation2d] The current rotation of the [pidgey].
      */
     get() = pidgey.rotation2d
 
@@ -186,11 +186,16 @@ class SwerveSubsystem(photonvision: Photonvision) : SubsystemBase() {
     /**
      * Gets the pidgey angle.
      *
-     * @return double The current angle of the pidgey.
+     * @return [Double] The current angle of the [pidgey].
      */
     get() = -pidgey.yaw.valueAsDouble
 
   val pidgeyYaw: Double
+    /**
+     * Gets the pidgey yaw.
+     *
+     * @return [Double] The current yaw of the [pidgey].
+     */
     get() = pidgey.yaw.valueAsDouble
 
   fun setHeading() {
@@ -211,7 +216,7 @@ class SwerveSubsystem(photonvision: Photonvision) : SubsystemBase() {
     /**
      * Gets the current pose of the robot.
      *
-     * @return Pose2d The current pose of the robot.
+     * @return [Pose2d] The current pose of the robot.
      */
     get() = poseEstimator.estimatedPosition
 
@@ -237,15 +242,15 @@ class SwerveSubsystem(photonvision: Photonvision) : SubsystemBase() {
     /**
      * Gets the chassis speeds for autonomous driving.
      *
-     * @return ChassisSpeeds The current chassis speeds.
+     * @return [ChassisSpeeds] The current chassis speeds.
      */
-    get() = SwerveGlobalValues.kinematics.toChassisSpeeds(moduleStates)
+    get() = SwerveParameters.PhysicalParameters.kinematics.toChassisSpeeds(moduleStates)
 
   val rotationPidggy: Rotation2d
     /**
      * Gets the rotation of the pidgey for PID control.
      *
-     * @return Rotation2d The rotation of the pidgey for PID control.
+     * @return [Rotation2d] The rotation of the pidgey for PID control.
      */
     get() = Rotation2d.fromDegrees(-pidgey.rotation2d.degrees)
 
@@ -260,7 +265,8 @@ class SwerveSubsystem(photonvision: Photonvision) : SubsystemBase() {
     // SwerveModuleState[] newStates = SwerveGlobalValues.kinematics.toSwerveModuleStates(speeds);
     // SwerveDriveKinematics.desaturateWheelSpeeds(newStates, MotorGlobalValues.MAX_SPEED);
 
-    val newStates = SwerveGlobalValues.kinematics.toSwerveModuleStates(chassisSpeeds)
+    val newStates =
+      SwerveParameters.PhysicalParameters.kinematics.toSwerveModuleStates(chassisSpeeds)
     moduleStates = newStates
   }
 
@@ -305,41 +311,16 @@ class SwerveSubsystem(photonvision: Photonvision) : SubsystemBase() {
     }
 
   /** Stops the robot. */
-  fun stop() {
-    for (module in modules) {
-      module.stop()
-    }
-  }
+  fun stop() = modules.forEach { it.stop() }
 
-  fun setAutoPID() {
-    for (module in modules) {
-      module.setAUTOPID()
-    }
-  }
+  fun setAutoPID() = modules.forEach { it.setAUTOPID() }
 
-  fun setTelePID() {
-    for (module in modules) {
-      module.setTELEPID()
-    }
-  }
+  fun setTelePID() = modules.forEach { it.setTELEPID() }
 
-  fun resetDrive() {
-    for (module in modules) {
-      module.resetDrivePosition()
-    }
-  }
+  fun resetDrive() = modules.forEach { it.resetDrivePosition() }
 
   fun setCustomDrivePID() {
-    for (module in modules) {
-      pid.p = SmartDashboard.getNumber("AUTO: P", BasePIDGlobal.DRIVE_PID_AUTO.p)
-      pid.i = SmartDashboard.getNumber("AUTO: I", BasePIDGlobal.DRIVE_PID_AUTO.i)
-      pid.d = SmartDashboard.getNumber("AUTO: D", BasePIDGlobal.DRIVE_PID_AUTO.d)
-      velocity = SmartDashboard.getNumber("AUTO: V", BasePIDGlobal.DRIVE_PID_V_AUTO)
-      module.setAUTOPID(pid, velocity)
-    }
-  }
-
-  companion object {
-    private const val SHOULD_INVERT = false
+    dashPID("Drive", pid, PIDParameters.DRIVE_PID_V_AUTO) { velocity = it }
+    modules.forEach { it.setAUTOPID(pid, velocity) }
   }
 }

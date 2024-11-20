@@ -1,13 +1,15 @@
+@file:Suppress("MemberVisibilityCanBePrivate", "unused")
+
 package frc.robot.subsystems
 
 import edu.wpi.first.apriltag.AprilTagFieldLayout
 import edu.wpi.first.apriltag.AprilTagFields
 import edu.wpi.first.math.geometry.*
 import edu.wpi.first.wpilibj.DriverStation
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard
 import edu.wpi.first.wpilibj2.command.SubsystemBase
-import frc.robot.utils.GlobalsValues.PhotonVisionConstants
-import frc.robot.utils.GlobalsValues.SwerveGlobalValues.BasePIDGlobal
+import frc.robot.utils.RobotParameters.PhotonVisionConstants
+import frc.robot.utils.dash
+import frc.robot.utils.to3D
 import java.util.*
 import kotlin.math.pow
 import kotlin.math.sqrt
@@ -21,22 +23,21 @@ import org.photonvision.targeting.PhotonTrackedTarget
 /** The PhotonVision subsystem handles vision processing using PhotonVision cameras. */
 class Photonvision : SubsystemBase() {
   // PhotonVision cameras
-  var camera: PhotonCamera = PhotonCamera("Camera")
+  private var camera: PhotonCamera = PhotonCamera("Camera")
 
   // Pose estimator for determining the robot's position on the field
-  var photonPoseEstimator: PhotonPoseEstimator
+  private var photonPoseEstimator: PhotonPoseEstimator
 
   private val cameraTrans = Translation2d(0.31, 0.0)
 
   // AprilTag field layout for the 2024 Crescendo field
-  var aprilTagFieldLayout: AprilTagFieldLayout =
+  private var aprilTagFieldLayout: AprilTagFieldLayout =
     AprilTagFieldLayout.loadField(AprilTagFields.k2024Crescendo)
 
   // Transformation from the robot to the camera
-  // TODO: Make function to convert Translation2d to Translation3d
-  var CameraPos: Transform3d =
+  private var cameraPos: Transform3d =
     Transform3d(
-      conv2dTo3d(cameraTrans, PhotonVisionConstants.CAMERA_ONE_HEIGHT_METER),
+      cameraTrans.to3D(PhotonVisionConstants.CAMERA_ONE_HEIGHT_METER),
       Rotation3d(
         0.0,
         Math.toRadians(360 - PhotonVisionConstants.CAMERA_ONE_ANGLE_DEG),
@@ -70,7 +71,7 @@ class Photonvision : SubsystemBase() {
     // Intialize result
     result = camera.allUnreadResults
     photonPoseEstimator =
-      PhotonPoseEstimator(aprilTagFieldLayout, PoseStrategy.MULTI_TAG_PNP_ON_COPROCESSOR, CameraPos)
+      PhotonPoseEstimator(aprilTagFieldLayout, PoseStrategy.MULTI_TAG_PNP_ON_COPROCESSOR, cameraPos)
   }
 
   /**
@@ -79,42 +80,30 @@ class Photonvision : SubsystemBase() {
    */
   override fun periodic() {
     result = camera.allUnreadResults
-    if (result.isEmpty()) {
-      return
-    }
-    currentResult = result[0]
+    currentResult = result.firstOrNull() ?: return
 
     photonPoseEstimator.update(currentResult)
 
-    if (currentResult!!.hasTargets()) {
-      val localTarget = currentResult!!.bestTarget
-      target = localTarget
-      targetPoseAmbiguity = localTarget.getPoseAmbiguity()
-    } else {
-      targetPoseAmbiguity = 7157.0
-    }
+    target = currentResult?.bestTarget
+    targetPoseAmbiguity = target?.poseAmbiguity ?: 7157.0
 
-    if (BasePIDGlobal.TEST_MODE == true) {
-      SmartDashboard.putNumber("photon yaw", yaw)
-      SmartDashboard.putNumber("range target", rangeToTarget)
-      SmartDashboard.putNumber("april tag distance", distanceSubwoofer)
-      SmartDashboard.putNumber("april tag yaw", subwooferYaw)
-      SmartDashboard.putNumber(" cam ambiguity", targetPoseAmbiguity)
-      SmartDashboard.putBoolean("_targets", currentResult!!.hasTargets())
-    }
-
-    for (tag in currentResult!!.getTargets()) {
-      if (tag.getFiducialId() == 7 || tag.getFiducialId() == 4) {
-        yaw = tag.getYaw()
+    currentResult?.targets?.forEach { tag ->
+      if (tag.fiducialId == 7 || tag.fiducialId == 4) {
+        yaw = tag.yaw
       }
     }
 
-    SmartDashboard.putNumber("yaw to target", yaw)
+    dash(
+      "yaw to target" to yaw,
+      "range target" to rangeToTarget,
+      "april tag distance" to distanceSubwoofer,
+      "april tag yaw" to subwooferYaw,
+      "cam ambiguity" to targetPoseAmbiguity,
+      "_targets" to (currentResult?.hasTargets() ?: false),
+    )
   }
 
-  fun hasTag(): Boolean {
-    return currentResult!!.hasTargets()
-  }
+  fun hasTag(): Boolean = currentResult?.hasTargets() ?: false
 
   /**
    * Gets the estimated global pose of the robot.
@@ -129,14 +118,9 @@ class Photonvision : SubsystemBase() {
   }
 
   val estimatedGlobalPose: Transform3d
-    get() {
-      if (currentResult!!.multiTagResult != null) {
-        val fieldToCamera = currentResult!!.multiTagResult.get().estimatedPose.best
-        return fieldToCamera
-      }
-      // return photonPoseEstimator.getReferencePose();
-      return Transform3d(0.0, 0.0, 0.0, Rotation3d())
-    }
+    get() =
+      currentResult?.multiTagResult?.get()?.estimatedPose?.best
+        ?: Transform3d(0.0, 0.0, 0.0, Rotation3d())
 
   val pivotPosition: Double
     /**
@@ -157,17 +141,8 @@ class Photonvision : SubsystemBase() {
       val b = -447.743 // power 1
       val a = 230.409 // constant
 
-      return (((f * r.pow(5.0)) +
-        (e * r.pow(4.0)) +
-        (d * r.pow(3.0)) +
-        (c * r.pow(2.0)) +
-        (b * r) +
-        a))
+      return (f * r.pow(5.0)) + (e * r.pow(4.0)) + (d * r.pow(3.0)) + (c * r.pow(2.0)) + (b * r) + a
     }
-
-  fun conv2dTo3d(translation2d: Translation2d, z: Double): Translation3d {
-    return Translation3d(translation2d.x, translation2d.y, z)
-  }
 
   val distanceSubwoofer: Double
     get() {

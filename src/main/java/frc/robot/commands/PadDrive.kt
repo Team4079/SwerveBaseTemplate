@@ -1,11 +1,12 @@
 package frc.robot.commands
 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard
 import edu.wpi.first.wpilibj2.command.Command
 import frc.robot.subsystems.SwerveSubsystem
-import frc.robot.utils.GlobalsValues.MotorGlobalValues
-import frc.robot.utils.GlobalsValues.SwerveGlobalValues
 import frc.robot.utils.LogitechGamingPad
+import frc.robot.utils.RobotParameters.MotorParameters
+import frc.robot.utils.RobotParameters.SwerveParameters.Thresholds.X_DEADZONE
+import frc.robot.utils.RobotParameters.SwerveParameters.Thresholds.Y_DEADZONE
+import frc.robot.utils.dash
 import kotlin.math.abs
 
 /** Command to control the robot's swerve drive using a Logitech gaming pad. */
@@ -14,13 +15,7 @@ class PadDrive(
   private val pad: LogitechGamingPad,
   private val isFieldOriented: Boolean,
 ) : Command() {
-  /**
-   * Constructs a new PadDrive command.
-   *
-   * @param swerveSubsystem The swerve subsystem used by this command.
-   * @param pad The Logitech gaming pad used to control the robot.
-   * @param isFieldOriented Whether the drive is field-oriented.
-   */
+  /** Constructs a new PadDrive command. */
   init {
     addRequirements(this.swerveSubsystem)
   }
@@ -29,13 +24,12 @@ class PadDrive(
   override fun execute() {
     val position = positionSet(pad)
 
-    var rotation = -pad.rightAnalogXAxis * MotorGlobalValues.MAX_ANGULAR_SPEED
+    var rotation = -pad.rightAnalogXAxis * MotorParameters.MAX_ANGULAR_SPEED
     if (abs(pad.rightAnalogXAxis) < 0.2) {
       rotation = 0.0
     }
 
-    SmartDashboard.putNumber("X Jostick", position.x)
-    SmartDashboard.putNumber("Y Joystick", position.y)
+    dash("X Joystick" to position.x, "Y Joystick" to position.y, "Rotation" to rotation)
 
     swerveSubsystem.setDriveSpeeds(position.y, position.x, rotation * 0.8, isFieldOriented)
   }
@@ -60,13 +54,13 @@ class PadDrive(
      * @return The coordinate representing the position.
      */
     fun positionSet(pad: LogitechGamingPad): Coordinate {
-      var x = -pad.leftAnalogXAxis * MotorGlobalValues.MAX_SPEED
-      if (abs(x) < SwerveGlobalValues.xDEADZONE) {
+      var x = -pad.leftAnalogXAxis * MotorParameters.MAX_SPEED
+      if (abs(x) < X_DEADZONE) {
         x = 0.0
       }
 
-      var y = -pad.leftAnalogYAxis * MotorGlobalValues.MAX_SPEED
-      if (abs(y) < SwerveGlobalValues.yDEADZONE) {
+      var y = -pad.leftAnalogYAxis * MotorParameters.MAX_SPEED
+      if (abs(y) < Y_DEADZONE) {
         y = 0.0
       }
 
