@@ -27,6 +27,7 @@ import frc.robot.utils.LogitechGamingPad;
 public class RobotContainer {
     private final SwerveSubsystem swerveSubsystem;
     private final Photonvision photonvision;
+    private final LogitechGamingPad pad;
 
     private final JoystickButton padA;
     private final JoystickButton padB;
@@ -37,7 +38,7 @@ public class RobotContainer {
      * The container for the robot. Contains subsystems, OI devices, and commands.
      */
     public RobotContainer() {
-        LogitechGamingPad pad = new LogitechGamingPad(0);
+        pad = new LogitechGamingPad(0);
         padA = new JoystickButton(pad, 1);
         padB = new JoystickButton(pad, 2);
         padX = new JoystickButton(pad, 3);
