@@ -46,13 +46,13 @@ class SwerveModule(
     }
     set(value) {
       val newPosition = position
-      val optimized = SwerveModuleState.optimize(state, newPosition.angle)
+      state.optimize(newPosition.angle)
 
-      val angleToSet = optimized.angle.rotations
+      val angleToSet = state.angle.rotations
       steerMotor.setControl(positionSetter.withPosition(angleToSet))
 
       val velocityToSet =
-        (optimized.speedMetersPerSecond *
+        (state.speedMetersPerSecond *
           (MotorParameters.DRIVE_MOTOR_GEAR_RATIO / MotorParameters.METERS_PER_REV))
       driveMotor.setControl(velocitySetter.withVelocity(velocityToSet))
 
@@ -61,7 +61,7 @@ class SwerveModule(
         "drive set speed " + canCoder.deviceID to velocityToSet,
         "steer actual angle " + canCoder.deviceID to steerMotor.rotorPosition.valueAsDouble,
         "steer set angle " + canCoder.deviceID to angleToSet,
-        "desired state after optimize " + canCoder.deviceID to optimized.angle.rotations,
+        "desired state after optimize " + canCoder.deviceID to state.angle.rotations,
       )
 
       field = value
