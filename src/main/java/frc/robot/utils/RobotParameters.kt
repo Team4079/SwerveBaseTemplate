@@ -70,7 +70,6 @@ object RobotParameters {
       const val DRIVE_PID_V_TELE: Double = 0.0
       val ROTATIONAL_PID: PID = PID(0.2, 0.0, 0.0, 0.0)
       val PASS_ROTATIONAL_PID: PID = PID(0.1, 0.0, 0.0, 0.0)
-      var TEST_MODE: Boolean = true
       var pathFollower: PPHolonomicDriveController =
         PPHolonomicDriveController(
           PIDConstants(5.0, 0.00, 0.0), // translation
@@ -117,6 +116,7 @@ object RobotParameters {
       const val Y_DEADZONE: Double = 0.15 * 5.76
       const val OFF_BALANCE_ANGLE_THRESHOLD: Double = 10.0
       const val ON_BALANCE_ANGLE_THRESHOLD: Double = 5.0
+      var TEST_MODE: Boolean = true
     }
   }
 

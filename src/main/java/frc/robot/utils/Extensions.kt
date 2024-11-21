@@ -20,7 +20,7 @@ fun Translation2d.to3D(z: Double): Translation3d = Translation3d(x, y, z)
  * @param pairs The pairs of keys and values to update.
  */
 fun dash(vararg pairs: Pair<String, Any>) {
-  if (RobotParameters.SwerveParameters.PIDParameters.TEST_MODE) {
+  if (RobotParameters.SwerveParameters.Thresholds.TEST_MODE) {
     pairs.forEach { (key, value) ->
       when (value) {
         is Number -> SmartDashboard.putNumber(key, value.toDouble())
