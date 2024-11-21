@@ -38,7 +38,7 @@ class RobotContainer {
     photonvision = Photonvision()
     swerveSubsystem = SwerveSubsystem(photonvision)
     swerveSubsystem.defaultCommand =
-      PadDrive(swerveSubsystem, pad, SwerveParameters.IS_FIELD_ORIENTATED)
+      PadDrive(swerveSubsystem, pad, SwerveParameters.Thresholds.IS_FIELD_ORIENTED)
 
     configureBindings()
   }

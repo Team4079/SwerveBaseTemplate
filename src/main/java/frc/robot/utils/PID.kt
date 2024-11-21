@@ -70,10 +70,6 @@ class PID {
     return output
   }
 
-  fun setSetpoint(setpoint: Double) {
-    this.setpoint = setpoint
-  }
-
   fun resetI() {
     this.integral = 0.0
   }

@@ -244,7 +244,13 @@ class SwerveSubsystem(photonvision: Photonvision) : SubsystemBase() {
      *
      * @return [ChassisSpeeds] The current chassis speeds.
      */
-    get() = SwerveParameters.PhysicalParameters.kinematics.toChassisSpeeds(moduleStates)
+    get() {
+      val k = SwerveParameters.PhysicalParameters.kinematics
+      // Necessary because a kotlin array is being passed into a java varargs parameter
+      val chassisSpeeds =
+        k::class.java.getMethod("toChassisSpeeds", Array<SwerveModuleState>::class.java)
+      return chassisSpeeds.invoke(k, moduleStates) as ChassisSpeeds
+    }
 
   val rotationPidggy: Rotation2d
     /**
@@ -270,14 +276,14 @@ class SwerveSubsystem(photonvision: Photonvision) : SubsystemBase() {
     moduleStates = newStates
   }
 
-  private var moduleStates: Array<SwerveModuleState?>
+  private var moduleStates: Array<SwerveModuleState>
     /**
      * Gets the current states of the swerve modules.
      *
      * @return SwerveModuleState[] The current states of the swerve modules.
      */
     get() {
-      val moduleStates = arrayOfNulls<SwerveModuleState>(modules.size)
+      val moduleStates = emptyArray<SwerveModuleState>()
       for (i in modules.indices) {
         moduleStates[i] = modules[i].state
       }
@@ -290,7 +296,7 @@ class SwerveSubsystem(photonvision: Photonvision) : SubsystemBase() {
      */
     set(states) {
       for (i in states.indices) {
-        modules[i].state = states[i]!!
+        modules[i].state = states[i]
       }
     }
 
