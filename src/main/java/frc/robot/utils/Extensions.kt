@@ -27,7 +27,10 @@ fun dash(vararg pairs: Pair<String, Any>) {
         is Boolean -> SmartDashboard.putBoolean(key, value)
         is String -> SmartDashboard.putString(key, value)
         is Sendable -> SmartDashboard.putData(key, value)
-        else -> throw IllegalArgumentException("Unsupported type: ${value::class.java}")
+        else -> {
+          print("Jayden had a skill issue like always")
+          throw IllegalArgumentException("Unsupported type: ${value::class.java}")
+        }
       }
     }
   }
