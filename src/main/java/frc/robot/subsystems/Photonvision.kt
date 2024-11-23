@@ -37,7 +37,8 @@ class Photonvision : SubsystemBase() {
   // Transformation from the robot to the camera
   private var cameraPos: Transform3d =
     Transform3d(
-      cameraTrans.to3D(PhotonVisionConstants.CAMERA_ONE_HEIGHT_METER),
+      cameraTrans.
+      to3D(PhotonVisionConstants.CAMERA_ONE_HEIGHT_METER),
       Rotation3d(
         0.0,
         Math.toRadians(360 - PhotonVisionConstants.CAMERA_ONE_ANGLE_DEG),

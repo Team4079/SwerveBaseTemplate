@@ -3,11 +3,17 @@
 // the WPILib BSD license file in the root directory of this project.
 package frc.robot
 
+import edu.wpi.first.wpilibj.PowerDistribution
 import edu.wpi.first.wpilibj.Timer
 import edu.wpi.first.wpilibj2.command.Command
 import edu.wpi.first.wpilibj2.command.CommandScheduler
 import frc.robot.utils.dash
+import org.littletonrobotics.junction.LogFileUtil
 import org.littletonrobotics.junction.LoggedRobot
+import org.littletonrobotics.junction.Logger
+import org.littletonrobotics.junction.networktables.NT4Publisher
+import org.littletonrobotics.junction.wpilog.WPILOGReader
+import org.littletonrobotics.junction.wpilog.WPILOGWriter
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -33,6 +39,24 @@ class Robot : LoggedRobot() {
     avgTimer.start()
     timer.start()
     robotContainer = RobotContainer()
+
+    Logger.recordMetadata("ProjectName", "MyProject"); //We need to add the ProjectName and MyProject // Set a metadata value
+
+    if (isReal()) {
+      Logger.addDataReceiver(WPILOGWriter()); // Log to a USB stick ("/U/logs")
+      Logger.addDataReceiver(NT4Publisher()); // Publish data to NetworkTables
+      PowerDistribution(1, PowerDistribution.ModuleType.kRev); // Enables power distribution logging
+    } else {
+      setUseTiming(false); // Run as fast as possible
+      val logPath = LogFileUtil.findReplayLog(); // Pull the replay log from AdvantageScope (or prompt the user)
+      Logger.setReplaySource(WPILOGReader(logPath)); // Read replay log
+      Logger.addDataReceiver(WPILOGWriter(LogFileUtil.addPathSuffix(logPath, "_sim"))); // Save outputs to a new log
+    }
+
+    // Logger.disableDeterministicTimestamps() // See "Deterministic Timestamps" in the "Understanding Data Flow" page
+    Logger.start(); // Start logging! No more data receivers, replay sources, or metadata values may be added.
+
+    //TODO: Replace inputted project names
   }
 
   /**
