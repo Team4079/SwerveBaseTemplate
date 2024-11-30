@@ -15,12 +15,15 @@ class PadDrive(
   private val pad: LogitechGamingPad,
   private val isFieldOriented: Boolean,
 ) : Command() {
-  /** Constructs a new PadDrive command. */
   init {
     addRequirements(this.swerveSubsystem)
   }
 
-  /** Called every time the scheduler runs while the command is scheduled. */
+  /**
+   * Called every time the scheduler runs while the command is scheduled. This method retrieves the
+   * current position from the gaming pad, calculates the rotation, logs the joystick values, and
+   * sets the drive speeds for the swerve subsystem.
+   */
   override fun execute() {
     val position = positionSet(pad)
 
