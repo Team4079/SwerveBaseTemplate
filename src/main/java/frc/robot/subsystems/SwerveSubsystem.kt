@@ -119,7 +119,10 @@ class SwerveSubsystem(photonvision: Photonvision) : SubsystemBase() {
     )
   }
 
-  // This method will be called once per scheduler run
+  /**
+   * This method will be called once per scheduler run.
+   * It updates the robot's pose estimation and logs relevant data to the dashboard.
+   */
   override fun periodic() {
     if (DriverStation.isTeleop()) {
       photonvision.getEstimatedGlobalPose(poseEstimator.estimatedPosition)?.apply {
@@ -145,7 +148,7 @@ class SwerveSubsystem(photonvision: Photonvision) : SubsystemBase() {
   }
 
   /**
-   * Sets the drive speeds for the robot.F
+   * Sets the drive speeds for the robot.
    *
    * @param forwardSpeed The forward speed.
    * @param leftSpeed The left speed.
@@ -160,10 +163,9 @@ class SwerveSubsystem(photonvision: Photonvision) : SubsystemBase() {
   ) {
     dash("Forward speed" to forwardSpeed, "Left speed" to leftSpeed, "Pidgey Heading" to heading)
 
-    //
-    val speeds =
-      ChassisSpeeds(forwardSpeed, leftSpeed, turnSpeed).takeUnless { isFieldOriented }
-        ?: ChassisSpeeds.fromFieldRelativeSpeeds(forwardSpeed, leftSpeed, turnSpeed, pidgeyRotation)
+    val speeds = ChassisSpeeds(forwardSpeed, leftSpeed, turnSpeed).apply {
+      if (!isFieldOriented) toRobotRelativeSpeeds(pidgeyRotation)
+    }
 
     val states2 = SwerveParameters.PhysicalParameters.kinematics.toSwerveModuleStates(speeds)
     SwerveDriveKinematics.desaturateWheelSpeeds(states2, MotorParameters.MAX_SPEED)
