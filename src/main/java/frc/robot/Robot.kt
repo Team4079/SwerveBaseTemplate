@@ -40,8 +40,7 @@ class Robot : LoggedRobot() {
     timer.start()
     robotContainer = RobotContainer()
 
-    Logger.recordMetadata("ProjectName", "MyProject")
-    // We need to add the ProjectName and MyProject // Set a metadata value
+    Logger.recordMetadata("ProjectName", "SwerveBaseTemplate")
 
     if (isReal()) {
       Logger.addDataReceiver(WPILOGWriter())
@@ -66,8 +65,6 @@ class Robot : LoggedRobot() {
     Logger
       .start() // Start logging! No more data receivers, replay sources, or metadata values may be
     // added.
-
-    // TODO: Replace inputted project names
   }
 
   /**
