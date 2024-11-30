@@ -36,7 +36,8 @@ $dokka.location:frc.robot.subsystems/SwerveModule/SwerveModule/#kotlin.Int#kotli
 $dokka.location:frc.robot.subsystems/SwerveModule/position/#/PointingToDeclaration/-swerve-base-template/frc.robot.subsystems/-swerve-module/position.html
 $dokka.location:frc.robot.subsystems/SwerveModule/resetDrivePosition/#/PointingToDeclaration/-swerve-base-template/frc.robot.subsystems/-swerve-module/reset-drive-position.html
 $dokka.location:frc.robot.subsystems/SwerveModule/setAUTOPID/#/PointingToDeclaration/-swerve-base-template/frc.robot.subsystems/-swerve-module/set-a-u-t-o-p-i-d.html
-$dokka.location:frc.robot.subsystems/SwerveModule/setAUTOPID/#frc.robot.utils.PID#kotlin.Double/PointingToDeclaration/-swerve-base-template/frc.robot.subsystems/-swerve-module/set-a-u-t-o-p-i-d.html
+$dokka.location:frc.robot.subsystems/SwerveModule/setDrivePID/#frc.robot.utils.PID#kotlin.Double/PointingToDeclaration/-swerve-base-template/frc.robot.subsystems/-swerve-module/set-drive-p-i-d.html
+$dokka.location:frc.robot.subsystems/SwerveModule/setSteerPID/#frc.robot.utils.PID#kotlin.Double/PointingToDeclaration/-swerve-base-template/frc.robot.subsystems/-swerve-module/set-steer-p-i-d.html
 $dokka.location:frc.robot.subsystems/SwerveModule/setTELEPID/#/PointingToDeclaration/-swerve-base-template/frc.robot.subsystems/-swerve-module/set-t-e-l-e-p-i-d.html
 $dokka.location:frc.robot.subsystems/SwerveModule/state/#/PointingToDeclaration/-swerve-base-template/frc.robot.subsystems/-swerve-module/state.html
 $dokka.location:frc.robot.subsystems/SwerveModule/stop/#/PointingToDeclaration/-swerve-base-template/frc.robot.subsystems/-swerve-module/stop.html
@@ -57,7 +58,7 @@ $dokka.location:frc.robot.subsystems/SwerveSubsystem/rotationPidggy/#/PointingTo
 $dokka.location:frc.robot.subsystems/SwerveSubsystem/setAutoPID/#/PointingToDeclaration/-swerve-base-template/frc.robot.subsystems/-swerve-subsystem/set-auto-p-i-d.html
 $dokka.location:frc.robot.subsystems/SwerveSubsystem/setCustomDrivePID/#/PointingToDeclaration/-swerve-base-template/frc.robot.subsystems/-swerve-subsystem/set-custom-drive-p-i-d.html
 $dokka.location:frc.robot.subsystems/SwerveSubsystem/setDriveSpeeds/#kotlin.Double#kotlin.Double#kotlin.Double#kotlin.Boolean/PointingToDeclaration/-swerve-base-template/frc.robot.subsystems/-swerve-subsystem/set-drive-speeds.html
-$dokka.location:frc.robot.subsystems/SwerveSubsystem/setHeading/#/PointingToDeclaration/-swerve-base-template/frc.robot.subsystems/-swerve-subsystem/set-heading.html
+$dokka.location:frc.robot.subsystems/SwerveSubsystem/setInitialHeading/#/PointingToDeclaration/-swerve-base-template/frc.robot.subsystems/-swerve-subsystem/set-initial-heading.html
 $dokka.location:frc.robot.subsystems/SwerveSubsystem/setTelePID/#/PointingToDeclaration/-swerve-base-template/frc.robot.subsystems/-swerve-subsystem/set-tele-p-i-d.html
 $dokka.location:frc.robot.subsystems/SwerveSubsystem/stop/#/PointingToDeclaration/-swerve-base-template/frc.robot.subsystems/-swerve-subsystem/stop.html
 $dokka.location:frc.robot.subsystems/SwerveSubsystem/zeroPose/#/PointingToDeclaration/-swerve-base-template/frc.robot.subsystems/-swerve-subsystem/zero-pose.html
