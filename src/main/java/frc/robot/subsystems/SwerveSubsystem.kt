@@ -97,7 +97,7 @@ class SwerveSubsystem(photonvision: Photonvision) : SubsystemBase() {
       { chassisSpeeds: ChassisSpeeds? ->
         this.chassisSpeedsDrive(chassisSpeeds)
       }, // Method that will drive the robot given ROBOT RELATIVE
-      PPHolonomicDriveController( // PPHolonomicController is the built in path following
+      PPHolonomicDriveController( // PPHolonomicController is the built-in path following
         // controller for holonomic drive trains
         PIDConstants(5.0, 0.0, 0.0), // Translation PID constants
         PIDConstants(5.0, 0.0, 0.0), // Rotation PID constants
@@ -122,23 +122,19 @@ class SwerveSubsystem(photonvision: Photonvision) : SubsystemBase() {
   // This method will be called once per scheduler run
   override fun periodic() {
     if (DriverStation.isTeleop()) {
-      photonvision.getEstimatedGlobalPose(poseEstimator.estimatedPosition).apply {
-        if (isPresent) {
-          val timestamp = get().timestampSeconds
-          val estimatedPose = get().estimatedPose
-          val visionMeasurement2d = estimatedPose.toPose2d()
-          poseEstimator.addVisionMeasurement(visionMeasurement2d, timestamp)
-          poseEstimator.estimatedPosition
-          SwerveParameters.Thresholds.currentPose = poseEstimator.estimatedPosition
-        }
+      photonvision.getEstimatedGlobalPose(poseEstimator.estimatedPosition)?.apply {
+        val timestamp = timestampSeconds
+        val estimatedPose = estimatedPose
+        val visionMeasurement2d = estimatedPose.toPose2d()
+        poseEstimator.addVisionMeasurement(visionMeasurement2d, timestamp)
+        SwerveParameters.Thresholds.currentPose = poseEstimator.estimatedPosition
       }
     }
 
     poseEstimator.update(pidgeyRotation, modulePositions)
 
     field.robotPose = poseEstimator.estimatedPosition
-    // Pidgeon Stuff
-    // Global Boolean Value called TEST_MODE if true graph all smartdashboard values
+
     dash(
       "Pitch" to pidgey.pitch.valueAsDouble,
       "Heading" to -pidgey.yaw.valueAsDouble,

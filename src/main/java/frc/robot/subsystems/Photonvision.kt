@@ -37,8 +37,7 @@ class Photonvision : SubsystemBase() {
   // Transformation from the robot to the camera
   private var cameraPos: Transform3d =
     Transform3d(
-      cameraTrans.
-      to3D(PhotonVisionConstants.CAMERA_ONE_HEIGHT_METER),
+      cameraTrans.to3D(PhotonVisionConstants.CAMERA_ONE_HEIGHT_METER),
       Rotation3d(
         0.0,
         Math.toRadians(360 - PhotonVisionConstants.CAMERA_ONE_ANGLE_DEG),
@@ -110,12 +109,13 @@ class Photonvision : SubsystemBase() {
    * Gets the estimated global pose of the robot.
    *
    * @param prevEstimatedRobotPose The previous estimated pose of the robot.
-   * @return An Optional containing the estimated robot pose, or empty if no pose could be
-   *   estimated.
+   * @return The estimated robot pose, or null if no pose could be estimated.
    */
-  fun getEstimatedGlobalPose(prevEstimatedRobotPose: Pose2d?): Optional<EstimatedRobotPose> {
+  fun getEstimatedGlobalPose(prevEstimatedRobotPose: Pose2d?): EstimatedRobotPose? {
     photonPoseEstimator.setReferencePose(prevEstimatedRobotPose)
-    return photonPoseEstimator.update(currentResult)
+    currentResult?.let {
+      return photonPoseEstimator.update(it).orElse(null)
+    } ?: return null
   }
 
   val estimatedGlobalPose: Transform3d
