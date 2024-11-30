@@ -1,12 +1,14 @@
 //file:noinspection DependencyNotationArgument
 
 import edu.wpi.first.gradlerio.GradleRIOPlugin
+import groovy.json.JsonSlurper
 
 plugins {
     id "java"
     id "edu.wpi.first.GradleRIO" version "2025.1.1-beta-1"
     id 'org.jetbrains.kotlin.jvm'
     id 'com.diffplug.spotless' version "7.0.0.BETA4"
+    id 'org.jetbrains.dokka' version '1.9.20'
 }
 
 java {}
@@ -76,7 +78,7 @@ dependencies {
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 
-    def akitJson = new groovy.json.JsonSlurper().parseText(new File(projectDir.getAbsolutePath() + "/vendordeps/AdvantageKit.json").text)
+    def akitJson = new JsonSlurper().parseText(new File(projectDir.getAbsolutePath() + "/vendordeps/AdvantageKit.json").text)
     annotationProcessor "org.littletonrobotics.akit.junction:junction-autolog:$akitJson.version"
 }
 
@@ -109,11 +111,12 @@ tasks.withType(JavaCompile).configureEach {
     options.compilerArgs.add '-XDstringConcat=inline'
 }
 
-configurations.all {
+configurations.configureEach {
     exclude group: "edu.wpi.first.wpilibj"
 }
 
-task(checkAkitInstall, dependsOn: "classes", type: JavaExec) {
+tasks.register('checkAkitInstall', JavaExec) {
+    dependsOn "classes"
     mainClass = "org.littletonrobotics.junction.CheckInstall"
     classpath = sourceSets.main.runtimeClasspath
 }
@@ -146,4 +149,10 @@ spotless {
 
 tasks.named('build') {
     dependsOn 'spotlessApply'
+}
+
+dokkaHtml {
+    description = 'Generates HTML documentation using Dokka'
+    group = 'documentation'
+    outputDirectory.set(file("${layout.buildDirectory.get().asFile.path}${File.separator}dokka"))
 }
