@@ -80,61 +80,77 @@ class SwerveModule(
   init {
     positionSetter.EnableFOC = true
 
-    driveConfigs = TalonFXConfiguration()
-    steerConfigs = TalonFXConfiguration()
+    driveConfigs =
+      TalonFXConfiguration().apply {
+        Slot0.apply {
+          kP = PIDParameters.DRIVE_PID_AUTO.p
+          kI = PIDParameters.DRIVE_PID_AUTO.i
+          kD = PIDParameters.DRIVE_PID_AUTO.d
+          kV = PIDParameters.DRIVE_PID_V_AUTO
+        }
+        MotorOutput.apply {
+          NeutralMode = NeutralModeValue.Brake
+          // DutyCycleNeutralDeadband = 0.02;
+          Inverted = SwerveParameters.Thresholds.DRIVE_MOTOR_INVERETED
+        }
+        CurrentLimits.apply {
+          SupplyCurrentLimit = MotorParameters.DRIVE_SUPPLY_LIMIT
+          SupplyCurrentLimitEnable = true
+          StatorCurrentLimit = MotorParameters.DRIVE_STATOR_LIMIT
+          StatorCurrentLimitEnable = true
+        }
+      }
+    steerConfigs =
+      TalonFXConfiguration().apply {
+        Slot0.apply {
+          kP = PIDParameters.STEER_PID_AUTO.p
+          kI = PIDParameters.STEER_PID_AUTO.i
+          kD = PIDParameters.STEER_PID_AUTO.d
+          kV = 0.0
+        }
+        MotorOutput.apply {
+          NeutralMode = NeutralModeValue.Brake
+          // DutyCycleNeutralDeadband = 0.001;
+          Inverted = SwerveParameters.Thresholds.STEER_MOTOR_INVERTED
+        }
+        Feedback.apply {
+          FeedbackRemoteSensorID = canCoderID
+          FeedbackSensorSource = FeedbackSensorSourceValue.FusedCANcoder
+          RotorToSensorRatio = MotorParameters.STEER_MOTOR_GEAR_RATIO
+        }
+        CurrentLimits.apply {
+          SupplyCurrentLimit = MotorParameters.STEER_SUPPLY_LIMIT
+          SupplyCurrentLimitEnable = true
+        }
+      }
+
     driveTorqueConfigs = TorqueCurrentConfigs()
-    val canCoderConfiguration = CANcoderConfiguration()
-
-    driveConfigs.Slot0.kP = PIDParameters.DRIVE_PID_AUTO.p
-    driveConfigs.Slot0.kI = PIDParameters.DRIVE_PID_AUTO.i
-    driveConfigs.Slot0.kD = PIDParameters.DRIVE_PID_AUTO.d
-    driveConfigs.Slot0.kV = PIDParameters.DRIVE_PID_V_AUTO
-
-    steerConfigs.Slot0.kP = PIDParameters.STEER_PID_AUTO.p
-    steerConfigs.Slot0.kI = PIDParameters.STEER_PID_AUTO.i
-    steerConfigs.Slot0.kD = PIDParameters.STEER_PID_AUTO.d
-    steerConfigs.Slot0.kV = 0.0
-
-    driveConfigs.MotorOutput.NeutralMode = NeutralModeValue.Brake
-    steerConfigs.MotorOutput.NeutralMode = NeutralModeValue.Brake
-
-    // driveConfigs.MotorOutput.DutyCycleNeutralDeadband = 0.02;
-    // steerConfigs.MotorOutput.DutyCycleNeutralDeadband = 0.001;
-    driveConfigs.MotorOutput.Inverted = SwerveParameters.Thresholds.DRIVE_MOTOR_INVERETED
-    steerConfigs.MotorOutput.Inverted = SwerveParameters.Thresholds.STEER_MOTOR_INVERTED
-
-    steerConfigs.Feedback.FeedbackRemoteSensorID = canCoderID
-    steerConfigs.Feedback.FeedbackSensorSource = FeedbackSensorSourceValue.FusedCANcoder
-    steerConfigs.Feedback.RotorToSensorRatio = MotorParameters.STEER_MOTOR_GEAR_RATIO
-    steerConfigs.ClosedLoopGeneral.ContinuousWrap = true
-
-    driveConfigs.CurrentLimits.SupplyCurrentLimit = MotorParameters.DRIVE_SUPPLY_LIMIT
-    driveConfigs.CurrentLimits.SupplyCurrentLimitEnable = true
-
-    driveConfigs.CurrentLimits.StatorCurrentLimit = MotorParameters.DRIVE_STATOR_LIMIT
-    driveConfigs.CurrentLimits.StatorCurrentLimitEnable = true
-
-    steerConfigs.CurrentLimits.SupplyCurrentLimit = MotorParameters.STEER_SUPPLY_LIMIT
-    steerConfigs.CurrentLimits.SupplyCurrentLimitEnable = true
-
     // driveTorqueConfigs.PeakForwardTorqueCurrent = 45;
     // driveTorqueConfigs.PeakReverseTorqueCurrent = 45;
     // driveTorqueConfigs.TorqueNeutralDeadband = 0;
-    canCoderConfiguration.MagnetSensor.AbsoluteSensorRange =
-      AbsoluteSensorRangeValue.Signed_PlusMinusHalf
-    canCoderConfiguration.MagnetSensor.SensorDirection =
-      SensorDirectionValue.CounterClockwise_Positive
-    canCoderConfiguration.MagnetSensor.MagnetOffset =
-      SwerveParameters.Thresholds.ENCODER_OFFSET + canCoderDriveStraightSteerSetPoint
+
+    val canCoderConfiguration =
+      CANcoderConfiguration().apply {
+        MagnetSensor.apply {
+          AbsoluteSensorRange = AbsoluteSensorRangeValue.Signed_PlusMinusHalf
+          SensorDirection = SensorDirectionValue.CounterClockwise_Positive
+          MagnetOffset =
+            SwerveParameters.Thresholds.ENCODER_OFFSET + canCoderDriveStraightSteerSetPoint
+        }
+      }
 
     driveMotor.configurator.apply(driveConfigs)
     steerMotor.configurator.apply(steerConfigs)
     canCoder.configurator.apply(canCoderConfiguration)
 
-    driveVelocity = driveMotor.velocity.valueAsDouble
-    drivePosition = driveMotor.position.valueAsDouble
-    steerVelocity = steerMotor.velocity.valueAsDouble
-    steerPosition = steerMotor.position.valueAsDouble
+    driveMotor.apply {
+      driveVelocity = velocity.valueAsDouble
+      drivePosition = position.valueAsDouble
+    }
+    steerMotor.apply {
+      steerVelocity = velocity.valueAsDouble
+      steerPosition = position.valueAsDouble
+    }
   }
 
   val position: SwerveModulePosition
@@ -144,17 +160,23 @@ class SwerveModule(
      * @return The current position of the swerve module.
      */
     get() {
-      driveVelocity = driveMotor.velocity.valueAsDouble
-      drivePosition = driveMotor.rotorPosition.valueAsDouble
-      steerVelocity = steerMotor.velocity.valueAsDouble
-      steerPosition = steerMotor.position.valueAsDouble
+      driveMotor.apply {
+        driveVelocity = velocity.valueAsDouble
+        drivePosition = position.valueAsDouble
+      }
+      steerMotor.apply {
+        steerVelocity = velocity.valueAsDouble
+        steerPosition = position.valueAsDouble
+      }
 
-      // swerveModulePosition.angle = Rotation2d.fromRotations(steerPosition);
-      swerveModulePosition.angle =
-        Rotation2d.fromDegrees(((360 * canCoder.absolutePosition.valueAsDouble) % 360 + 360) % 360)
-      swerveModulePosition.distanceMeters =
-        (drivePosition / MotorParameters.DRIVE_MOTOR_GEAR_RATIO * MotorParameters.METERS_PER_REV)
-      return swerveModulePosition
+      return swerveModulePosition.apply {
+        angle =
+          Rotation2d.fromDegrees(
+            ((360 * canCoder.absolutePosition.valueAsDouble) % 360 + 360) % 360
+          )
+        distanceMeters =
+          (drivePosition / MotorParameters.DRIVE_MOTOR_GEAR_RATIO * MotorParameters.METERS_PER_REV)
+      }
     }
 
   fun stop() {
@@ -162,37 +184,35 @@ class SwerveModule(
     driveMotor.stopMotor()
   }
 
-  fun setTELEPID() {
-    driveConfigs.Slot0.kP = PIDParameters.DRIVE_PID_TELE.p
-    driveConfigs.Slot0.kI = PIDParameters.DRIVE_PID_TELE.i
-    driveConfigs.Slot0.kD = PIDParameters.DRIVE_PID_TELE.d
-    driveConfigs.Slot0.kV = PIDParameters.DRIVE_PID_V_TELE
-
-    steerConfigs.Slot0.kP = PIDParameters.STEER_PID_TELE.p
-    steerConfigs.Slot0.kI = PIDParameters.STEER_PID_TELE.i
-    steerConfigs.Slot0.kD = PIDParameters.STEER_PID_TELE.d
-    steerConfigs.Slot0.kV = 0.0
+  fun setDrivePID(pid: PID, velocity: Double) {
+    driveConfigs.Slot0.apply {
+      kP = pid.p
+      kI = pid.i
+      kD = pid.d
+      kV = velocity
+    }
 
     driveMotor.configurator.apply(driveConfigs)
+  }
+
+  fun setSteerPID(pid: PID, velocity: Double) {
+    steerConfigs.Slot0.apply {
+      kP = pid.p
+      kI = pid.i
+      kD = pid.d
+      kV = velocity
+    }
+
     steerMotor.configurator.apply(steerConfigs)
   }
 
-  fun setAUTOPID(pid: PID, velocity: Double) {
-    driveConfigs.Slot0.kP = pid.p
-    driveConfigs.Slot0.kI = pid.i
-    driveConfigs.Slot0.kD = pid.d
-    driveConfigs.Slot0.kV = velocity
-
-    driveMotor.configurator.apply(driveConfigs)
+  fun setTELEPID() {
+    setDrivePID(PIDParameters.DRIVE_PID_TELE, PIDParameters.DRIVE_PID_V_TELE)
+    setSteerPID(PIDParameters.STEER_PID_TELE, 0.0)
   }
 
   fun setAUTOPID() {
-    driveConfigs.Slot0.kP = PIDParameters.DRIVE_PID_AUTO.p
-    driveConfigs.Slot0.kI = PIDParameters.DRIVE_PID_AUTO.i
-    driveConfigs.Slot0.kD = PIDParameters.DRIVE_PID_AUTO.d
-    driveConfigs.Slot0.kV = PIDParameters.DRIVE_PID_V_AUTO
-
-    driveMotor.configurator.apply(driveConfigs)
+    setDrivePID(PIDParameters.DRIVE_PID_AUTO, PIDParameters.DRIVE_PID_V_AUTO)
   }
 
   fun resetDrivePosition() {

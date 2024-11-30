@@ -120,8 +120,8 @@ class SwerveSubsystem(photonvision: Photonvision) : SubsystemBase() {
   }
 
   /**
-   * This method will be called once per scheduler run.
-   * It updates the robot's pose estimation and logs relevant data to the dashboard.
+   * This method will be called once per scheduler run. It updates the robot's pose estimation and
+   * logs relevant data to the dashboard.
    */
   override fun periodic() {
     if (DriverStation.isTeleop()) {
@@ -163,9 +163,10 @@ class SwerveSubsystem(photonvision: Photonvision) : SubsystemBase() {
   ) {
     dash("Forward speed" to forwardSpeed, "Left speed" to leftSpeed, "Pidgey Heading" to heading)
 
-    val speeds = ChassisSpeeds(forwardSpeed, leftSpeed, turnSpeed).apply {
-      if (!isFieldOriented) toRobotRelativeSpeeds(pidgeyRotation)
-    }
+    val speeds =
+      ChassisSpeeds(forwardSpeed, leftSpeed, turnSpeed).apply {
+        if (!isFieldOriented) toRobotRelativeSpeeds(pidgeyRotation)
+      }
 
     val states2 = SwerveParameters.PhysicalParameters.kinematics.toSwerveModuleStates(speeds)
     SwerveDriveKinematics.desaturateWheelSpeeds(states2, MotorParameters.MAX_SPEED)
@@ -196,7 +197,7 @@ class SwerveSubsystem(photonvision: Photonvision) : SubsystemBase() {
      */
     get() = pidgey.yaw.valueAsDouble
 
-  fun setHeading() {
+  fun setInitialHeading() {
     val alliance = DriverStation.getAlliance()
     if (alliance.get() == Alliance.Red) {
       pidgey.setYaw(27.4)
@@ -325,6 +326,6 @@ class SwerveSubsystem(photonvision: Photonvision) : SubsystemBase() {
 
   fun setCustomDrivePID() {
     dashPID("Drive", pid, PIDParameters.DRIVE_PID_V_AUTO) { velocity = it }
-    modules.forEach { it.setAUTOPID(pid, velocity) }
+    modules.forEach { it.setDrivePID(pid, velocity) }
   }
 }
