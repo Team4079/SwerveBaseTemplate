@@ -142,6 +142,10 @@ public class SwerveSubsystem extends SubsystemBase {
    */
   @Override
   public void periodic() {
+
+    /**
+     * This method checks whether the bot is in Teleop, and adds it to poseEstimator based on VISION
+     */
     if (DriverStation.isTeleop()) {
       EstimatedRobotPose estimatedPose =
           photonvision.getEstimatedGlobalPose(poseEstimator.getEstimatedPosition());
@@ -153,6 +157,9 @@ public class SwerveSubsystem extends SubsystemBase {
       }
     }
 
+    /**
+     * Updates the robot position based on movement and rotation from the pidgey and encoders
+     */
     poseEstimator.update(getPidgeyRotation(), getModulePositions());
 
     field.setRobotPose(poseEstimator.getEstimatedPosition());
