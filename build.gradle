@@ -155,4 +155,5 @@ dokkaHtml {
     description = 'Generates HTML documentation using Dokka'
     group = 'documentation'
     outputDirectory.set(file("${layout.buildDirectory.get().asFile.path}${File.separator}dokka"))
+    suppressInheritedMembers = true
 }
