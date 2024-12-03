@@ -92,7 +92,7 @@ public class Photonvision extends SubsystemBase {
 
   /**
    * Checks if there is a tag.
-   *
+   * This method is useful to avoid NullPointerExceptions when trying to access specific info based on vision.
    * @return true if there is a tag, false otherwise.
    */
   public boolean hasTag() {
