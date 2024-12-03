@@ -57,7 +57,7 @@ public class SwerveSubsystem extends SubsystemBase {
 
   /**
    * Initializes the swerve modules.
-   *
+   * Ensure the swerve modules are intialized in the same order as in kinematics. 
    * @return An array of initialized SwerveModule objects.
    */
   private SwerveModule[] initializeModules() {
@@ -99,7 +99,8 @@ public class SwerveSubsystem extends SubsystemBase {
 
   /**
    * Initializes the SwerveDrivePoseEstimator.
-   *
+   * The SwerveDrivePoseEsimator estimates the robot's position.
+   * This is based on a combination of the robot's movement and vision.
    * @return A new SwerveDrivePoseEstimator object.
    */
   private SwerveDrivePoseEstimator initializePoseEstimator() {
@@ -107,12 +108,14 @@ public class SwerveSubsystem extends SubsystemBase {
         SwerveParameters.PhysicalParameters.kinematics,
         Rotation2d.fromDegrees(getHeading()),
         getModulePositions(),
-        new Pose2d(0.0, 0.0, Rotation2d.fromDegrees(0.0)),
-        VecBuilder.fill(0.05, 0.05, Units.degreesToRadians(5.0)),
-        VecBuilder.fill(0.5, 0.5, Units.degreesToRadians(30.0)));
+        new Pose2d(0.0, 0.0, Rotation2d.fromDegrees(0.0)));
   }
 
-  /** Configures the AutoBuilder for autonomous driving. */
+  /** Configures the AutoBuilder for autonomous driving. 
+   * READ DOCUMENTATION TO PUT IN CORRECT VALUES
+   * Allows PathPlanner to get pose and output robot-relative chassis speeds
+   * Needs tuning
+  */
   private void configureAutoBuilder() {
     AutoBuilder.configure(
         this::getPose,
@@ -225,7 +228,9 @@ public class SwerveSubsystem extends SubsystemBase {
     return pidgey.getYaw().getValueAsDouble();
   }
 
-  /** Sets the initial heading of the robot based on the alliance color. */
+  /** Sets the initial heading of the robot based on the alliance color. 
+   * Our attempt to set the intial heading based on our alliance color. Likely should be able to use vision to set this automaically. 
+  */
   public void setInitialHeading() {
     Optional<Alliance> alliance = DriverStation.getAlliance();
     if (alliance.isEmpty() || alliance.get() == Alliance.Red) {
@@ -241,7 +246,7 @@ public class SwerveSubsystem extends SubsystemBase {
   }
 
   /**
-   * Gets the current pose of the robot.
+   * Gets the current pose of the robot from he pose estimator.
    *
    * @return The current pose of the robot.
    */

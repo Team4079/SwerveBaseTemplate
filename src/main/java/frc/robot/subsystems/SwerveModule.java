@@ -57,10 +57,14 @@ public class SwerveModule {
     positionSetter.EnableFOC = true;
 
     driveConfigs = new TalonFXConfiguration();
+
+    // Set the PID values for the drive motor
     driveConfigs.Slot0.kP = PIDParameters.DRIVE_PID_AUTO.getP();
     driveConfigs.Slot0.kI = PIDParameters.DRIVE_PID_AUTO.getI();
     driveConfigs.Slot0.kD = PIDParameters.DRIVE_PID_AUTO.getD();
     driveConfigs.Slot0.kV = PIDParameters.DRIVE_PID_V_AUTO;
+
+    //Sets the brake mode, invered, and current limits for the drive motor
     driveConfigs.MotorOutput.NeutralMode = NeutralModeValue.Brake;
     driveConfigs.MotorOutput.Inverted = SwerveParameters.Thresholds.DRIVE_MOTOR_INVERETED;
     driveConfigs.CurrentLimits.SupplyCurrentLimit = MotorParameters.DRIVE_SUPPLY_LIMIT;
@@ -69,10 +73,14 @@ public class SwerveModule {
     driveConfigs.CurrentLimits.StatorCurrentLimitEnable = true;
 
     steerConfigs = new TalonFXConfiguration();
+
+    // Set the PID values for the steer motor
     steerConfigs.Slot0.kP = PIDParameters.STEER_PID_AUTO.getP();
     steerConfigs.Slot0.kI = PIDParameters.STEER_PID_AUTO.getI();
     steerConfigs.Slot0.kD = PIDParameters.STEER_PID_AUTO.getD();
     steerConfigs.Slot0.kV = 0.0;
+
+    // Sets the brake mode, invered, and current limits for the steer motor
     steerConfigs.MotorOutput.NeutralMode = NeutralModeValue.Brake;
     steerConfigs.MotorOutput.Inverted = SwerveParameters.Thresholds.STEER_MOTOR_INVERTED;
     steerConfigs.Feedback.FeedbackRemoteSensorID = canCoderID;
@@ -84,6 +92,11 @@ public class SwerveModule {
     driveTorqueConfigs = new TorqueCurrentConfigs();
 
     CANcoderConfiguration canCoderConfiguration = new CANcoderConfiguration();
+
+    /**
+     * Sets the CANCoder direction, absolute sensor range, and magnet offset for the CANCoder
+     * Make sure the magnet offset is ACCURATE and based on when the wheel is straight!
+     */
     canCoderConfiguration.MagnetSensor.AbsoluteSensorRange =
         AbsoluteSensorRangeValue.Signed_PlusMinusHalf;
     canCoderConfiguration.MagnetSensor.SensorDirection =
