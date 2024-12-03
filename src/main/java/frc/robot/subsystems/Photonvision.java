@@ -128,7 +128,6 @@ public class Photonvision extends SubsystemBase {
    */
   public double getPivotPosition() {
     // 10/14/2024 outside tuning
-    // jayden why are you so bad at tuning
     // Desmos: https://www.desmos.com/calculator/naalukjxze
     double r = getDistanceSubwoofer() + 0.6;
     double f = -1.39223; // power 5
@@ -147,9 +146,21 @@ public class Photonvision extends SubsystemBase {
   }
 
   /**
-   * Gets the distance to the subwoofer.
+   * Calculates and returns the distance to the subwoofer for the 2024 Crescendo game.
+   * <p>
+   * This method computes the Euclidean distance (distance formula) from the robot's current position
+   * to the location of the subwoofer. The calculation varies based on the alliance:
+   * <ul>
+   *   <li>If the alliance is {@code RED} or not specified, the subwoofer is assumed to be at
+   *   coordinates (16.5, 5.5).</li>
+   *   <li>If the alliance is {@code BLUE}, the subwoofer is assumed to be at (0, 5.5).</li>
+   * </ul>
+   * If the current pose is not available, the method returns a default value of {@code 687.0}.
+   * This value reflects our team's tradition of thanking teams for their help to us. :D
+   * </p>
    *
-   * @return The distance to the subwoofer.
+   * @return The calculated distance to the subwoofer, or {@code 687.0} if the current pose
+   *         is unavailable.
    */
   public double getDistanceSubwoofer() {
     currentPose = getEstimatedGlobalPose().getTranslation();
