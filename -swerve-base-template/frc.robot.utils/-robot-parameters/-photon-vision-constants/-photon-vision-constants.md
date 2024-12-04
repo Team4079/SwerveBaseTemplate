@@ -1,6 +1,17 @@
-//[SwerveBaseTemplate](../../../../index.md)/[frc.robot.utils](../../index.md)/[RobotParameters](../index.md)/[PhotonVisionConstants](index.md)/[PhotonVisionConstants](-photon-vision-constants.md)
+---
+title: PhotonVisionConstants
+---
+//[SwerveBaseTemplate](../../../../index.html)/[frc.robot.utils](../../index.html)/[RobotParameters](../index.html)/[PhotonVisionConstants](index.html)/[PhotonVisionConstants](-photon-vision-constants.html)
+
+
 
 # PhotonVisionConstants
 
+
+
 [jvm]\
 constructor()
+
+
+
+

@@ -1,6 +1,17 @@
-//[SwerveBaseTemplate](../../../index.md)/[frc.robot.utils](../index.md)/[LogitechGamingPad](index.md)/[getStartButton](get-start-button.md)
+---
+title: getStartButton
+---
+//[SwerveBaseTemplate](../../../index.html)/[frc.robot.utils](../index.html)/[LogitechGamingPad](index.html)/[getStartButton](get-start-button.html)
+
+
 
 # getStartButton
 
+
+
 [jvm]\
-open fun [getStartButton](get-start-button.md)(): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)
+open fun [getStartButton](get-start-button.html)(): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)
+
+
+
+

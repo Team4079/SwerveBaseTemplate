@@ -1,6 +1,17 @@
-//[SwerveBaseTemplate](../../../../index.md)/[frc.robot.utils](../../index.md)/[LimelightHelpers](../index.md)/[LimelightResults](index.md)/[latency_pipeline](latency_pipeline.md)
+---
+title: latency_pipeline
+---
+//[SwerveBaseTemplate](../../../../index.html)/[frc.robot.utils](../../index.html)/[LimelightHelpers](../index.html)/[LimelightResults](index.html)/[latency_pipeline](latency_pipeline.html)
+
+
 
 # latency_pipeline
 
+
+
 [jvm]\
-open var [latency_pipeline](latency_pipeline.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)
+open var [latency_pipeline](latency_pipeline.html): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)
+
+
+
+

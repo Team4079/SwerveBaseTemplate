@@ -1,6 +1,17 @@
-//[SwerveBaseTemplate](../../../../index.md)/[frc.robot.utils](../../index.md)/[LimelightHelpers](../index.md)/[LimelightTarget_Barcode](index.md)/[LimelightTarget_Barcode](-limelight-target_-barcode.md)
+---
+title: LimelightTarget_Barcode
+---
+//[SwerveBaseTemplate](../../../../index.html)/[frc.robot.utils](../../index.html)/[LimelightHelpers](../index.html)/[LimelightTarget_Barcode](index.html)/[LimelightTarget_Barcode](-limelight-target_-barcode.html)
+
+
 
 # LimelightTarget_Barcode
 
+
+
 [jvm]\
 constructor()
+
+
+
+

@@ -1,6 +1,17 @@
-//[SwerveBaseTemplate](../../../../index.md)/[frc.robot.utils](../../index.md)/[LimelightHelpers](../index.md)/[LimelightResults](index.md)/[LimelightResults](-limelight-results.md)
+---
+title: LimelightResults
+---
+//[SwerveBaseTemplate](../../../../index.html)/[frc.robot.utils](../../index.html)/[LimelightHelpers](../index.html)/[LimelightResults](index.html)/[LimelightResults](-limelight-results.html)
+
+
 
 # LimelightResults
 
+
+
 [jvm]\
 constructor()
+
+
+
+

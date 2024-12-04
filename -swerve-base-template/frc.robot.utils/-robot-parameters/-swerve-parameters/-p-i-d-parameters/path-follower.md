@@ -1,6 +1,17 @@
-//[SwerveBaseTemplate](../../../../../index.md)/[frc.robot.utils](../../../index.md)/[RobotParameters](../../index.md)/[SwerveParameters](../index.md)/[PIDParameters](index.md)/[pathFollower](path-follower.md)
+---
+title: pathFollower
+---
+//[SwerveBaseTemplate](../../../../../index.html)/[frc.robot.utils](../../../index.html)/[RobotParameters](../../index.html)/[SwerveParameters](../index.html)/[PIDParameters](index.html)/[pathFollower](path-follower.html)
+
+
 
 # pathFollower
 
+
+
 [jvm]\
-open var [pathFollower](path-follower.md): PPHolonomicDriveController
+open var [pathFollower](path-follower.html): PPHolonomicDriveController
+
+
+
+

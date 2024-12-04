@@ -1,6 +1,17 @@
-//[SwerveBaseTemplate](../../../../index.md)/[frc.robot.utils](../../index.md)/[LimelightHelpers](../index.md)/[LimelightTarget_Fiducial](index.md)/[getRobotPose_TargetSpace2D](get-robot-pose_-target-space2-d.md)
+---
+title: getRobotPose_TargetSpace2D
+---
+//[SwerveBaseTemplate](../../../../index.html)/[frc.robot.utils](../../index.html)/[LimelightHelpers](../index.html)/[LimelightTarget_Fiducial](index.html)/[getRobotPose_TargetSpace2D](get-robot-pose_-target-space2-d.html)
+
+
 
 # getRobotPose_TargetSpace2D
 
+
+
 [jvm]\
-open fun [getRobotPose_TargetSpace2D](get-robot-pose_-target-space2-d.md)(): Pose2d
+open fun [getRobotPose_TargetSpace2D](get-robot-pose_-target-space2-d.html)(): Pose2d
+
+
+
+

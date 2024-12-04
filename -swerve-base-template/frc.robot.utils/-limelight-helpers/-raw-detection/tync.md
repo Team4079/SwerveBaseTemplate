@@ -1,6 +1,17 @@
-//[SwerveBaseTemplate](../../../../index.md)/[frc.robot.utils](../../index.md)/[LimelightHelpers](../index.md)/[RawDetection](index.md)/[tync](tync.md)
+---
+title: tync
+---
+//[SwerveBaseTemplate](../../../../index.html)/[frc.robot.utils](../../index.html)/[LimelightHelpers](../index.html)/[RawDetection](index.html)/[tync](tync.html)
+
+
 
 # tync
 
+
+
 [jvm]\
-open var [tync](tync.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)
+open var [tync](tync.html): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)
+
+
+
+

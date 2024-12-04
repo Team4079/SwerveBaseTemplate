@@ -1,6 +1,17 @@
-//[SwerveBaseTemplate](../../../../../index.md)/[frc.robot.utils](../../../index.md)/[RobotParameters](../../index.md)/[SwerveParameters](../index.md)/[PhysicalParameters](index.md)/[PhysicalParameters](-physical-parameters.md)
+---
+title: PhysicalParameters
+---
+//[SwerveBaseTemplate](../../../../../index.html)/[frc.robot.utils](../../../index.html)/[RobotParameters](../../index.html)/[SwerveParameters](../index.html)/[PhysicalParameters](index.html)/[PhysicalParameters](-physical-parameters.html)
+
+
 
 # PhysicalParameters
 
+
+
 [jvm]\
 constructor()
+
+
+
+

@@ -1,13 +1,25 @@
-//[SwerveBaseTemplate](../../../index.md)/[frc.robot.utils](../index.md)/[LimelightHelpers](index.md)/[SetFiducialDownscalingOverride](-set-fiducial-downscaling-override.md)
+---
+title: SetFiducialDownscalingOverride
+---
+//[SwerveBaseTemplate](../../../index.html)/[frc.robot.utils](../index.html)/[LimelightHelpers](index.html)/[SetFiducialDownscalingOverride](-set-fiducial-downscaling-override.html)
+
+
 
 # SetFiducialDownscalingOverride
 
+
+
 [jvm]\
-open fun [SetFiducialDownscalingOverride](-set-fiducial-downscaling-override.md)(limelightName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html), downscale: [Float](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html))
+open fun [SetFiducialDownscalingOverride](-set-fiducial-downscaling-override.html)(limelightName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html), downscale: [Float](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html))
+
+
 
 Sets the downscaling factor for AprilTag detection. Increasing downscale can improve performance at the cost of potentially reduced detection range.
 
+
+
 #### Parameters
+
 
 jvm
 
@@ -15,3 +27,7 @@ jvm
 |---|---|
 | limelightName | Name/identifier of the Limelight |
 | downscale | Downscale factor. Valid values: 1.0 (no downscale), 1.5, 2.0, 3.0, 4.0. Set to 0 for pipeline control. |
+
+
+
+

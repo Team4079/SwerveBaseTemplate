@@ -1,8 +1,21 @@
-//[SwerveBaseTemplate](../../../index.md)/[frc.robot.subsystems](../index.md)/[SwerveSubsystem](index.md)/[resetDrive](reset-drive.md)
+---
+title: resetDrive
+---
+//[SwerveBaseTemplate](../../../index.html)/[frc.robot.subsystems](../index.html)/[SwerveSubsystem](index.html)/[resetDrive](reset-drive.html)
+
+
 
 # resetDrive
 
+
+
 [jvm]\
-open fun [resetDrive](reset-drive.md)()
+open fun [resetDrive](reset-drive.html)()
+
+
 
 Resets the drive positions of all swerve modules.
+
+
+
+

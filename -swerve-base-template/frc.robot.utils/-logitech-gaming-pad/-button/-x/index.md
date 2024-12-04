@@ -1,6 +1,15 @@
-//[SwerveBaseTemplate](../../../../../index.md)/[frc.robot.utils](../../../index.md)/[LogitechGamingPad](../../index.md)/[Button](../index.md)/[X](index.md)
+---
+title: X
+---
+//[SwerveBaseTemplate](../../../../../index.html)/[frc.robot.utils](../../../index.html)/[LogitechGamingPad](../../index.html)/[Button](../index.html)/[X](index.html)
+
+
 
 # X
 
+
+
 [jvm]\
-[X](index.md)
+[X](index.html)
+
+

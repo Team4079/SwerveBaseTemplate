@@ -1,6 +1,17 @@
-//[SwerveBaseTemplate](../../../index.md)/[frc.robot](../index.md)/[Main](index.md)/[Main](-main.md)
+---
+title: Main
+---
+//[SwerveBaseTemplate](../../../index.html)/[frc.robot](../index.html)/[Main](index.html)/[Main](-main.html)
+
+
 
 # Main
 
+
+
 [jvm]\
 constructor()
+
+
+
+

@@ -1,6 +1,17 @@
-//[SwerveBaseTemplate](../../../../../index.md)/[frc.robot.utils](../../../index.md)/[RobotParameters](../../index.md)/[SwerveParameters](../index.md)/[Thresholds](index.md)/[currentPose](current-pose.md)
+---
+title: currentPose
+---
+//[SwerveBaseTemplate](../../../../../index.html)/[frc.robot.utils](../../../index.html)/[RobotParameters](../../index.html)/[SwerveParameters](../index.html)/[Thresholds](index.html)/[currentPose](current-pose.html)
+
+
 
 # currentPose
 
+
+
 [jvm]\
-open var [currentPose](current-pose.md): Pose2d
+open var [currentPose](current-pose.html): Pose2d
+
+
+
+

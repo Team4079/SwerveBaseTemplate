@@ -1,6 +1,17 @@
-//[SwerveBaseTemplate](../../../../index.md)/[frc.robot.utils](../../index.md)/[LimelightHelpers](../index.md)/[LimelightTarget_Retro](index.md)/[getRobotPose_FieldSpace](get-robot-pose_-field-space.md)
+---
+title: getRobotPose_FieldSpace
+---
+//[SwerveBaseTemplate](../../../../index.html)/[frc.robot.utils](../../index.html)/[LimelightHelpers](../index.html)/[LimelightTarget_Retro](index.html)/[getRobotPose_FieldSpace](get-robot-pose_-field-space.html)
+
+
 
 # getRobotPose_FieldSpace
 
+
+
 [jvm]\
-open fun [getRobotPose_FieldSpace](get-robot-pose_-field-space.md)(): Pose3d
+open fun [getRobotPose_FieldSpace](get-robot-pose_-field-space.html)(): Pose3d
+
+
+
+

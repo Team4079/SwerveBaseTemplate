@@ -1,8 +1,21 @@
-//[SwerveBaseTemplate](../../../index.md)/[frc.robot.subsystems](../index.md)/[SwerveModule](index.md)/[stop](stop.md)
+---
+title: stop
+---
+//[SwerveBaseTemplate](../../../index.html)/[frc.robot.subsystems](../index.html)/[SwerveModule](index.html)/[stop](stop.html)
+
+
 
 # stop
 
+
+
 [jvm]\
-open fun [stop](stop.md)()
+open fun [stop](stop.html)()
+
+
 
 Stops the swerve module motors.
+
+
+
+

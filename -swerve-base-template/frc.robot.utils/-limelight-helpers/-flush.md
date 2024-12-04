@@ -1,6 +1,17 @@
-//[SwerveBaseTemplate](../../../index.md)/[frc.robot.utils](../index.md)/[LimelightHelpers](index.md)/[Flush](-flush.md)
+---
+title: Flush
+---
+//[SwerveBaseTemplate](../../../index.html)/[frc.robot.utils](../index.html)/[LimelightHelpers](index.html)/[Flush](-flush.html)
+
+
 
 # Flush
 
+
+
 [jvm]\
-open fun [Flush](-flush.md)()
+open fun [Flush](-flush.html)()
+
+
+
+

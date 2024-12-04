@@ -1,6 +1,15 @@
-//[SwerveBaseTemplate](../../../../../index.md)/[frc.robot.utils](../../../index.md)/[LogitechGamingPad](../../index.md)/[Button](../index.md)/[LEFT_BUMPER](index.md)
+---
+title: LEFT_BUMPER
+---
+//[SwerveBaseTemplate](../../../../../index.html)/[frc.robot.utils](../../../index.html)/[LogitechGamingPad](../../index.html)/[Button](../index.html)/[LEFT_BUMPER](index.html)
+
+
 
 # LEFT_BUMPER
 
+
+
 [jvm]\
-[LEFT_BUMPER](index.md)
+[LEFT_BUMPER](index.html)
+
+

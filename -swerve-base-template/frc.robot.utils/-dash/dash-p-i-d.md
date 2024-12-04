@@ -1,13 +1,25 @@
-//[SwerveBaseTemplate](../../../index.md)/[frc.robot.utils](../index.md)/[Dash](index.md)/[dashPID](dash-p-i-d.md)
+---
+title: dashPID
+---
+//[SwerveBaseTemplate](../../../index.html)/[frc.robot.utils](../index.html)/[Dash](index.html)/[dashPID](dash-p-i-d.html)
+
+
 
 # dashPID
 
+
+
 [jvm]\
-open fun [dashPID](dash-p-i-d.md)(prefix: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html), pid: [PID](../-p-i-d/index.md), velocity: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), changeV: [DoubleConsumer](https://docs.oracle.com/javase/8/docs/api/java/util/function/DoubleConsumer.html))
+open fun [dashPID](dash-p-i-d.html)(prefix: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html), pid: [PID](../-p-i-d/index.html), velocity: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), changeV: [DoubleConsumer](https://docs.oracle.com/javase/8/docs/api/java/util/function/DoubleConsumer.html))
+
+
 
 Function to update PIDV values from the SmartDashboard.
 
+
+
 #### Parameters
+
 
 jvm
 
@@ -17,3 +29,7 @@ jvm
 | velocity | The velocity to update. |
 | prefix | The prefix for the SmartDashboard keys. |
 | changeV | The function to change the velocity. |
+
+
+
+

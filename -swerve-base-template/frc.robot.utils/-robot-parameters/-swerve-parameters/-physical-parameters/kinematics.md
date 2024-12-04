@@ -1,6 +1,17 @@
-//[SwerveBaseTemplate](../../../../../index.md)/[frc.robot.utils](../../../index.md)/[RobotParameters](../../index.md)/[SwerveParameters](../index.md)/[PhysicalParameters](index.md)/[kinematics](kinematics.md)
+---
+title: kinematics
+---
+//[SwerveBaseTemplate](../../../../../index.html)/[frc.robot.utils](../../../index.html)/[RobotParameters](../../index.html)/[SwerveParameters](../index.html)/[PhysicalParameters](index.html)/[kinematics](kinematics.html)
+
+
 
 # kinematics
 
+
+
 [jvm]\
-val [kinematics](kinematics.md): SwerveDriveKinematics
+val [kinematics](kinematics.html): SwerveDriveKinematics
+
+
+
+

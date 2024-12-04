@@ -1,8 +1,21 @@
-//[SwerveBaseTemplate](../../../index.md)/[frc.robot.subsystems](../index.md)/[SwerveSubsystem](index.md)/[resetPidgey](reset-pidgey.md)
+---
+title: resetPidgey
+---
+//[SwerveBaseTemplate](../../../index.html)/[frc.robot.subsystems](../index.html)/[SwerveSubsystem](index.html)/[resetPidgey](reset-pidgey.html)
+
+
 
 # resetPidgey
 
+
+
 [jvm]\
-open fun [resetPidgey](reset-pidgey.md)()
+open fun [resetPidgey](reset-pidgey.html)()
+
+
 
 Resets the Pigeon2 IMU.
+
+
+
+

@@ -1,6 +1,17 @@
-//[SwerveBaseTemplate](../../../../index.md)/[frc.robot.utils](../../index.md)/[LimelightHelpers](../index.md)/[LimelightTarget_Barcode](index.md)/[getFamily](get-family.md)
+---
+title: getFamily
+---
+//[SwerveBaseTemplate](../../../../index.html)/[frc.robot.utils](../../index.html)/[LimelightHelpers](../index.html)/[LimelightTarget_Barcode](index.html)/[getFamily](get-family.html)
+
+
 
 # getFamily
 
+
+
 [jvm]\
-open fun [getFamily](get-family.md)(): [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)
+open fun [getFamily](get-family.html)(): [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)
+
+
+
+

@@ -1,6 +1,17 @@
-//[SwerveBaseTemplate](../../../../index.md)/[frc.robot.utils](../../index.md)/[LimelightHelpers](../index.md)/[LimelightTarget_Fiducial](index.md)/[getCameraPose_TargetSpace2D](get-camera-pose_-target-space2-d.md)
+---
+title: getCameraPose_TargetSpace2D
+---
+//[SwerveBaseTemplate](../../../../index.html)/[frc.robot.utils](../../index.html)/[LimelightHelpers](../index.html)/[LimelightTarget_Fiducial](index.html)/[getCameraPose_TargetSpace2D](get-camera-pose_-target-space2-d.html)
+
+
 
 # getCameraPose_TargetSpace2D
 
+
+
 [jvm]\
-open fun [getCameraPose_TargetSpace2D](get-camera-pose_-target-space2-d.md)(): Pose2d
+open fun [getCameraPose_TargetSpace2D](get-camera-pose_-target-space2-d.html)(): Pose2d
+
+
+
+

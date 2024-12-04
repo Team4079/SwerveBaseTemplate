@@ -1,6 +1,17 @@
-//[SwerveBaseTemplate](../../../../../index.md)/[frc.robot.utils](../../../index.md)/[RobotParameters](../../index.md)/[SwerveParameters](../index.md)/[Thresholds](index.md)/[JOYSTICK_DEADBAND](-j-o-y-s-t-i-c-k_-d-e-a-d-b-a-n-d.md)
+---
+title: JOYSTICK_DEADBAND
+---
+//[SwerveBaseTemplate](../../../../../index.html)/[frc.robot.utils](../../../index.html)/[RobotParameters](../../index.html)/[SwerveParameters](../index.html)/[Thresholds](index.html)/[JOYSTICK_DEADBAND](-j-o-y-s-t-i-c-k_-d-e-a-d-b-a-n-d.html)
+
+
 
 # JOYSTICK_DEADBAND
 
+
+
 [jvm]\
-val [JOYSTICK_DEADBAND](-j-o-y-s-t-i-c-k_-d-e-a-d-b-a-n-d.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) = 0.05
+val [JOYSTICK_DEADBAND](-j-o-y-s-t-i-c-k_-d-e-a-d-b-a-n-d.html): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) = 0.05
+
+
+
+

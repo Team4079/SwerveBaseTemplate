@@ -1,6 +1,17 @@
-//[SwerveBaseTemplate](../../../index.md)/[frc.robot](../index.md)/[Robot](index.md)/[Robot](-robot.md)
+---
+title: Robot
+---
+//[SwerveBaseTemplate](../../../index.html)/[frc.robot](../index.html)/[Robot](index.html)/[Robot](-robot.html)
+
+
 
 # Robot
 
+
+
 [jvm]\
 constructor()
+
+
+
+

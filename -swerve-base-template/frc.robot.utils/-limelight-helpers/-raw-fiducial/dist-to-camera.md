@@ -1,6 +1,17 @@
-//[SwerveBaseTemplate](../../../../index.md)/[frc.robot.utils](../../index.md)/[LimelightHelpers](../index.md)/[RawFiducial](index.md)/[distToCamera](dist-to-camera.md)
+---
+title: distToCamera
+---
+//[SwerveBaseTemplate](../../../../index.html)/[frc.robot.utils](../../index.html)/[LimelightHelpers](../index.html)/[RawFiducial](index.html)/[distToCamera](dist-to-camera.html)
+
+
 
 # distToCamera
 
+
+
 [jvm]\
-open var [distToCamera](dist-to-camera.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)
+open var [distToCamera](dist-to-camera.html): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)
+
+
+
+

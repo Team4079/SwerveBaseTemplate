@@ -1,6 +1,17 @@
-//[SwerveBaseTemplate](../../../../index.md)/[frc.robot.utils](../../index.md)/[LimelightHelpers](../index.md)/[RawFiducial](index.md)/[distToRobot](dist-to-robot.md)
+---
+title: distToRobot
+---
+//[SwerveBaseTemplate](../../../../index.html)/[frc.robot.utils](../../index.html)/[LimelightHelpers](../index.html)/[RawFiducial](index.html)/[distToRobot](dist-to-robot.html)
+
+
 
 # distToRobot
 
+
+
 [jvm]\
-open var [distToRobot](dist-to-robot.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)
+open var [distToRobot](dist-to-robot.html): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)
+
+
+
+

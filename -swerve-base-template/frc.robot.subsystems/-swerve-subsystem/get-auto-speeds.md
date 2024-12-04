@@ -1,12 +1,29 @@
-//[SwerveBaseTemplate](../../../index.md)/[frc.robot.subsystems](../index.md)/[SwerveSubsystem](index.md)/[getAutoSpeeds](get-auto-speeds.md)
+---
+title: getAutoSpeeds
+---
+//[SwerveBaseTemplate](../../../index.html)/[frc.robot.subsystems](../index.html)/[SwerveSubsystem](index.html)/[getAutoSpeeds](get-auto-speeds.html)
+
+
 
 # getAutoSpeeds
 
+
+
 [jvm]\
-open fun [getAutoSpeeds](get-auto-speeds.md)(): ChassisSpeeds
+open fun [getAutoSpeeds](get-auto-speeds.html)(): ChassisSpeeds
+
+
 
 Gets the chassis speeds for autonomous driving.
 
+
+
 #### Return
 
+
+
 The chassis speeds for autonomous driving.
+
+
+
+
