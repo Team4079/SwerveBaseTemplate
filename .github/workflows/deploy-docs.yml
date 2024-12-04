@@ -32,10 +32,11 @@ jobs:
 
       - name: Build and Generate Docs
         run: |
-          ./gradlew dokkaJekyll
+          ./gradlew dokkaGfm
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: build/dokka
+          enable_jekyll: true
