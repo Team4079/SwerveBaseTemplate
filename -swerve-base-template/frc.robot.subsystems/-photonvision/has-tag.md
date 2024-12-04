@@ -6,7 +6,9 @@
 
 public boolean[hasTag](has-tag.md)()
 
-Checks if there is a tag. This method is useful to avoid NullPointerExceptions when trying to access specific info based on vision.
+Checks if there is a tag. 
+
+ This method is useful to avoid NullPointerExceptions when trying to access specific info based on vision.
 
 #### Return
 
