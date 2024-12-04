@@ -1,17 +1,6 @@
----
-title: latency
----
-//[SwerveBaseTemplate](../../../../index.html)/[frc.robot.utils](../../index.html)/[LimelightHelpers](../index.html)/[PoseEstimate](index.html)/[latency](latency.html)
-
-
+//[SwerveBaseTemplate](../../../../index.md)/[frc.robot.utils](../../index.md)/[LimelightHelpers](../index.md)/[PoseEstimate](index.md)/[latency](latency.md)
 
 # latency
 
-
-
 [jvm]\
-open var [latency](latency.html): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)
-
-
-
-
+open var [latency](latency.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)

@@ -1,17 +1,6 @@
----
-title: trigger
----
-//[SwerveBaseTemplate](../../../../index.html)/[frc.robot.utils](../../index.html)/[LogitechGamingPad](../index.html)/[Trigger](index.html)/[trigger](trigger.html)
-
-
+//[SwerveBaseTemplate](../../../../index.md)/[frc.robot.utils](../../index.md)/[LogitechGamingPad](../index.md)/[Trigger](index.md)/[trigger](trigger.md)
 
 # trigger
 
-
-
 [jvm]\
-val [trigger](trigger.html): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)
-
-
-
-
+val [trigger](trigger.md): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)

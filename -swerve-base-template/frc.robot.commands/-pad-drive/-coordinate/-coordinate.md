@@ -1,17 +1,6 @@
----
-title: Coordinate
----
-//[SwerveBaseTemplate](../../../../index.html)/[frc.robot.commands](../../index.html)/[PadDrive](../index.html)/[Coordinate](index.html)/[Coordinate](-coordinate.html)
-
-
+//[SwerveBaseTemplate](../../../../index.md)/[frc.robot.commands](../../index.md)/[PadDrive](../index.md)/[Coordinate](index.md)/[Coordinate](-coordinate.md)
 
 # Coordinate
 
-
-
 [jvm]\
 constructor()
-
-
-
-

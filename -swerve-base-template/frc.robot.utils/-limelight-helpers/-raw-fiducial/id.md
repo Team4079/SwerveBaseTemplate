@@ -1,17 +1,6 @@
----
-title: id
----
-//[SwerveBaseTemplate](../../../../index.html)/[frc.robot.utils](../../index.html)/[LimelightHelpers](../index.html)/[RawFiducial](index.html)/[id](id.html)
-
-
+//[SwerveBaseTemplate](../../../../index.md)/[frc.robot.utils](../../index.md)/[LimelightHelpers](../index.md)/[RawFiducial](index.md)/[id](id.md)
 
 # id
 
-
-
 [jvm]\
-open var [id](id.html): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)
-
-
-
-
+open var [id](id.md): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)

@@ -1,15 +1,6 @@
----
-title: DOWN
----
-//[SwerveBaseTemplate](../../../../../index.html)/[frc.robot.utils](../../../index.html)/[LogitechGamingPad](../../index.html)/[DPad](../index.html)/[DOWN](index.html)
-
-
+//[SwerveBaseTemplate](../../../../../index.md)/[frc.robot.utils](../../../index.md)/[LogitechGamingPad](../../index.md)/[DPad](../index.md)/[DOWN](index.md)
 
 # DOWN
 
-
-
 [jvm]\
-[DOWN](index.html)
-
-
+[DOWN](index.md)

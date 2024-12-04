@@ -1,17 +1,6 @@
----
-title: getAButton
----
-//[SwerveBaseTemplate](../../../index.html)/[frc.robot.utils](../index.html)/[LogitechGamingPad](index.html)/[getAButton](get-a-button.html)
-
-
+//[SwerveBaseTemplate](../../../index.md)/[frc.robot.utils](../index.md)/[LogitechGamingPad](index.md)/[getAButton](get-a-button.md)
 
 # getAButton
 
-
-
 [jvm]\
-open fun [getAButton](get-a-button.html)(): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)
-
-
-
-
+open fun [getAButton](get-a-button.md)(): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)

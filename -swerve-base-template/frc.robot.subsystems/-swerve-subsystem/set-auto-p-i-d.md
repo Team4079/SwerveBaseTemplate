@@ -1,21 +1,8 @@
----
-title: setAutoPID
----
-//[SwerveBaseTemplate](../../../index.html)/[frc.robot.subsystems](../index.html)/[SwerveSubsystem](index.html)/[setAutoPID](set-auto-p-i-d.html)
-
-
+//[SwerveBaseTemplate](../../../index.md)/[frc.robot.subsystems](../index.md)/[SwerveSubsystem](index.md)/[setAutoPID](set-auto-p-i-d.md)
 
 # setAutoPID
 
-
-
 [jvm]\
-open fun [setAutoPID](set-auto-p-i-d.html)()
-
-
+open fun [setAutoPID](set-auto-p-i-d.md)()
 
 Sets the PID constants for autonomous driving.
-
-
-
-

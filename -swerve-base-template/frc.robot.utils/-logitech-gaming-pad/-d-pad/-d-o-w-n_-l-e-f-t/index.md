@@ -1,15 +1,6 @@
----
-title: DOWN_LEFT
----
-//[SwerveBaseTemplate](../../../../../index.html)/[frc.robot.utils](../../../index.html)/[LogitechGamingPad](../../index.html)/[DPad](../index.html)/[DOWN_LEFT](index.html)
-
-
+//[SwerveBaseTemplate](../../../../../index.md)/[frc.robot.utils](../../../index.md)/[LogitechGamingPad](../../index.md)/[DPad](../index.md)/[DOWN_LEFT](index.md)
 
 # DOWN_LEFT
 
-
-
 [jvm]\
-[DOWN_LEFT](index.html)
-
-
+[DOWN_LEFT](index.md)

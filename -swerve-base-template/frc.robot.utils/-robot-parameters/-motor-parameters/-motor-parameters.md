@@ -1,17 +1,6 @@
----
-title: MotorParameters
----
-//[SwerveBaseTemplate](../../../../index.html)/[frc.robot.utils](../../index.html)/[RobotParameters](../index.html)/[MotorParameters](index.html)/[MotorParameters](-motor-parameters.html)
-
-
+//[SwerveBaseTemplate](../../../../index.md)/[frc.robot.utils](../../index.md)/[RobotParameters](../index.md)/[MotorParameters](index.md)/[MotorParameters](-motor-parameters.md)
 
 # MotorParameters
 
-
-
 [jvm]\
 constructor()
-
-
-
-

@@ -1,29 +1,12 @@
----
-title: getAutonomousCommand
----
-//[SwerveBaseTemplate](../../../index.html)/[frc.robot](../index.html)/[RobotContainer](index.html)/[getAutonomousCommand](get-autonomous-command.html)
-
-
+//[SwerveBaseTemplate](../../../index.md)/[frc.robot](../index.md)/[RobotContainer](index.md)/[getAutonomousCommand](get-autonomous-command.md)
 
 # getAutonomousCommand
 
-
-
 [jvm]\
-open fun [getAutonomousCommand](get-autonomous-command.html)(): Command
+open fun [getAutonomousCommand](get-autonomous-command.md)(): Command
 
-
-
-Use this to pass the autonomous command to the main [Robot](../-robot/index.html) class.
-
-
+Use this to pass the autonomous command to the main [Robot](../-robot/index.md) class.
 
 #### Return
 
-
-
 the command to run in autonomous
-
-
-
-

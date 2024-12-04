@@ -1,17 +1,6 @@
----
-title: BACK_RIGHT
----
-//[SwerveBaseTemplate](../../../../../index.html)/[frc.robot.utils](../../../index.html)/[RobotParameters](../../index.html)/[SwerveParameters](../index.html)/[PhysicalParameters](index.html)/[BACK_RIGHT](-b-a-c-k_-r-i-g-h-t.html)
-
-
+//[SwerveBaseTemplate](../../../../../index.md)/[frc.robot.utils](../../../index.md)/[RobotParameters](../../index.md)/[SwerveParameters](../index.md)/[PhysicalParameters](index.md)/[BACK_RIGHT](-b-a-c-k_-r-i-g-h-t.md)
 
 # BACK_RIGHT
 
-
-
 [jvm]\
-val [BACK_RIGHT](-b-a-c-k_-r-i-g-h-t.html): Translation2d
-
-
-
-
+val [BACK_RIGHT](-b-a-c-k_-r-i-g-h-t.md): Translation2d

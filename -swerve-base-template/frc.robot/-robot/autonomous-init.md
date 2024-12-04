@@ -1,21 +1,8 @@
----
-title: autonomousInit
----
-//[SwerveBaseTemplate](../../../index.html)/[frc.robot](../index.html)/[Robot](index.html)/[autonomousInit](autonomous-init.html)
-
-
+//[SwerveBaseTemplate](../../../index.md)/[frc.robot](../index.md)/[Robot](index.md)/[autonomousInit](autonomous-init.md)
 
 # autonomousInit
 
-
-
 [jvm]\
-open fun [autonomousInit](autonomous-init.html)()
+open fun [autonomousInit](autonomous-init.md)()
 
-
-
-This autonomous runs the autonomous command selected by your [RobotContainer](../-robot-container/index.html) class.
-
-
-
-
+This autonomous runs the autonomous command selected by your [RobotContainer](../-robot-container/index.md) class.

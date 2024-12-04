@@ -1,17 +1,6 @@
----
-title: button
----
-//[SwerveBaseTemplate](../../../../index.html)/[frc.robot.utils](../../index.html)/[LogitechGamingPad](../index.html)/[Button](index.html)/[button](button.html)
-
-
+//[SwerveBaseTemplate](../../../../index.md)/[frc.robot.utils](../../index.md)/[LogitechGamingPad](../index.md)/[Button](index.md)/[button](button.md)
 
 # button
 
-
-
 [jvm]\
-val [button](button.html): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)
-
-
-
-
+val [button](button.md): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)

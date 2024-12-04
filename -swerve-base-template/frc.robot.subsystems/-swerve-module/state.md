@@ -1,17 +1,6 @@
----
-title: state
----
-//[SwerveBaseTemplate](../../../index.html)/[frc.robot.subsystems](../index.html)/[SwerveModule](index.html)/[state](state.html)
-
-
+//[SwerveBaseTemplate](../../../index.md)/[frc.robot.subsystems](../index.md)/[SwerveModule](index.md)/[state](state.md)
 
 # state
 
-
-
 [jvm]\
-open var [state](state.html): SwerveModuleState
-
-
-
-
+open var [state](state.md): SwerveModuleState

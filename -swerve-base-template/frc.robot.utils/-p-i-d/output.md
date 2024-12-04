@@ -1,17 +1,6 @@
----
-title: output
----
-//[SwerveBaseTemplate](../../../index.html)/[frc.robot.utils](../index.html)/[PID](index.html)/[output](output.html)
-
-
+//[SwerveBaseTemplate](../../../index.md)/[frc.robot.utils](../index.md)/[PID](index.md)/[output](output.md)
 
 # output
 
-
-
 [jvm]\
-open var [output](output.html): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)
-
-
-
-
+open var [output](output.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)

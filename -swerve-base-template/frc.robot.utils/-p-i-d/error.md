@@ -1,17 +1,6 @@
----
-title: error
----
-//[SwerveBaseTemplate](../../../index.html)/[frc.robot.utils](../index.html)/[PID](index.html)/[error](error.html)
-
-
+//[SwerveBaseTemplate](../../../index.md)/[frc.robot.utils](../index.md)/[PID](index.md)/[error](error.md)
 
 # error
 
-
-
 [jvm]\
-open var [error](error.html): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)
-
-
-
-
+open var [error](error.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)

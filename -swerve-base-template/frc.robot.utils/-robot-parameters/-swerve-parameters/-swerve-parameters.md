@@ -1,17 +1,6 @@
----
-title: SwerveParameters
----
-//[SwerveBaseTemplate](../../../../index.html)/[frc.robot.utils](../../index.html)/[RobotParameters](../index.html)/[SwerveParameters](index.html)/[SwerveParameters](-swerve-parameters.html)
-
-
+//[SwerveBaseTemplate](../../../../index.md)/[frc.robot.utils](../../index.md)/[RobotParameters](../index.md)/[SwerveParameters](index.md)/[SwerveParameters](-swerve-parameters.md)
 
 # SwerveParameters
 
-
-
 [jvm]\
 constructor()
-
-
-
-

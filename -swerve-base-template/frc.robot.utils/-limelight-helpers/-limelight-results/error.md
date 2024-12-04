@@ -1,17 +1,6 @@
----
-title: error
----
-//[SwerveBaseTemplate](../../../../index.html)/[frc.robot.utils](../../index.html)/[LimelightHelpers](../index.html)/[LimelightResults](index.html)/[error](error.html)
-
-
+//[SwerveBaseTemplate](../../../../index.md)/[frc.robot.utils](../../index.md)/[LimelightHelpers](../index.md)/[LimelightResults](index.md)/[error](error.md)
 
 # error
 
-
-
 [jvm]\
-open var [error](error.html): [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)
-
-
-
-
+open var [error](error.md): [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)

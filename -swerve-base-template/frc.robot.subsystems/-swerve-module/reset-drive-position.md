@@ -1,21 +1,8 @@
----
-title: resetDrivePosition
----
-//[SwerveBaseTemplate](../../../index.html)/[frc.robot.subsystems](../index.html)/[SwerveModule](index.html)/[resetDrivePosition](reset-drive-position.html)
-
-
+//[SwerveBaseTemplate](../../../index.md)/[frc.robot.subsystems](../index.md)/[SwerveModule](index.md)/[resetDrivePosition](reset-drive-position.md)
 
 # resetDrivePosition
 
-
-
 [jvm]\
-open fun [resetDrivePosition](reset-drive-position.html)()
-
-
+open fun [resetDrivePosition](reset-drive-position.md)()
 
 Resets the drive motor position to zero.
-
-
-
-

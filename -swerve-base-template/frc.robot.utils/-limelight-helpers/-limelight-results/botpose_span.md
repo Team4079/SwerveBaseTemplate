@@ -1,17 +1,6 @@
----
-title: botpose_span
----
-//[SwerveBaseTemplate](../../../../index.html)/[frc.robot.utils](../../index.html)/[LimelightHelpers](../index.html)/[LimelightResults](index.html)/[botpose_span](botpose_span.html)
-
-
+//[SwerveBaseTemplate](../../../../index.md)/[frc.robot.utils](../../index.md)/[LimelightHelpers](../index.md)/[LimelightResults](index.md)/[botpose_span](botpose_span.md)
 
 # botpose_span
 
-
-
 [jvm]\
-open var [botpose_span](botpose_span.html): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)
-
-
-
-
+open var [botpose_span](botpose_span.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)

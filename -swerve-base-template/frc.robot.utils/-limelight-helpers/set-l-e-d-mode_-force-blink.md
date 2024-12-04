@@ -1,17 +1,6 @@
----
-title: setLEDMode_ForceBlink
----
-//[SwerveBaseTemplate](../../../index.html)/[frc.robot.utils](../index.html)/[LimelightHelpers](index.html)/[setLEDMode_ForceBlink](set-l-e-d-mode_-force-blink.html)
-
-
+//[SwerveBaseTemplate](../../../index.md)/[frc.robot.utils](../index.md)/[LimelightHelpers](index.md)/[setLEDMode_ForceBlink](set-l-e-d-mode_-force-blink.md)
 
 # setLEDMode_ForceBlink
 
-
-
 [jvm]\
-open fun [setLEDMode_ForceBlink](set-l-e-d-mode_-force-blink.html)(limelightName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html))
-
-
-
-
+open fun [setLEDMode_ForceBlink](set-l-e-d-mode_-force-blink.md)(limelightName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html))

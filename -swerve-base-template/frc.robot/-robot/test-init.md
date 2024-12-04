@@ -1,21 +1,8 @@
----
-title: testInit
----
-//[SwerveBaseTemplate](../../../index.html)/[frc.robot](../index.html)/[Robot](index.html)/[testInit](test-init.html)
-
-
+//[SwerveBaseTemplate](../../../index.md)/[frc.robot](../index.md)/[Robot](index.md)/[testInit](test-init.md)
 
 # testInit
 
-
-
 [jvm]\
-open fun [testInit](test-init.html)()
-
-
+open fun [testInit](test-init.md)()
 
 This function is called once when test mode is initialized.
-
-
-
-

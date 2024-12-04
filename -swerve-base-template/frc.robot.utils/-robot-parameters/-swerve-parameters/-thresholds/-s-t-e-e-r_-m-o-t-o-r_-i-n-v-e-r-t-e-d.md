@@ -1,17 +1,6 @@
----
-title: STEER_MOTOR_INVERTED
----
-//[SwerveBaseTemplate](../../../../../index.html)/[frc.robot.utils](../../../index.html)/[RobotParameters](../../index.html)/[SwerveParameters](../index.html)/[Thresholds](index.html)/[STEER_MOTOR_INVERTED](-s-t-e-e-r_-m-o-t-o-r_-i-n-v-e-r-t-e-d.html)
-
-
+//[SwerveBaseTemplate](../../../../../index.md)/[frc.robot.utils](../../../index.md)/[RobotParameters](../../index.md)/[SwerveParameters](../index.md)/[Thresholds](index.md)/[STEER_MOTOR_INVERTED](-s-t-e-e-r_-m-o-t-o-r_-i-n-v-e-r-t-e-d.md)
 
 # STEER_MOTOR_INVERTED
 
-
-
 [jvm]\
-val [STEER_MOTOR_INVERTED](-s-t-e-e-r_-m-o-t-o-r_-i-n-v-e-r-t-e-d.html): InvertedValue
-
-
-
-
+val [STEER_MOTOR_INVERTED](-s-t-e-e-r_-m-o-t-o-r_-i-n-v-e-r-t-e-d.md): InvertedValue

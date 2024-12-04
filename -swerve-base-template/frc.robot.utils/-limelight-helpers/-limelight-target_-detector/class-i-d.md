@@ -1,17 +1,6 @@
----
-title: classID
----
-//[SwerveBaseTemplate](../../../../index.html)/[frc.robot.utils](../../index.html)/[LimelightHelpers](../index.html)/[LimelightTarget_Detector](index.html)/[classID](class-i-d.html)
-
-
+//[SwerveBaseTemplate](../../../../index.md)/[frc.robot.utils](../../index.md)/[LimelightHelpers](../index.md)/[LimelightTarget_Detector](index.md)/[classID](class-i-d.md)
 
 # classID
 
-
-
 [jvm]\
-open var [classID](class-i-d.html): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)
-
-
-
-
+open var [classID](class-i-d.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)

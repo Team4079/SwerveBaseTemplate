@@ -1,21 +1,8 @@
----
-title: teleopInit
----
-//[SwerveBaseTemplate](../../../index.html)/[frc.robot](../index.html)/[Robot](index.html)/[teleopInit](teleop-init.html)
-
-
+//[SwerveBaseTemplate](../../../index.md)/[frc.robot](../index.md)/[Robot](index.md)/[teleopInit](teleop-init.md)
 
 # teleopInit
 
-
-
 [jvm]\
-open fun [teleopInit](teleop-init.html)()
-
-
+open fun [teleopInit](teleop-init.md)()
 
 This function is called once when teleop mode is initialized.
-
-
-
-

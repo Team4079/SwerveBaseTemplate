@@ -1,17 +1,6 @@
----
-title: Thresholds
----
-//[SwerveBaseTemplate](../../../../../index.html)/[frc.robot.utils](../../../index.html)/[RobotParameters](../../index.html)/[SwerveParameters](../index.html)/[Thresholds](index.html)/[Thresholds](-thresholds.html)
-
-
+//[SwerveBaseTemplate](../../../../../index.md)/[frc.robot.utils](../../../index.md)/[RobotParameters](../../index.md)/[SwerveParameters](../index.md)/[Thresholds](index.md)/[Thresholds](-thresholds.md)
 
 # Thresholds
 
-
-
 [jvm]\
 constructor()
-
-
-
-

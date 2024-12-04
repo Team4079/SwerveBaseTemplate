@@ -1,17 +1,6 @@
----
-title: Extensions
----
-//[SwerveBaseTemplate](../../../index.html)/[frc.robot.utils](../index.html)/[Extensions](index.html)/[Extensions](-extensions.html)
-
-
+//[SwerveBaseTemplate](../../../index.md)/[frc.robot.utils](../index.md)/[Extensions](index.md)/[Extensions](-extensions.md)
 
 # Extensions
 
-
-
 [jvm]\
 constructor()
-
-
-
-

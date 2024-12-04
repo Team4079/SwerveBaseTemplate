@@ -1,17 +1,6 @@
----
-title: tagSpan
----
-//[SwerveBaseTemplate](../../../../index.html)/[frc.robot.utils](../../index.html)/[LimelightHelpers](../index.html)/[PoseEstimate](index.html)/[tagSpan](tag-span.html)
-
-
+//[SwerveBaseTemplate](../../../../index.md)/[frc.robot.utils](../../index.md)/[LimelightHelpers](../index.md)/[PoseEstimate](index.md)/[tagSpan](tag-span.md)
 
 # tagSpan
 
-
-
 [jvm]\
-open var [tagSpan](tag-span.html): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)
-
-
-
-
+open var [tagSpan](tag-span.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)

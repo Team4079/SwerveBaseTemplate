@@ -1,17 +1,6 @@
----
-title: pose
----
-//[SwerveBaseTemplate](../../../../index.html)/[frc.robot.utils](../../index.html)/[LimelightHelpers](../index.html)/[PoseEstimate](index.html)/[pose](pose.html)
-
-
+//[SwerveBaseTemplate](../../../../index.md)/[frc.robot.utils](../../index.md)/[LimelightHelpers](../index.md)/[PoseEstimate](index.md)/[pose](pose.md)
 
 # pose
 
-
-
 [jvm]\
-open var [pose](pose.html): Pose2d
-
-
-
-
+open var [pose](pose.md): Pose2d

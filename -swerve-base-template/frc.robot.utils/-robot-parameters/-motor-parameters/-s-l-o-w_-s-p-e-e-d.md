@@ -1,17 +1,6 @@
----
-title: SLOW_SPEED
----
-//[SwerveBaseTemplate](../../../../index.html)/[frc.robot.utils](../../index.html)/[RobotParameters](../index.html)/[MotorParameters](index.html)/[SLOW_SPEED](-s-l-o-w_-s-p-e-e-d.html)
-
-
+//[SwerveBaseTemplate](../../../../index.md)/[frc.robot.utils](../../index.md)/[RobotParameters](../index.md)/[MotorParameters](index.md)/[SLOW_SPEED](-s-l-o-w_-s-p-e-e-d.md)
 
 # SLOW_SPEED
 
-
-
 [jvm]\
-val [SLOW_SPEED](-s-l-o-w_-s-p-e-e-d.html): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) = 0.3
-
-
-
-
+val [SLOW_SPEED](-s-l-o-w_-s-p-e-e-d.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) = 0.3

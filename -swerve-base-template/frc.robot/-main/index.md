@@ -1,31 +1,18 @@
----
-title: Main
----
-//[SwerveBaseTemplate](../../../index.html)/[frc.robot](../index.html)/[Main](index.html)
-
-
+//[SwerveBaseTemplate](../../../index.md)/[frc.robot](../index.md)/[Main](index.md)
 
 # Main
 
-
-
 [jvm]\
-class [Main](index.html)
-
-
+class [Main](index.md)
 
 ## Constructors
 
-
 | | |
 |---|---|
-| [Main](-main.html) | [jvm]<br>constructor() |
-
+| [Main](-main.md) | [jvm]<br>constructor() |
 
 ## Functions
 
-
 | Name | Summary |
 |---|---|
-| [main](main.html) | [jvm]<br>open fun [main](main.html)(args: [Array](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)&lt;[String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)&gt;)<br>Main initialization function. |
-
+| [main](main.md) | [jvm]<br>open fun [main](main.md)(args: [Array](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)&lt;[String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)&gt;)<br>Main initialization function. |

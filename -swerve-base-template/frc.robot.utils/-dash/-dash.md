@@ -1,17 +1,6 @@
----
-title: Dash
----
-//[SwerveBaseTemplate](../../../index.html)/[frc.robot.utils](../index.html)/[Dash](index.html)/[Dash](-dash.html)
-
-
+//[SwerveBaseTemplate](../../../index.md)/[frc.robot.utils](../index.md)/[Dash](index.md)/[Dash](-dash.md)
 
 # Dash
 
-
-
 [jvm]\
 constructor()
-
-
-
-

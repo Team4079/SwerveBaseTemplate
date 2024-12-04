@@ -1,17 +1,6 @@
----
-title: LimelightTarget_Detector
----
-//[SwerveBaseTemplate](../../../../index.html)/[frc.robot.utils](../../index.html)/[LimelightHelpers](../index.html)/[LimelightTarget_Detector](index.html)/[LimelightTarget_Detector](-limelight-target_-detector.html)
-
-
+//[SwerveBaseTemplate](../../../../index.md)/[frc.robot.utils](../../index.md)/[LimelightHelpers](../index.md)/[LimelightTarget_Detector](index.md)/[LimelightTarget_Detector](-limelight-target_-detector.md)
 
 # LimelightTarget_Detector
 
-
-
 [jvm]\
 constructor()
-
-
-
-

@@ -1,17 +1,6 @@
----
-title: botpose_wpired
----
-//[SwerveBaseTemplate](../../../../index.html)/[frc.robot.utils](../../index.html)/[LimelightHelpers](../index.html)/[LimelightResults](index.html)/[botpose_wpired](botpose_wpired.html)
-
-
+//[SwerveBaseTemplate](../../../../index.md)/[frc.robot.utils](../../index.md)/[LimelightHelpers](../index.md)/[LimelightResults](index.md)/[botpose_wpired](botpose_wpired.md)
 
 # botpose_wpired
 
-
-
 [jvm]\
-open var [botpose_wpired](botpose_wpired.html): [Array](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)&lt;[Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)&gt;
-
-
-
-
+open var [botpose_wpired](botpose_wpired.md): [Array](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)&lt;[Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)&gt;

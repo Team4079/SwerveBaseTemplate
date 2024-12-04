@@ -1,21 +1,8 @@
----
-title: resetI
----
-//[SwerveBaseTemplate](../../../index.html)/[frc.robot.utils](../index.html)/[PID](index.html)/[resetI](reset-i.html)
-
-
+//[SwerveBaseTemplate](../../../index.md)/[frc.robot.utils](../index.md)/[PID](index.md)/[resetI](reset-i.md)
 
 # resetI
 
-
-
 [jvm]\
-open fun [resetI](reset-i.html)()
-
-
+open fun [resetI](reset-i.md)()
 
 Resets the integral term.
-
-
-
-

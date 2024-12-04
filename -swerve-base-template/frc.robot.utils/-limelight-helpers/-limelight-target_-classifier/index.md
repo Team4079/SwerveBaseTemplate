@@ -1,40 +1,27 @@
----
-title: LimelightTarget_Classifier
----
-//[SwerveBaseTemplate](../../../../index.html)/[frc.robot.utils](../../index.html)/[LimelightHelpers](../index.html)/[LimelightTarget_Classifier](index.html)
-
-
+//[SwerveBaseTemplate](../../../../index.md)/[frc.robot.utils](../../index.md)/[LimelightHelpers](../index.md)/[LimelightTarget_Classifier](index.md)
 
 # LimelightTarget_Classifier
 
-
-
 [jvm]\
-open class [LimelightTarget_Classifier](index.html)
+open class [LimelightTarget_Classifier](index.md)
 
 Represents a Neural Classifier Pipeline Result extracted from JSON Output
 
-
-
 ## Constructors
-
 
 | | |
 |---|---|
-| [LimelightTarget_Classifier](-limelight-target_-classifier.html) | [jvm]<br>constructor() |
-
+| [LimelightTarget_Classifier](-limelight-target_-classifier.md) | [jvm]<br>constructor() |
 
 ## Properties
 
-
 | Name | Summary |
 |---|---|
-| [classID](class-i-d.html) | [jvm]<br>open var [classID](class-i-d.html): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) |
-| [className](class-name.html) | [jvm]<br>open var [className](class-name.html): [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html) |
-| [confidence](confidence.html) | [jvm]<br>open var [confidence](confidence.html): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) |
-| [tx](tx.html) | [jvm]<br>open var [tx](tx.html): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) |
-| [tx_pixels](tx_pixels.html) | [jvm]<br>open var [tx_pixels](tx_pixels.html): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) |
-| [ty](ty.html) | [jvm]<br>open var [ty](ty.html): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) |
-| [ty_pixels](ty_pixels.html) | [jvm]<br>open var [ty_pixels](ty_pixels.html): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) |
-| [zone](zone.html) | [jvm]<br>open var [zone](zone.html): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) |
-
+| [classID](class-i-d.md) | [jvm]<br>open var [classID](class-i-d.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) |
+| [className](class-name.md) | [jvm]<br>open var [className](class-name.md): [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html) |
+| [confidence](confidence.md) | [jvm]<br>open var [confidence](confidence.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) |
+| [tx](tx.md) | [jvm]<br>open var [tx](tx.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) |
+| [tx_pixels](tx_pixels.md) | [jvm]<br>open var [tx_pixels](tx_pixels.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) |
+| [ty](ty.md) | [jvm]<br>open var [ty](ty.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) |
+| [ty_pixels](ty_pixels.md) | [jvm]<br>open var [ty_pixels](ty_pixels.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) |
+| [zone](zone.md) | [jvm]<br>open var [zone](zone.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) |

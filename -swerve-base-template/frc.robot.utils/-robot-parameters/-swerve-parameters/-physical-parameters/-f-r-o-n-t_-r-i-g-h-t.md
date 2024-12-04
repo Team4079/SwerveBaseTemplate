@@ -1,17 +1,6 @@
----
-title: FRONT_RIGHT
----
-//[SwerveBaseTemplate](../../../../../index.html)/[frc.robot.utils](../../../index.html)/[RobotParameters](../../index.html)/[SwerveParameters](../index.html)/[PhysicalParameters](index.html)/[FRONT_RIGHT](-f-r-o-n-t_-r-i-g-h-t.html)
-
-
+//[SwerveBaseTemplate](../../../../../index.md)/[frc.robot.utils](../../../index.md)/[RobotParameters](../../index.md)/[SwerveParameters](../index.md)/[PhysicalParameters](index.md)/[FRONT_RIGHT](-f-r-o-n-t_-r-i-g-h-t.md)
 
 # FRONT_RIGHT
 
-
-
 [jvm]\
-val [FRONT_RIGHT](-f-r-o-n-t_-r-i-g-h-t.html): Translation2d
-
-
-
-
+val [FRONT_RIGHT](-f-r-o-n-t_-r-i-g-h-t.md): Translation2d

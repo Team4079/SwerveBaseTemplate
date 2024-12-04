@@ -1,17 +1,6 @@
----
-title: getTargetPose_CameraSpace
----
-//[SwerveBaseTemplate](../../../../index.html)/[frc.robot.utils](../../index.html)/[LimelightHelpers](../index.html)/[LimelightTarget_Retro](index.html)/[getTargetPose_CameraSpace](get-target-pose_-camera-space.html)
-
-
+//[SwerveBaseTemplate](../../../../index.md)/[frc.robot.utils](../../index.md)/[LimelightHelpers](../index.md)/[LimelightTarget_Retro](index.md)/[getTargetPose_CameraSpace](get-target-pose_-camera-space.md)
 
 # getTargetPose_CameraSpace
 
-
-
 [jvm]\
-open fun [getTargetPose_CameraSpace](get-target-pose_-camera-space.html)(): Pose3d
-
-
-
-
+open fun [getTargetPose_CameraSpace](get-target-pose_-camera-space.md)(): Pose3d

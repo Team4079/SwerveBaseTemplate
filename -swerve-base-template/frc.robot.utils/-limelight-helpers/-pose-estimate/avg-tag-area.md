@@ -1,17 +1,6 @@
----
-title: avgTagArea
----
-//[SwerveBaseTemplate](../../../../index.html)/[frc.robot.utils](../../index.html)/[LimelightHelpers](../index.html)/[PoseEstimate](index.html)/[avgTagArea](avg-tag-area.html)
-
-
+//[SwerveBaseTemplate](../../../../index.md)/[frc.robot.utils](../../index.md)/[LimelightHelpers](../index.md)/[PoseEstimate](index.md)/[avgTagArea](avg-tag-area.md)
 
 # avgTagArea
 
-
-
 [jvm]\
-open var [avgTagArea](avg-tag-area.html): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)
-
-
-
-
+open var [avgTagArea](avg-tag-area.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)

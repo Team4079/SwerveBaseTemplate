@@ -1,15 +1,6 @@
----
-title: START
----
-//[SwerveBaseTemplate](../../../../../index.html)/[frc.robot.utils](../../../index.html)/[LogitechGamingPad](../../index.html)/[Button](../index.html)/[START](index.html)
-
-
+//[SwerveBaseTemplate](../../../../../index.md)/[frc.robot.utils](../../../index.md)/[LogitechGamingPad](../../index.md)/[Button](../index.md)/[START](index.md)
 
 # START
 
-
-
 [jvm]\
-[START](index.html)
-
-
+[START](index.md)

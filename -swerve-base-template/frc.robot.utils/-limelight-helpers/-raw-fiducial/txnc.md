@@ -1,17 +1,6 @@
----
-title: txnc
----
-//[SwerveBaseTemplate](../../../../index.html)/[frc.robot.utils](../../index.html)/[LimelightHelpers](../index.html)/[RawFiducial](index.html)/[txnc](txnc.html)
-
-
+//[SwerveBaseTemplate](../../../../index.md)/[frc.robot.utils](../../index.md)/[LimelightHelpers](../index.md)/[RawFiducial](index.md)/[txnc](txnc.md)
 
 # txnc
 
-
-
 [jvm]\
-open var [txnc](txnc.html): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)
-
-
-
-
+open var [txnc](txnc.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)

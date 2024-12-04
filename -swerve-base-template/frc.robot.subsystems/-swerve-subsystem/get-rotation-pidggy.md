@@ -1,29 +1,12 @@
----
-title: getRotationPidggy
----
-//[SwerveBaseTemplate](../../../index.html)/[frc.robot.subsystems](../index.html)/[SwerveSubsystem](index.html)/[getRotationPidggy](get-rotation-pidggy.html)
-
-
+//[SwerveBaseTemplate](../../../index.md)/[frc.robot.subsystems](../index.md)/[SwerveSubsystem](index.md)/[getRotationPidggy](get-rotation-pidggy.md)
 
 # getRotationPidggy
 
-
-
 [jvm]\
-open fun [getRotationPidggy](get-rotation-pidggy.html)(): Rotation2d
-
-
+open fun [getRotationPidggy](get-rotation-pidggy.md)(): Rotation2d
 
 Gets the rotation of the Pigeon2 IMU for PID control.
 
-
-
 #### Return
 
-
-
 The rotation of the Pigeon2 IMU for PID control.
-
-
-
-

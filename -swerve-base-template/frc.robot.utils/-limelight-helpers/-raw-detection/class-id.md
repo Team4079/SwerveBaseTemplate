@@ -1,17 +1,6 @@
----
-title: classId
----
-//[SwerveBaseTemplate](../../../../index.html)/[frc.robot.utils](../../index.html)/[LimelightHelpers](../index.html)/[RawDetection](index.html)/[classId](class-id.html)
-
-
+//[SwerveBaseTemplate](../../../../index.md)/[frc.robot.utils](../../index.md)/[LimelightHelpers](../index.md)/[RawDetection](index.md)/[classId](class-id.md)
 
 # classId
 
-
-
 [jvm]\
-open var [classId](class-id.html): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)
-
-
-
-
+open var [classId](class-id.md): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)

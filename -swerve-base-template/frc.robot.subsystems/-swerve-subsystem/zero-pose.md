@@ -1,21 +1,8 @@
----
-title: zeroPose
----
-//[SwerveBaseTemplate](../../../index.html)/[frc.robot.subsystems](../index.html)/[SwerveSubsystem](index.html)/[zeroPose](zero-pose.html)
-
-
+//[SwerveBaseTemplate](../../../index.md)/[frc.robot.subsystems](../index.md)/[SwerveSubsystem](index.md)/[zeroPose](zero-pose.md)
 
 # zeroPose
 
-
-
 [jvm]\
-open fun [zeroPose](zero-pose.html)()
-
-
+open fun [zeroPose](zero-pose.md)()
 
 Resets the pose of the robot to zero.
-
-
-
-

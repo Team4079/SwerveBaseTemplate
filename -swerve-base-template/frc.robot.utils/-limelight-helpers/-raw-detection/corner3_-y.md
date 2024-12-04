@@ -1,17 +1,6 @@
----
-title: corner3_Y
----
-//[SwerveBaseTemplate](../../../../index.html)/[frc.robot.utils](../../index.html)/[LimelightHelpers](../index.html)/[RawDetection](index.html)/[corner3_Y](corner3_-y.html)
-
-
+//[SwerveBaseTemplate](../../../../index.md)/[frc.robot.utils](../../index.md)/[LimelightHelpers](../index.md)/[RawDetection](index.md)/[corner3_Y](corner3_-y.md)
 
 # corner3_Y
 
-
-
 [jvm]\
-open var [corner3_Y](corner3_-y.html): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)
-
-
-
-
+open var [corner3_Y](corner3_-y.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)

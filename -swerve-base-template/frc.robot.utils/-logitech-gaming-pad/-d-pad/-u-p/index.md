@@ -1,15 +1,6 @@
----
-title: UP
----
-//[SwerveBaseTemplate](../../../../../index.html)/[frc.robot.utils](../../../index.html)/[LogitechGamingPad](../../index.html)/[DPad](../index.html)/[UP](index.html)
-
-
+//[SwerveBaseTemplate](../../../../../index.md)/[frc.robot.utils](../../../index.md)/[LogitechGamingPad](../../index.md)/[DPad](../index.md)/[UP](index.md)
 
 # UP
 
-
-
 [jvm]\
-[UP](index.html)
-
-
+[UP](index.md)
