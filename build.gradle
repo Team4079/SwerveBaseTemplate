@@ -151,7 +151,7 @@ tasks.named('build') {
     dependsOn 'spotlessApply'
 }
 
-dokkaGfm {
+dokkaJekyll {
     outputDirectory.set(file("${layout.buildDirectory.get().asFile.path}${File.separator}dokka"))
     suppressInheritedMembers = true
 }
