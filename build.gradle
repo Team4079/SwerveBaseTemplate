@@ -153,9 +153,7 @@ tasks.named('build') {
     dependsOn 'spotlessApply'
 }
 
-dokkaHtml {
-    description = 'Generates HTML documentation using Dokka'
-    group = 'documentation'
+dokkaGfm {
     outputDirectory.set(file("${layout.buildDirectory.get().asFile.path}${File.separator}dokka"))
     suppressInheritedMembers = true
 }
