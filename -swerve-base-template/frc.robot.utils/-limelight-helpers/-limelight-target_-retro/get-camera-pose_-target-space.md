@@ -3,4 +3,5 @@
 # getCameraPose_TargetSpace
 
 [jvm]\
-open fun [getCameraPose_TargetSpace](get-camera-pose_-target-space.md)(): Pose3d
+
+public Pose3d[getCameraPose_TargetSpace](get-camera-pose_-target-space.md)()

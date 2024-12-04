@@ -3,4 +3,5 @@
 # getLimelightDoubleArrayEntry
 
 [jvm]\
-open fun [getLimelightDoubleArrayEntry](get-limelight-double-array-entry.md)(tableName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html), entryName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)): DoubleArrayEntry
+
+public static DoubleArrayEntry[getLimelightDoubleArrayEntry](get-limelight-double-array-entry.md)([String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)tableName, [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)entryName)

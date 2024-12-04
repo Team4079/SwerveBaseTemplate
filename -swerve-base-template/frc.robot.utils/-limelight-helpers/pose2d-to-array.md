@@ -3,7 +3,8 @@
 # pose2dToArray
 
 [jvm]\
-open fun [pose2dToArray](pose2d-to-array.md)(pose: Pose2d): [Array](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)&lt;[Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)&gt;
+
+public static [Array](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)&lt;double&gt;[pose2dToArray](pose2d-to-array.md)(Pose2dpose)
 
 Converts a Pose2d object to an array of doubles in the format [x, y, z, roll, pitch, yaw]. Translation components are in meters, rotation components are in degrees. Note: z, roll, and pitch will be 0 since Pose2d only contains x, y, and yaw.
 

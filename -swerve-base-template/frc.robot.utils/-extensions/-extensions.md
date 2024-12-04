@@ -3,4 +3,5 @@
 # Extensions
 
 [jvm]\
-constructor()
+
+public void[Extensions](-extensions.md)()

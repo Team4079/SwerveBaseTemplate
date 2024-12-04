@@ -3,7 +3,8 @@
 # setDriveSpeeds
 
 [jvm]\
-open fun [setDriveSpeeds](set-drive-speeds.md)(forwardSpeed: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), leftSpeed: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), turnSpeed: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), isFieldOriented: [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html))
+
+public void[setDriveSpeeds](set-drive-speeds.md)(doubleforwardSpeed, doubleleftSpeed, doubleturnSpeed, booleanisFieldOriented)
 
 Sets the drive speeds for the swerve modules.
 

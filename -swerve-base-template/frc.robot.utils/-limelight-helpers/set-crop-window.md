@@ -3,7 +3,8 @@
 # setCropWindow
 
 [jvm]\
-open fun [setCropWindow](set-crop-window.md)(limelightName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html), cropXMin: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), cropXMax: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), cropYMin: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), cropYMax: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html))
+
+public static void[setCropWindow](set-crop-window.md)([String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)limelightName, doublecropXMin, doublecropXMax, doublecropYMin, doublecropYMax)
 
 Sets the crop window for the camera. The crop window in the UI must be completely open.
 

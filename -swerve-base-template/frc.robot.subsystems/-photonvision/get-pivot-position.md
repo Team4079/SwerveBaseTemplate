@@ -3,7 +3,8 @@
 # getPivotPosition
 
 [jvm]\
-open fun [getPivotPosition](get-pivot-position.md)(): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)
+
+public double[getPivotPosition](get-pivot-position.md)()
 
 Gets the forward distance to the target.
 

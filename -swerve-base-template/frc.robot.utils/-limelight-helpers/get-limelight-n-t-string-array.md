@@ -3,4 +3,5 @@
 # getLimelightNTStringArray
 
 [jvm]\
-open fun [getLimelightNTStringArray](get-limelight-n-t-string-array.md)(tableName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html), entryName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)): [Array](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)&lt;[String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)&gt;
+
+public static [Array](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)&lt;[String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)&gt;[getLimelightNTStringArray](get-limelight-n-t-string-array.md)([String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)tableName, [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)entryName)

@@ -3,4 +3,5 @@
 # getBButton
 
 [jvm]\
-open fun [getBButton](get-b-button.md)(): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)
+
+public boolean[getBButton](get-b-button.md)()

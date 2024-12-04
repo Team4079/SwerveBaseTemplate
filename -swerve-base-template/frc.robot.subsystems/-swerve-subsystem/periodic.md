@@ -3,6 +3,7 @@
 # periodic
 
 [jvm]\
-open fun [periodic](periodic.md)()
+
+public void[periodic](periodic.md)()
 
 This method is called periodically by the scheduler. It updates the pose estimator and dashboard values.

@@ -3,7 +3,8 @@
 # chassisSpeedsDrive
 
 [jvm]\
-open fun [chassisSpeedsDrive](chassis-speeds-drive.md)(chassisSpeeds: ChassisSpeeds)
+
+public void[chassisSpeedsDrive](chassis-speeds-drive.md)(ChassisSpeedschassisSpeeds)
 
 Drives the robot using chassis speeds.
 

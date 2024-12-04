@@ -3,7 +3,8 @@
 # getLatency_Capture
 
 [jvm]\
-open fun [getLatency_Capture](get-latency_-capture.md)(limelightName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)
+
+public static double[getLatency_Capture](get-latency_-capture.md)([String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)limelightName)
 
 Gets the capture latency.
 

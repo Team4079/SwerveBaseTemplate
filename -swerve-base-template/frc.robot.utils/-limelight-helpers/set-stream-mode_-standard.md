@@ -3,7 +3,8 @@
 # setStreamMode_Standard
 
 [jvm]\
-open fun [setStreamMode_Standard](set-stream-mode_-standard.md)(limelightName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html))
+
+public static void[setStreamMode_Standard](set-stream-mode_-standard.md)([String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)limelightName)
 
 Enables standard side-by-side stream mode.
 

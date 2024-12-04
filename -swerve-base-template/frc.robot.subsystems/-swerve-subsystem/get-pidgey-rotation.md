@@ -3,7 +3,8 @@
 # getPidgeyRotation
 
 [jvm]\
-open fun [getPidgeyRotation](get-pidgey-rotation.md)(): Rotation2d
+
+public Rotation2d[getPidgeyRotation](get-pidgey-rotation.md)()
 
 Gets the rotation of the Pigeon2 IMU.
 

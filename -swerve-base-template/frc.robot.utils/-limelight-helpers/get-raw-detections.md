@@ -3,7 +3,8 @@
 # getRawDetections
 
 [jvm]\
-open fun [getRawDetections](get-raw-detections.md)(limelightName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)): [Array](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)&lt;[LimelightHelpers.RawDetection](-raw-detection/index.md)&gt;
+
+public static [Array](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)&lt;[LimelightHelpers.RawDetection](-raw-detection/index.md)&gt;[getRawDetections](get-raw-detections.md)([String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)limelightName)
 
 Gets the latest raw neural detector results from NetworkTables
 

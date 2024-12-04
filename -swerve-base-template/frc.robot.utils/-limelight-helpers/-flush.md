@@ -3,4 +3,5 @@
 # Flush
 
 [jvm]\
-open fun [Flush](-flush.md)()
+
+public static void[Flush](-flush.md)()

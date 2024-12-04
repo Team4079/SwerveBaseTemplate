@@ -3,7 +3,8 @@
 # LogitechGamingPad
 
 [jvm]\
-constructor(usbPort: [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html))
+
+public void[LogitechGamingPad](-logitech-gaming-pad.md)(intusbPort)
 
 Constructor for the LogitechGamingPad.
 

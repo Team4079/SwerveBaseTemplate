@@ -3,6 +3,7 @@
 # testInit
 
 [jvm]\
-open fun [testInit](test-init.md)()
+
+public void[testInit](test-init.md)()
 
 This function is called once when test mode is initialized.

@@ -3,7 +3,7 @@
 # PoseEstimate
 
 [jvm]\
-open class [PoseEstimate](index.md)
+public class [PoseEstimate](index.md)
 
 Represents a 3D Pose Estimate.
 
@@ -11,18 +11,18 @@ Represents a 3D Pose Estimate.
 
 | | |
 |---|---|
-| [PoseEstimate](-pose-estimate.md) | [jvm]<br>constructor()<br>Instantiates a PoseEstimate object with default values<br>constructor(pose: Pose2d, timestampSeconds: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), latency: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), tagCount: [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html), tagSpan: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), avgTagDist: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), avgTagArea: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), rawFiducials: [Array](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)&lt;[LimelightHelpers.RawFiducial](../-raw-fiducial/index.md)&gt;, isMegaTag2: [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)) |
+| [LimelightHelpers.PoseEstimate](-limelight-helpers.-pose-estimate.md) | [jvm]<br>public void[LimelightHelpers.PoseEstimate](-limelight-helpers.-pose-estimate.md)()<br>Instantiates a PoseEstimate object with default values<br>public void[LimelightHelpers.PoseEstimate](-limelight-helpers.-pose-estimate.md)(Pose2dpose, doubletimestampSeconds, doublelatency, inttagCount, doubletagSpan, doubleavgTagDist, doubleavgTagArea, [Array](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)&lt;[LimelightHelpers.RawFiducial](../-raw-fiducial/index.md)&gt;rawFiducials, booleanisMegaTag2) |
 
 ## Properties
 
 | Name | Summary |
 |---|---|
-| [avgTagArea](avg-tag-area.md) | [jvm]<br>open var [avgTagArea](avg-tag-area.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) |
-| [avgTagDist](avg-tag-dist.md) | [jvm]<br>open var [avgTagDist](avg-tag-dist.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) |
-| [isMegaTag2](is-mega-tag2.md) | [jvm]<br>open var [isMegaTag2](is-mega-tag2.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) |
-| [latency](latency.md) | [jvm]<br>open var [latency](latency.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) |
-| [pose](pose.md) | [jvm]<br>open var [pose](pose.md): Pose2d |
-| [rawFiducials](raw-fiducials.md) | [jvm]<br>open var [rawFiducials](raw-fiducials.md): [Array](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)&lt;[LimelightHelpers.RawFiducial](../-raw-fiducial/index.md)&gt; |
-| [tagCount](tag-count.md) | [jvm]<br>open var [tagCount](tag-count.md): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) |
-| [tagSpan](tag-span.md) | [jvm]<br>open var [tagSpan](tag-span.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) |
-| [timestampSeconds](timestamp-seconds.md) | [jvm]<br>open var [timestampSeconds](timestamp-seconds.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) |
+| [avgTagArea](index.md#-340065053%2FProperties%2F-1216412040) | [jvm]<br>public double[avgTagArea](index.md#-340065053%2FProperties%2F-1216412040) |
+| [avgTagDist](index.md#903972330%2FProperties%2F-1216412040) | [jvm]<br>public double[avgTagDist](index.md#903972330%2FProperties%2F-1216412040) |
+| [isMegaTag2](index.md#1453186852%2FProperties%2F-1216412040) | [jvm]<br>public boolean[isMegaTag2](index.md#1453186852%2FProperties%2F-1216412040) |
+| [latency](index.md#-600044860%2FProperties%2F-1216412040) | [jvm]<br>public double[latency](index.md#-600044860%2FProperties%2F-1216412040) |
+| [pose](index.md#486609959%2FProperties%2F-1216412040) | [jvm]<br>public Pose2d[pose](index.md#486609959%2FProperties%2F-1216412040) |
+| [rawFiducials](index.md#244759346%2FProperties%2F-1216412040) | [jvm]<br>public [Array](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)&lt;[LimelightHelpers.RawFiducial](../-raw-fiducial/index.md)&gt;[rawFiducials](index.md#244759346%2FProperties%2F-1216412040) |
+| [tagCount](index.md#1945985571%2FProperties%2F-1216412040) | [jvm]<br>public int[tagCount](index.md#1945985571%2FProperties%2F-1216412040) |
+| [tagSpan](index.md#-2012963714%2FProperties%2F-1216412040) | [jvm]<br>public double[tagSpan](index.md#-2012963714%2FProperties%2F-1216412040) |
+| [timestampSeconds](index.md#41299631%2FProperties%2F-1216412040) | [jvm]<br>public double[timestampSeconds](index.md#41299631%2FProperties%2F-1216412040) |

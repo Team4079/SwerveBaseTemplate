@@ -3,7 +3,8 @@
 # getTY
 
 [jvm]\
-open fun [getTY](get-t-y.md)(limelightName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)
+
+public static double[getTY](get-t-y.md)([String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)limelightName)
 
 Gets the vertical offset from the crosshair to the target in degrees.
 

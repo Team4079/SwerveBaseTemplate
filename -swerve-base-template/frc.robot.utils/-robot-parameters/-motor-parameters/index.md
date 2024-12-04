@@ -3,7 +3,7 @@
 # MotorParameters
 
 [jvm]\
-open class [MotorParameters](index.md)
+public class [MotorParameters](index.md)
 
 Class containing global values related to motors.
 
@@ -11,43 +11,43 @@ Class containing global values related to motors.
 
 | | |
 |---|---|
-| [MotorParameters](-motor-parameters.md) | [jvm]<br>constructor() |
+| [RobotParameters.MotorParameters](-robot-parameters.-motor-parameters.md) | [jvm]<br>public void[RobotParameters.MotorParameters](-robot-parameters.-motor-parameters.md)() |
 
 ## Properties
 
 | Name | Summary |
 |---|---|
-| [AACORN_MODE](-a-a-c-o-r-n_-m-o-d-e.md) | [jvm]<br>open var [AACORN_MODE](-a-a-c-o-r-n_-m-o-d-e.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) |
-| [AACORN_SPEED](-a-a-c-o-r-n_-s-p-e-e-d.md) | [jvm]<br>val [AACORN_SPEED](-a-a-c-o-r-n_-s-p-e-e-d.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) = 0.95 |
-| [BACK_LEFT_CAN_CODER_ID](-b-a-c-k_-l-e-f-t_-c-a-n_-c-o-d-e-r_-i-d.md) | [jvm]<br>val [BACK_LEFT_CAN_CODER_ID](-b-a-c-k_-l-e-f-t_-c-a-n_-c-o-d-e-r_-i-d.md): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) = 11 |
-| [BACK_LEFT_DRIVE_ID](-b-a-c-k_-l-e-f-t_-d-r-i-v-e_-i-d.md) | [jvm]<br>val [BACK_LEFT_DRIVE_ID](-b-a-c-k_-l-e-f-t_-d-r-i-v-e_-i-d.md): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) = 6 |
-| [BACK_LEFT_STEER_ID](-b-a-c-k_-l-e-f-t_-s-t-e-e-r_-i-d.md) | [jvm]<br>val [BACK_LEFT_STEER_ID](-b-a-c-k_-l-e-f-t_-s-t-e-e-r_-i-d.md): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) = 5 |
-| [BACK_RIGHT_CAN_CODER_ID](-b-a-c-k_-r-i-g-h-t_-c-a-n_-c-o-d-e-r_-i-d.md) | [jvm]<br>val [BACK_RIGHT_CAN_CODER_ID](-b-a-c-k_-r-i-g-h-t_-c-a-n_-c-o-d-e-r_-i-d.md): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) = 12 |
-| [BACK_RIGHT_DRIVE_ID](-b-a-c-k_-r-i-g-h-t_-d-r-i-v-e_-i-d.md) | [jvm]<br>val [BACK_RIGHT_DRIVE_ID](-b-a-c-k_-r-i-g-h-t_-d-r-i-v-e_-i-d.md): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) = 8 |
-| [BACK_RIGHT_STEER_ID](-b-a-c-k_-r-i-g-h-t_-s-t-e-e-r_-i-d.md) | [jvm]<br>val [BACK_RIGHT_STEER_ID](-b-a-c-k_-r-i-g-h-t_-s-t-e-e-r_-i-d.md): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) = 7 |
-| [DRIVE_MOTOR_GEAR_RATIO](-d-r-i-v-e_-m-o-t-o-r_-g-e-a-r_-r-a-t-i-o.md) | [jvm]<br>val [DRIVE_MOTOR_GEAR_RATIO](-d-r-i-v-e_-m-o-t-o-r_-g-e-a-r_-r-a-t-i-o.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) = 5.9 |
-| [DRIVE_STATOR_LIMIT](-d-r-i-v-e_-s-t-a-t-o-r_-l-i-m-i-t.md) | [jvm]<br>val [DRIVE_STATOR_LIMIT](-d-r-i-v-e_-s-t-a-t-o-r_-l-i-m-i-t.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) = 80.0 |
-| [DRIVE_SUPPLY_LIMIT](-d-r-i-v-e_-s-u-p-p-l-y_-l-i-m-i-t.md) | [jvm]<br>val [DRIVE_SUPPLY_LIMIT](-d-r-i-v-e_-s-u-p-p-l-y_-l-i-m-i-t.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) = 45.0 |
-| [DRIVE_SUPPLY_THRESHOLD](-d-r-i-v-e_-s-u-p-p-l-y_-t-h-r-e-s-h-o-l-d.md) | [jvm]<br>val [DRIVE_SUPPLY_THRESHOLD](-d-r-i-v-e_-s-u-p-p-l-y_-t-h-r-e-s-h-o-l-d.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) = 30.0 |
-| [DRIVE_TIME_THRESHOLD](-d-r-i-v-e_-t-i-m-e_-t-h-r-e-s-h-o-l-d.md) | [jvm]<br>val [DRIVE_TIME_THRESHOLD](-d-r-i-v-e_-t-i-m-e_-t-h-r-e-s-h-o-l-d.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) = 0.25 |
-| [ENCODER_COUNTS_PER_ROTATION](-e-n-c-o-d-e-r_-c-o-u-n-t-s_-p-e-r_-r-o-t-a-t-i-o-n.md) | [jvm]<br>val [ENCODER_COUNTS_PER_ROTATION](-e-n-c-o-d-e-r_-c-o-u-n-t-s_-p-e-r_-r-o-t-a-t-i-o-n.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) = 1.0 |
-| [FRONT_LEFT_CAN_CODER_ID](-f-r-o-n-t_-l-e-f-t_-c-a-n_-c-o-d-e-r_-i-d.md) | [jvm]<br>val [FRONT_LEFT_CAN_CODER_ID](-f-r-o-n-t_-l-e-f-t_-c-a-n_-c-o-d-e-r_-i-d.md): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) = 9 |
-| [FRONT_LEFT_DRIVE_ID](-f-r-o-n-t_-l-e-f-t_-d-r-i-v-e_-i-d.md) | [jvm]<br>val [FRONT_LEFT_DRIVE_ID](-f-r-o-n-t_-l-e-f-t_-d-r-i-v-e_-i-d.md): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) = 2 |
-| [FRONT_LEFT_STEER_ID](-f-r-o-n-t_-l-e-f-t_-s-t-e-e-r_-i-d.md) | [jvm]<br>val [FRONT_LEFT_STEER_ID](-f-r-o-n-t_-l-e-f-t_-s-t-e-e-r_-i-d.md): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) = 1 |
-| [FRONT_RIGHT_CAN_CODER_ID](-f-r-o-n-t_-r-i-g-h-t_-c-a-n_-c-o-d-e-r_-i-d.md) | [jvm]<br>val [FRONT_RIGHT_CAN_CODER_ID](-f-r-o-n-t_-r-i-g-h-t_-c-a-n_-c-o-d-e-r_-i-d.md): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) = 10 |
-| [FRONT_RIGHT_DRIVE_ID](-f-r-o-n-t_-r-i-g-h-t_-d-r-i-v-e_-i-d.md) | [jvm]<br>val [FRONT_RIGHT_DRIVE_ID](-f-r-o-n-t_-r-i-g-h-t_-d-r-i-v-e_-i-d.md): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) = 4 |
-| [FRONT_RIGHT_STEER_ID](-f-r-o-n-t_-r-i-g-h-t_-s-t-e-e-r_-i-d.md) | [jvm]<br>val [FRONT_RIGHT_STEER_ID](-f-r-o-n-t_-r-i-g-h-t_-s-t-e-e-r_-i-d.md): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) = 3 |
-| [HEADING](-h-e-a-d-i-n-g.md) | [jvm]<br>open var [HEADING](-h-e-a-d-i-n-g.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) |
-| [MAX_ANGULAR_SPEED](-m-a-x_-a-n-g-u-l-a-r_-s-p-e-e-d.md) | [jvm]<br>val [MAX_ANGULAR_SPEED](-m-a-x_-a-n-g-u-l-a-r_-s-p-e-e-d.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) = 14.660765716752367 |
-| [MAX_SPEED](-m-a-x_-s-p-e-e-d.md) | [jvm]<br>val [MAX_SPEED](-m-a-x_-s-p-e-e-d.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) = 5.76 |
-| [METERS_PER_REV](-m-e-t-e-r-s_-p-e-r_-r-e-v.md) | [jvm]<br>val [METERS_PER_REV](-m-e-t-e-r-s_-p-e-r_-r-e-v.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) = 0.3296787330677129 |
-| [PIDGEY_ID](-p-i-d-g-e-y_-i-d.md) | [jvm]<br>val [PIDGEY_ID](-p-i-d-g-e-y_-i-d.md): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) = 16 |
-| [SLOW_MODE](-s-l-o-w_-m-o-d-e.md) | [jvm]<br>open var [SLOW_MODE](-s-l-o-w_-m-o-d-e.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) |
-| [SLOW_SPEED](-s-l-o-w_-s-p-e-e-d.md) | [jvm]<br>val [SLOW_SPEED](-s-l-o-w_-s-p-e-e-d.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) = 0.3 |
-| [SPEED_CONSTANT](-s-p-e-e-d_-c-o-n-s-t-a-n-t.md) | [jvm]<br>val [SPEED_CONSTANT](-s-p-e-e-d_-c-o-n-s-t-a-n-t.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) = 0.6 |
-| [STEER_MOTOR_GEAR_RATIO](-s-t-e-e-r_-m-o-t-o-r_-g-e-a-r_-r-a-t-i-o.md) | [jvm]<br>val [STEER_MOTOR_GEAR_RATIO](-s-t-e-e-r_-m-o-t-o-r_-g-e-a-r_-r-a-t-i-o.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) = 21.428571428571427 |
-| [STEER_SUPPLY_LIMIT](-s-t-e-e-r_-s-u-p-p-l-y_-l-i-m-i-t.md) | [jvm]<br>val [STEER_SUPPLY_LIMIT](-s-t-e-e-r_-s-u-p-p-l-y_-l-i-m-i-t.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) = 30.0 |
-| [STEER_SUPPLY_THRESHOLD](-s-t-e-e-r_-s-u-p-p-l-y_-t-h-r-e-s-h-o-l-d.md) | [jvm]<br>val [STEER_SUPPLY_THRESHOLD](-s-t-e-e-r_-s-u-p-p-l-y_-t-h-r-e-s-h-o-l-d.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) = 30.0 |
-| [STEER_TIME_THRESHOLD](-s-t-e-e-r_-t-i-m-e_-t-h-r-e-s-h-o-l-d.md) | [jvm]<br>val [STEER_TIME_THRESHOLD](-s-t-e-e-r_-t-i-m-e_-t-h-r-e-s-h-o-l-d.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) = 0.25 |
-| [TURN_CONSTANT](-t-u-r-n_-c-o-n-s-t-a-n-t.md) | [jvm]<br>val [TURN_CONSTANT](-t-u-r-n_-c-o-n-s-t-a-n-t.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) = 0.3 |
-| [WHEEL_DIAMETER](-w-h-e-e-l_-d-i-a-m-e-t-e-r.md) | [jvm]<br>val [WHEEL_DIAMETER](-w-h-e-e-l_-d-i-a-m-e-t-e-r.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) = 0.106 |
+| [AACORN_MODE](index.md#1442766758%2FProperties%2F-1216412040) | [jvm]<br>public static boolean[AACORN_MODE](index.md#1442766758%2FProperties%2F-1216412040) |
+| [AACORN_SPEED](index.md#-1904284982%2FProperties%2F-1216412040) | [jvm]<br>public final static double[AACORN_SPEED](index.md#-1904284982%2FProperties%2F-1216412040) |
+| [BACK_LEFT_CAN_CODER_ID](index.md#442444502%2FProperties%2F-1216412040) | [jvm]<br>public final static int[BACK_LEFT_CAN_CODER_ID](index.md#442444502%2FProperties%2F-1216412040) |
+| [BACK_LEFT_DRIVE_ID](index.md#537653770%2FProperties%2F-1216412040) | [jvm]<br>public final static int[BACK_LEFT_DRIVE_ID](index.md#537653770%2FProperties%2F-1216412040) |
+| [BACK_LEFT_STEER_ID](index.md#1241811409%2FProperties%2F-1216412040) | [jvm]<br>public final static int[BACK_LEFT_STEER_ID](index.md#1241811409%2FProperties%2F-1216412040) |
+| [BACK_RIGHT_CAN_CODER_ID](index.md#-683397247%2FProperties%2F-1216412040) | [jvm]<br>public final static int[BACK_RIGHT_CAN_CODER_ID](index.md#-683397247%2FProperties%2F-1216412040) |
+| [BACK_RIGHT_DRIVE_ID](index.md#1290535989%2FProperties%2F-1216412040) | [jvm]<br>public final static int[BACK_RIGHT_DRIVE_ID](index.md#1290535989%2FProperties%2F-1216412040) |
+| [BACK_RIGHT_STEER_ID](index.md#1994693628%2FProperties%2F-1216412040) | [jvm]<br>public final static int[BACK_RIGHT_STEER_ID](index.md#1994693628%2FProperties%2F-1216412040) |
+| [DRIVE_MOTOR_GEAR_RATIO](index.md#-1840597728%2FProperties%2F-1216412040) | [jvm]<br>public final static double[DRIVE_MOTOR_GEAR_RATIO](index.md#-1840597728%2FProperties%2F-1216412040) |
+| [DRIVE_STATOR_LIMIT](index.md#1865615282%2FProperties%2F-1216412040) | [jvm]<br>public final static double[DRIVE_STATOR_LIMIT](index.md#1865615282%2FProperties%2F-1216412040) |
+| [DRIVE_SUPPLY_LIMIT](index.md#896595706%2FProperties%2F-1216412040) | [jvm]<br>public final static double[DRIVE_SUPPLY_LIMIT](index.md#896595706%2FProperties%2F-1216412040) |
+| [DRIVE_SUPPLY_THRESHOLD](index.md#-2038988726%2FProperties%2F-1216412040) | [jvm]<br>public final static double[DRIVE_SUPPLY_THRESHOLD](index.md#-2038988726%2FProperties%2F-1216412040) |
+| [DRIVE_TIME_THRESHOLD](index.md#1541521324%2FProperties%2F-1216412040) | [jvm]<br>public final static double[DRIVE_TIME_THRESHOLD](index.md#1541521324%2FProperties%2F-1216412040) |
+| [ENCODER_COUNTS_PER_ROTATION](index.md#-558826680%2FProperties%2F-1216412040) | [jvm]<br>public final static double[ENCODER_COUNTS_PER_ROTATION](index.md#-558826680%2FProperties%2F-1216412040) |
+| [FRONT_LEFT_CAN_CODER_ID](index.md#-1612338022%2FProperties%2F-1216412040) | [jvm]<br>public final static int[FRONT_LEFT_CAN_CODER_ID](index.md#-1612338022%2FProperties%2F-1216412040) |
+| [FRONT_LEFT_DRIVE_ID](index.md#461501902%2FProperties%2F-1216412040) | [jvm]<br>public final static int[FRONT_LEFT_DRIVE_ID](index.md#461501902%2FProperties%2F-1216412040) |
+| [FRONT_LEFT_STEER_ID](index.md#1165659541%2FProperties%2F-1216412040) | [jvm]<br>public final static int[FRONT_LEFT_STEER_ID](index.md#1165659541%2FProperties%2F-1216412040) |
+| [FRONT_RIGHT_CAN_CODER_ID](index.md#42853949%2FProperties%2F-1216412040) | [jvm]<br>public final static int[FRONT_RIGHT_CAN_CODER_ID](index.md#42853949%2FProperties%2F-1216412040) |
+| [FRONT_RIGHT_DRIVE_ID](index.md#-1070171919%2FProperties%2F-1216412040) | [jvm]<br>public final static int[FRONT_RIGHT_DRIVE_ID](index.md#-1070171919%2FProperties%2F-1216412040) |
+| [FRONT_RIGHT_STEER_ID](index.md#-366014280%2FProperties%2F-1216412040) | [jvm]<br>public final static int[FRONT_RIGHT_STEER_ID](index.md#-366014280%2FProperties%2F-1216412040) |
+| [HEADING](index.md#50111486%2FProperties%2F-1216412040) | [jvm]<br>public static double[HEADING](index.md#50111486%2FProperties%2F-1216412040) |
+| [MAX_ANGULAR_SPEED](index.md#-262258927%2FProperties%2F-1216412040) | [jvm]<br>public final static double[MAX_ANGULAR_SPEED](index.md#-262258927%2FProperties%2F-1216412040) |
+| [MAX_SPEED](index.md#1630559988%2FProperties%2F-1216412040) | [jvm]<br>public final static double[MAX_SPEED](index.md#1630559988%2FProperties%2F-1216412040) |
+| [METERS_PER_REV](index.md#-502957330%2FProperties%2F-1216412040) | [jvm]<br>public final static double[METERS_PER_REV](index.md#-502957330%2FProperties%2F-1216412040) |
+| [PIDGEY_ID](index.md#848457814%2FProperties%2F-1216412040) | [jvm]<br>public final static int[PIDGEY_ID](index.md#848457814%2FProperties%2F-1216412040) |
+| [SLOW_MODE](index.md#-2078903073%2FProperties%2F-1216412040) | [jvm]<br>public static boolean[SLOW_MODE](index.md#-2078903073%2FProperties%2F-1216412040) |
+| [SLOW_SPEED](index.md#593099953%2FProperties%2F-1216412040) | [jvm]<br>public final static double[SLOW_SPEED](index.md#593099953%2FProperties%2F-1216412040) |
+| [SPEED_CONSTANT](index.md#-1974544066%2FProperties%2F-1216412040) | [jvm]<br>public final static double[SPEED_CONSTANT](index.md#-1974544066%2FProperties%2F-1216412040) |
+| [STEER_MOTOR_GEAR_RATIO](index.md#796828839%2FProperties%2F-1216412040) | [jvm]<br>public final static double[STEER_MOTOR_GEAR_RATIO](index.md#796828839%2FProperties%2F-1216412040) |
+| [STEER_SUPPLY_LIMIT](index.md#-325074431%2FProperties%2F-1216412040) | [jvm]<br>public final static double[STEER_SUPPLY_LIMIT](index.md#-325074431%2FProperties%2F-1216412040) |
+| [STEER_SUPPLY_THRESHOLD](index.md#598437841%2FProperties%2F-1216412040) | [jvm]<br>public final static double[STEER_SUPPLY_THRESHOLD](index.md#598437841%2FProperties%2F-1216412040) |
+| [STEER_TIME_THRESHOLD](index.md#42591475%2FProperties%2F-1216412040) | [jvm]<br>public final static double[STEER_TIME_THRESHOLD](index.md#42591475%2FProperties%2F-1216412040) |
+| [TURN_CONSTANT](index.md#1055204090%2FProperties%2F-1216412040) | [jvm]<br>public final static double[TURN_CONSTANT](index.md#1055204090%2FProperties%2F-1216412040) |
+| [WHEEL_DIAMETER](index.md#2141505161%2FProperties%2F-1216412040) | [jvm]<br>public final static double[WHEEL_DIAMETER](index.md#2141505161%2FProperties%2F-1216412040) |

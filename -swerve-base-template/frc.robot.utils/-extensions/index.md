@@ -3,7 +3,7 @@
 # Extensions
 
 [jvm]\
-open class [Extensions](index.md)
+public class [Extensions](index.md)
 
 Utility class for extension functions.
 
@@ -11,10 +11,10 @@ Utility class for extension functions.
 
 | | |
 |---|---|
-| [Extensions](-extensions.md) | [jvm]<br>constructor() |
+| [Extensions](-extensions.md) | [jvm]<br>public void[Extensions](-extensions.md)() |
 
 ## Functions
 
 | Name | Summary |
 |---|---|
-| [dimensionIncrease](dimension-increase.md) | [jvm]<br>open fun [dimensionIncrease](dimension-increase.md)(translation2d: Translation2d, z: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)): Translation3d<br>Converts a 2D translation to a 3D translation. |
+| [dimensionIncrease](dimension-increase.md) | [jvm]<br>public static Translation3d[dimensionIncrease](dimension-increase.md)(Translation2dtranslation2d, doublez)<br>Converts a 2D translation to a 3D translation. |

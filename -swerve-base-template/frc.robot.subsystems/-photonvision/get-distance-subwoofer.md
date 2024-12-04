@@ -3,7 +3,8 @@
 # getDistanceSubwoofer
 
 [jvm]\
-open fun [getDistanceSubwoofer](get-distance-subwoofer.md)(): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)
+
+public double[getDistanceSubwoofer](get-distance-subwoofer.md)()
 
 Calculates and returns the distance to the subwoofer for the 2024 Crescendo game. 
 

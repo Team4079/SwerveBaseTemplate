@@ -3,6 +3,7 @@
 # setCustomDrivePID
 
 [jvm]\
-open fun [setCustomDrivePID](set-custom-drive-p-i-d.md)()
+
+public void[setCustomDrivePID](set-custom-drive-p-i-d.md)()
 
 Sets custom PID constants for the drive.

@@ -3,7 +3,8 @@
 # getTV
 
 [jvm]\
-open fun [getTV](get-t-v.md)(limelightName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)
+
+public static boolean[getTV](get-t-v.md)([String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)limelightName)
 
 Does the Limelight have a valid target?
 

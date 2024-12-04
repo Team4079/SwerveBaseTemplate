@@ -3,7 +3,8 @@
 # printPoseEstimate
 
 [jvm]\
-open fun [printPoseEstimate](print-pose-estimate.md)(pose: [LimelightHelpers.PoseEstimate](-pose-estimate/index.md))
+
+public static void[printPoseEstimate](print-pose-estimate.md)([LimelightHelpers.PoseEstimate](-pose-estimate/index.md)pose)
 
 Prints detailed information about a PoseEstimate to standard output. Includes timestamp, latency, tag count, tag span, average tag distance, average tag area, and detailed information about each detected fiducial.
 

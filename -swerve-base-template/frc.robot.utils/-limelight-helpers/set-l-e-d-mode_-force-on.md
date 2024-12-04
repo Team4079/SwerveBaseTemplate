@@ -3,4 +3,5 @@
 # setLEDMode_ForceOn
 
 [jvm]\
-open fun [setLEDMode_ForceOn](set-l-e-d-mode_-force-on.md)(limelightName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html))
+
+public static void[setLEDMode_ForceOn](set-l-e-d-mode_-force-on.md)([String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)limelightName)

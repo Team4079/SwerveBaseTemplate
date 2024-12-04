@@ -3,7 +3,8 @@
 # getLeftAnalogXAxis
 
 [jvm]\
-open fun [getLeftAnalogXAxis](get-left-analog-x-axis.md)(): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)
+
+public double[getLeftAnalogXAxis](get-left-analog-x-axis.md)()
 
 Gets the value of the left analog X axis.
 

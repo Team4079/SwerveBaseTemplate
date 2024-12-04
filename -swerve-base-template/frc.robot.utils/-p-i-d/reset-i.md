@@ -3,6 +3,7 @@
 # resetI
 
 [jvm]\
-open fun [resetI](reset-i.md)()
+
+public void[resetI](reset-i.md)()
 
 Resets the integral term.

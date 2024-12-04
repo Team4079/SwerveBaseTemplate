@@ -3,6 +3,7 @@
 # resetPidgey
 
 [jvm]\
-open fun [resetPidgey](reset-pidgey.md)()
+
+public void[resetPidgey](reset-pidgey.md)()
 
 Resets the Pigeon2 IMU.

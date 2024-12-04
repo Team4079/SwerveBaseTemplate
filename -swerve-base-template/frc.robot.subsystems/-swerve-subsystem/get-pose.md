@@ -3,7 +3,8 @@
 # getPose
 
 [jvm]\
-open fun [getPose](get-pose.md)(): Pose2d
+
+public Pose2d[getPose](get-pose.md)()
 
 Gets the current pose of the robot from he pose estimator.
 

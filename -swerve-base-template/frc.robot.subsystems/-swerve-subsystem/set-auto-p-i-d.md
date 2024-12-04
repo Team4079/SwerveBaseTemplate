@@ -3,6 +3,7 @@
 # setAutoPID
 
 [jvm]\
-open fun [setAutoPID](set-auto-p-i-d.md)()
+
+public void[setAutoPID](set-auto-p-i-d.md)()
 
 Sets the PID constants for autonomous driving.

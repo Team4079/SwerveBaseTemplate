@@ -3,7 +3,8 @@
 # SwerveSubsystem
 
 [jvm]\
-constructor(photonvision: [Photonvision](../-photonvision/index.md))
+
+public void[SwerveSubsystem](-swerve-subsystem.md)([Photonvision](../-photonvision/index.md)photonvision)
 
 Constructs a new SwerveSubsystem.
 

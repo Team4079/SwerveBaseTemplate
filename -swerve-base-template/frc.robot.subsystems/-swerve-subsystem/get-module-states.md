@@ -3,7 +3,8 @@
 # getModuleStates
 
 [jvm]\
-open fun [getModuleStates](get-module-states.md)(): [Array](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)&lt;SwerveModuleState&gt;
+
+public [Array](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)&lt;SwerveModuleState&gt;[getModuleStates](get-module-states.md)()
 
 Gets the states of the swerve modules.
 

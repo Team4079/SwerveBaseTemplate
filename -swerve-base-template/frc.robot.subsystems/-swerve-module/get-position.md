@@ -3,7 +3,8 @@
 # getPosition
 
 [jvm]\
-open fun [getPosition](get-position.md)(): SwerveModulePosition
+
+public SwerveModulePosition[getPosition](get-position.md)()
 
 Gets the current position of the swerve module.
 

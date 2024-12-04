@@ -3,4 +3,5 @@
 # getBotPose2d
 
 [jvm]\
-open fun [getBotPose2d](get-bot-pose2d.md)(): Pose2d
+
+public Pose2d[getBotPose2d](get-bot-pose2d.md)()

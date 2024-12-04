@@ -3,7 +3,8 @@
 # getLatency_Pipeline
 
 [jvm]\
-open fun [getLatency_Pipeline](get-latency_-pipeline.md)(limelightName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)
+
+public static double[getLatency_Pipeline](get-latency_-pipeline.md)([String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)limelightName)
 
 Gets the pipeline's processing latency contribution.
 

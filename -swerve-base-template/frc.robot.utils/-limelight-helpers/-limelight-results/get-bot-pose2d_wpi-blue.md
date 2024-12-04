@@ -3,4 +3,5 @@
 # getBotPose2d_wpiBlue
 
 [jvm]\
-open fun [getBotPose2d_wpiBlue](get-bot-pose2d_wpi-blue.md)(): Pose2d
+
+public Pose2d[getBotPose2d_wpiBlue](get-bot-pose2d_wpi-blue.md)()

@@ -3,6 +3,7 @@
 # resetDrive
 
 [jvm]\
-open fun [resetDrive](reset-drive.md)()
+
+public void[resetDrive](reset-drive.md)()
 
 Resets the drive positions of all swerve modules.

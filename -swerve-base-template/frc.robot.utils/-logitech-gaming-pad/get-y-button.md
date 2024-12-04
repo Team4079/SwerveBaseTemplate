@@ -3,4 +3,5 @@
 # getYButton
 
 [jvm]\
-open fun [getYButton](get-y-button.md)(): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)
+
+public boolean[getYButton](get-y-button.md)()

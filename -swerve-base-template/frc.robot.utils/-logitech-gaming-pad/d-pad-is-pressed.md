@@ -3,7 +3,8 @@
 # dPadIsPressed
 
 [jvm]\
-open fun [dPadIsPressed](d-pad-is-pressed.md)(): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)
+
+public boolean[dPadIsPressed](d-pad-is-pressed.md)()
 
 Checks if the DPad is pressed.
 

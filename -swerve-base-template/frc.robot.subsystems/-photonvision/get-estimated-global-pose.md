@@ -3,7 +3,8 @@
 # getEstimatedGlobalPose
 
 [jvm]\
-open fun [getEstimatedGlobalPose](get-estimated-global-pose.md)(prevEstimatedRobotPose: Pose2d): EstimatedRobotPose
+
+public EstimatedRobotPose[getEstimatedGlobalPose](get-estimated-global-pose.md)(Pose2dprevEstimatedRobotPose)
 
 Gets the estimated global pose of the robot.
 
@@ -20,7 +21,8 @@ jvm
 | prevEstimatedRobotPose | The previous estimated pose of the robot. |
 
 [jvm]\
-open fun [getEstimatedGlobalPose](get-estimated-global-pose.md)(): Transform3d
+
+public Transform3d[getEstimatedGlobalPose](get-estimated-global-pose.md)()
 
 Gets the estimated global pose of the robot.
 

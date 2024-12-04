@@ -3,7 +3,8 @@
 # getTwist
 
 [jvm]\
-open fun [getTwist](get-twist.md)(): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)
+
+public double[getTwist](get-twist.md)()
 
 Gets the twist value.
 

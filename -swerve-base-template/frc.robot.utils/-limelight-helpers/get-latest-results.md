@@ -3,7 +3,8 @@
 # getLatestResults
 
 [jvm]\
-open fun [getLatestResults](get-latest-results.md)(limelightName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)): [LimelightHelpers.LimelightResults](-limelight-results/index.md)
+
+public static [LimelightHelpers.LimelightResults](-limelight-results/index.md)[getLatestResults](get-latest-results.md)([String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)limelightName)
 
 Gets the latest JSON results output and returns a LimelightResults object.
 

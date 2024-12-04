@@ -3,6 +3,7 @@
 # Photonvision
 
 [jvm]\
-constructor()
+
+public void[Photonvision](-photonvision.md)()
 
 Constructs a new PhotonVision subsystem.

@@ -3,7 +3,8 @@
 # getRightAnalogXAxis
 
 [jvm]\
-open fun [getRightAnalogXAxis](get-right-analog-x-axis.md)(): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)
+
+public double[getRightAnalogXAxis](get-right-analog-x-axis.md)()
 
 Gets the value of the right analog X axis.
 

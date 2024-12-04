@@ -3,7 +3,8 @@
 # setRumble
 
 [jvm]\
-open fun [setRumble](set-rumble.md)(amount: [Float](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html))
+
+public void[setRumble](set-rumble.md)(floatamount)
 
 Sets the rumble amount for the gamepad.
 

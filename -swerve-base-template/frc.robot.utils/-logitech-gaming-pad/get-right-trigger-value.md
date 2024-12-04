@@ -3,7 +3,8 @@
 # getRightTriggerValue
 
 [jvm]\
-open fun [getRightTriggerValue](get-right-trigger-value.md)(): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)
+
+public double[getRightTriggerValue](get-right-trigger-value.md)()
 
 Gets the value of the right trigger.
 

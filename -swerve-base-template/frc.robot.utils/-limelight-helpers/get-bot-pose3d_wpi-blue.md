@@ -3,7 +3,8 @@
 # getBotPose3d_wpiBlue
 
 [jvm]\
-open fun [getBotPose3d_wpiBlue](get-bot-pose3d_wpi-blue.md)(limelightName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)): Pose3d
+
+public static Pose3d[getBotPose3d_wpiBlue](get-bot-pose3d_wpi-blue.md)([String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)limelightName)
 
 (Recommended) Gets the robot's 3D pose in the WPILib Blue Alliance Coordinate System.
 

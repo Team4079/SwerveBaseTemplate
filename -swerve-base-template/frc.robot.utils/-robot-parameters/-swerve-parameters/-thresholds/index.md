@@ -3,7 +3,7 @@
 # Thresholds
 
 [jvm]\
-open class [Thresholds](index.md)
+public class [Thresholds](index.md)
 
 Class containing various thresholds and constants for the swerve drive system.
 
@@ -11,34 +11,34 @@ Class containing various thresholds and constants for the swerve drive system.
 
 | | |
 |---|---|
-| [Thresholds](-thresholds.md) | [jvm]<br>constructor() |
+| [RobotParameters.SwerveParameters.Thresholds](-robot-parameters.-swerve-parameters.-thresholds.md) | [jvm]<br>public void[RobotParameters.SwerveParameters.Thresholds](-robot-parameters.-swerve-parameters.-thresholds.md)() |
 
 ## Properties
 
 | Name | Summary |
 |---|---|
-| [AUTO_ALIGN](-a-u-t-o_-a-l-i-g-n.md) | [jvm]<br>val [AUTO_ALIGN](-a-u-t-o_-a-l-i-g-n.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) = false |
-| [CANCODER_VAL10](-c-a-n-c-o-d-e-r_-v-a-l10.md) | [jvm]<br>val [CANCODER_VAL10](-c-a-n-c-o-d-e-r_-v-a-l10.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) = -1.325928 |
-| [CANCODER_VAL11](-c-a-n-c-o-d-e-r_-v-a-l11.md) | [jvm]<br>val [CANCODER_VAL11](-c-a-n-c-o-d-e-r_-v-a-l11.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) = -0.475098 |
-| [CANCODER_VAL12](-c-a-n-c-o-d-e-r_-v-a-l12.md) | [jvm]<br>val [CANCODER_VAL12](-c-a-n-c-o-d-e-r_-v-a-l12.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) = 0.467041 |
-| [CANCODER_VAL9](-c-a-n-c-o-d-e-r_-v-a-l9.md) | [jvm]<br>val [CANCODER_VAL9](-c-a-n-c-o-d-e-r_-v-a-l9.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) = -0.419189 |
-| [currentPose](current-pose.md) | [jvm]<br>open var [currentPose](current-pose.md): Pose2d |
-| [DRIVE_MOTOR_INVERETED](-d-r-i-v-e_-m-o-t-o-r_-i-n-v-e-r-e-t-e-d.md) | [jvm]<br>val [DRIVE_MOTOR_INVERETED](-d-r-i-v-e_-m-o-t-o-r_-i-n-v-e-r-e-t-e-d.md): InvertedValue |
-| [ENCODER_OFFSET](-e-n-c-o-d-e-r_-o-f-f-s-e-t.md) | [jvm]<br>val [ENCODER_OFFSET](-e-n-c-o-d-e-r_-o-f-f-s-e-t.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) = 0.0 |
-| [FIELD_ORIENTATED](-f-i-e-l-d_-o-r-i-e-n-t-a-t-e-d.md) | [jvm]<br>val [FIELD_ORIENTATED](-f-i-e-l-d_-o-r-i-e-n-t-a-t-e-d.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) = true |
-| [GREEN_LED](-g-r-e-e-n_-l-e-d.md) | [jvm]<br>val [GREEN_LED](-g-r-e-e-n_-l-e-d.md): [Array](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)&lt;[Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)&gt; |
-| [HIGHTIDE_LED](-h-i-g-h-t-i-d-e_-l-e-d.md) | [jvm]<br>val [HIGHTIDE_LED](-h-i-g-h-t-i-d-e_-l-e-d.md): [Array](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)&lt;[Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)&gt; |
-| [IS_FIELD_ORIENTED](-i-s_-f-i-e-l-d_-o-r-i-e-n-t-e-d.md) | [jvm]<br>val [IS_FIELD_ORIENTED](-i-s_-f-i-e-l-d_-o-r-i-e-n-t-e-d.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) = true |
-| [JOYSTICK_DEADBAND](-j-o-y-s-t-i-c-k_-d-e-a-d-b-a-n-d.md) | [jvm]<br>val [JOYSTICK_DEADBAND](-j-o-y-s-t-i-c-k_-d-e-a-d-b-a-n-d.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) = 0.05 |
-| [LIMELIGHT_DEADBAND](-l-i-m-e-l-i-g-h-t_-d-e-a-d-b-a-n-d.md) | [jvm]<br>val [LIMELIGHT_DEADBAND](-l-i-m-e-l-i-g-h-t_-d-e-a-d-b-a-n-d.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) = 1.5 |
-| [MOTOR_DEADBAND](-m-o-t-o-r_-d-e-a-d-b-a-n-d.md) | [jvm]<br>val [MOTOR_DEADBAND](-m-o-t-o-r_-d-e-a-d-b-a-n-d.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) = 0.05 |
-| [OFF_BALANCE_ANGLE_THRESHOLD](-o-f-f_-b-a-l-a-n-c-e_-a-n-g-l-e_-t-h-r-e-s-h-o-l-d.md) | [jvm]<br>val [OFF_BALANCE_ANGLE_THRESHOLD](-o-f-f_-b-a-l-a-n-c-e_-a-n-g-l-e_-t-h-r-e-s-h-o-l-d.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) = 10.0 |
-| [ON_BALANCE_ANGLE_THRESHOLD](-o-n_-b-a-l-a-n-c-e_-a-n-g-l-e_-t-h-r-e-s-h-o-l-d.md) | [jvm]<br>val [ON_BALANCE_ANGLE_THRESHOLD](-o-n_-b-a-l-a-n-c-e_-a-n-g-l-e_-t-h-r-e-s-h-o-l-d.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) = 5.0 |
-| [ORANGE_LED](-o-r-a-n-g-e_-l-e-d.md) | [jvm]<br>val [ORANGE_LED](-o-r-a-n-g-e_-l-e-d.md): [Array](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)&lt;[Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)&gt; |
-| [SHOULD_INVERT](-s-h-o-u-l-d_-i-n-v-e-r-t.md) | [jvm]<br>val [SHOULD_INVERT](-s-h-o-u-l-d_-i-n-v-e-r-t.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) = false |
-| [STATE_SPEED_THRESHOLD](-s-t-a-t-e_-s-p-e-e-d_-t-h-r-e-s-h-o-l-d.md) | [jvm]<br>val [STATE_SPEED_THRESHOLD](-s-t-a-t-e_-s-p-e-e-d_-t-h-r-e-s-h-o-l-d.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) = 0.05 |
-| [STEER_MOTOR_INVERTED](-s-t-e-e-r_-m-o-t-o-r_-i-n-v-e-r-t-e-d.md) | [jvm]<br>val [STEER_MOTOR_INVERTED](-s-t-e-e-r_-m-o-t-o-r_-i-n-v-e-r-t-e-d.md): InvertedValue |
-| [TEST_MODE](-t-e-s-t_-m-o-d-e.md) | [jvm]<br>open var [TEST_MODE](-t-e-s-t_-m-o-d-e.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) |
-| [USING_VISION](-u-s-i-n-g_-v-i-s-i-o-n.md) | [jvm]<br>val [USING_VISION](-u-s-i-n-g_-v-i-s-i-o-n.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) = false |
-| [X_DEADZONE](-x_-d-e-a-d-z-o-n-e.md) | [jvm]<br>val [X_DEADZONE](-x_-d-e-a-d-z-o-n-e.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) = 0.864 |
-| [Y_DEADZONE](-y_-d-e-a-d-z-o-n-e.md) | [jvm]<br>val [Y_DEADZONE](-y_-d-e-a-d-z-o-n-e.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) = 0.864 |
+| [AUTO_ALIGN](index.md#-1763765390%2FProperties%2F-1216412040) | [jvm]<br>public final static boolean[AUTO_ALIGN](index.md#-1763765390%2FProperties%2F-1216412040) |
+| [CANCODER_VAL10](index.md#-626993295%2FProperties%2F-1216412040) | [jvm]<br>public final static double[CANCODER_VAL10](index.md#-626993295%2FProperties%2F-1216412040) |
+| [CANCODER_VAL11](index.md#-595973488%2FProperties%2F-1216412040) | [jvm]<br>public final static double[CANCODER_VAL11](index.md#-595973488%2FProperties%2F-1216412040) |
+| [CANCODER_VAL12](index.md#-564953681%2FProperties%2F-1216412040) | [jvm]<br>public final static double[CANCODER_VAL12](index.md#-564953681%2FProperties%2F-1216412040) |
+| [CANCODER_VAL9](index.md#-1279569327%2FProperties%2F-1216412040) | [jvm]<br>public final static double[CANCODER_VAL9](index.md#-1279569327%2FProperties%2F-1216412040) |
+| [currentPose](index.md#902328361%2FProperties%2F-1216412040) | [jvm]<br>public static Pose2d[currentPose](index.md#902328361%2FProperties%2F-1216412040) |
+| [DRIVE_MOTOR_INVERETED](index.md#-171034330%2FProperties%2F-1216412040) | [jvm]<br>public final static InvertedValue[DRIVE_MOTOR_INVERETED](index.md#-171034330%2FProperties%2F-1216412040) |
+| [ENCODER_OFFSET](index.md#-526318415%2FProperties%2F-1216412040) | [jvm]<br>public final static double[ENCODER_OFFSET](index.md#-526318415%2FProperties%2F-1216412040) |
+| [FIELD_ORIENTATED](index.md#-1842481205%2FProperties%2F-1216412040) | [jvm]<br>public final static boolean[FIELD_ORIENTATED](index.md#-1842481205%2FProperties%2F-1216412040) |
+| [GREEN_LED](index.md#-727552924%2FProperties%2F-1216412040) | [jvm]<br>public final static [Array](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)&lt;int&gt;[GREEN_LED](index.md#-727552924%2FProperties%2F-1216412040) |
+| [HIGHTIDE_LED](index.md#-1036716893%2FProperties%2F-1216412040) | [jvm]<br>public final static [Array](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)&lt;int&gt;[HIGHTIDE_LED](index.md#-1036716893%2FProperties%2F-1216412040) |
+| [IS_FIELD_ORIENTED](index.md#583120565%2FProperties%2F-1216412040) | [jvm]<br>public final static boolean[IS_FIELD_ORIENTED](index.md#583120565%2FProperties%2F-1216412040) |
+| [JOYSTICK_DEADBAND](index.md#-1832154793%2FProperties%2F-1216412040) | [jvm]<br>public final static double[JOYSTICK_DEADBAND](index.md#-1832154793%2FProperties%2F-1216412040) |
+| [LIMELIGHT_DEADBAND](index.md#1382137648%2FProperties%2F-1216412040) | [jvm]<br>public final static double[LIMELIGHT_DEADBAND](index.md#1382137648%2FProperties%2F-1216412040) |
+| [MOTOR_DEADBAND](index.md#583011652%2FProperties%2F-1216412040) | [jvm]<br>public final static double[MOTOR_DEADBAND](index.md#583011652%2FProperties%2F-1216412040) |
+| [OFF_BALANCE_ANGLE_THRESHOLD](index.md#-613407033%2FProperties%2F-1216412040) | [jvm]<br>public final static double[OFF_BALANCE_ANGLE_THRESHOLD](index.md#-613407033%2FProperties%2F-1216412040) |
+| [ON_BALANCE_ANGLE_THRESHOLD](index.md#1029515211%2FProperties%2F-1216412040) | [jvm]<br>public final static double[ON_BALANCE_ANGLE_THRESHOLD](index.md#1029515211%2FProperties%2F-1216412040) |
+| [ORANGE_LED](index.md#189309709%2FProperties%2F-1216412040) | [jvm]<br>public final static [Array](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)&lt;int&gt;[ORANGE_LED](index.md#189309709%2FProperties%2F-1216412040) |
+| [SHOULD_INVERT](index.md#-1527799951%2FProperties%2F-1216412040) | [jvm]<br>public final static boolean[SHOULD_INVERT](index.md#-1527799951%2FProperties%2F-1216412040) |
+| [STATE_SPEED_THRESHOLD](index.md#223455310%2FProperties%2F-1216412040) | [jvm]<br>public final static double[STATE_SPEED_THRESHOLD](index.md#223455310%2FProperties%2F-1216412040) |
+| [STEER_MOTOR_INVERTED](index.md#166596186%2FProperties%2F-1216412040) | [jvm]<br>public final static InvertedValue[STEER_MOTOR_INVERTED](index.md#166596186%2FProperties%2F-1216412040) |
+| [TEST_MODE](index.md#-161039133%2FProperties%2F-1216412040) | [jvm]<br>public static boolean[TEST_MODE](index.md#-161039133%2FProperties%2F-1216412040) |
+| [USING_VISION](index.md#-514143004%2FProperties%2F-1216412040) | [jvm]<br>public final static boolean[USING_VISION](index.md#-514143004%2FProperties%2F-1216412040) |
+| [X_DEADZONE](index.md#-20023312%2FProperties%2F-1216412040) | [jvm]<br>public final static double[X_DEADZONE](index.md#-20023312%2FProperties%2F-1216412040) |
+| [Y_DEADZONE](index.md#1705457585%2FProperties%2F-1216412040) | [jvm]<br>public final static double[Y_DEADZONE](index.md#1705457585%2FProperties%2F-1216412040) |

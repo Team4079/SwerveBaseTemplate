@@ -3,4 +3,5 @@
 # getXButton
 
 [jvm]\
-open fun [getXButton](get-x-button.md)(): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)
+
+public boolean[getXButton](get-x-button.md)()

@@ -3,7 +3,8 @@
 # getTargetCount
 
 [jvm]\
-open fun [getTargetCount](get-target-count.md)(limelightName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)
+
+public static int[getTargetCount](get-target-count.md)([String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)limelightName)
 
 Gets the number of targets currently detected.
 

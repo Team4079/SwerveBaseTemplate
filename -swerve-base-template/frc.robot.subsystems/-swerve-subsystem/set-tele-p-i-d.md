@@ -3,6 +3,7 @@
 # setTelePID
 
 [jvm]\
-open fun [setTelePID](set-tele-p-i-d.md)()
+
+public void[setTelePID](set-tele-p-i-d.md)()
 
 Sets the PID constants for teleoperated driving.

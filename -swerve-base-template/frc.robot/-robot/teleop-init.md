@@ -3,6 +3,7 @@
 # teleopInit
 
 [jvm]\
-open fun [teleopInit](teleop-init.md)()
+
+public void[teleopInit](teleop-init.md)()
 
 This function is called once when teleop mode is initialized.

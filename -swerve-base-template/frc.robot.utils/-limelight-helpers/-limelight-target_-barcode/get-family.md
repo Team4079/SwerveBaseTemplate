@@ -3,4 +3,5 @@
 # getFamily
 
 [jvm]\
-open fun [getFamily](get-family.md)(): [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)
+
+public [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)[getFamily](get-family.md)()

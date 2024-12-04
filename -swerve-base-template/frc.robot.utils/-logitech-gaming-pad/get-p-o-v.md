@@ -3,4 +3,5 @@
 # getPOV
 
 [jvm]\
-open fun [getPOV](get-p-o-v.md)(pov: [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)
+
+public int[getPOV](get-p-o-v.md)(intpov)

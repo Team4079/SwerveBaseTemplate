@@ -3,7 +3,8 @@
 # getCurrentPipelineType
 
 [jvm]\
-open fun [getCurrentPipelineType](get-current-pipeline-type.md)(limelightName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)): [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)
+
+public static [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)[getCurrentPipelineType](get-current-pipeline-type.md)([String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)limelightName)
 
 Gets the current pipeline type.
 

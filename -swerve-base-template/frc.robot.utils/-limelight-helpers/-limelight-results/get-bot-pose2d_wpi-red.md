@@ -3,4 +3,5 @@
 # getBotPose2d_wpiRed
 
 [jvm]\
-open fun [getBotPose2d_wpiRed](get-bot-pose2d_wpi-red.md)(): Pose2d
+
+public Pose2d[getBotPose2d_wpiRed](get-bot-pose2d_wpi-red.md)()

@@ -3,7 +3,8 @@
 # getClassifierClass
 
 [jvm]\
-open fun [getClassifierClass](get-classifier-class.md)(limelightName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)): [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)
+
+public static [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)[getClassifierClass](get-classifier-class.md)([String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)limelightName)
 
 Gets the current neural classifier result class name.
 

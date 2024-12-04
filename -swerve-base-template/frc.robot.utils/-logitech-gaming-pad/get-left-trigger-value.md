@@ -3,7 +3,8 @@
 # getLeftTriggerValue
 
 [jvm]\
-open fun [getLeftTriggerValue](get-left-trigger-value.md)(): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)
+
+public double[getLeftTriggerValue](get-left-trigger-value.md)()
 
 Gets the value of the left trigger.
 

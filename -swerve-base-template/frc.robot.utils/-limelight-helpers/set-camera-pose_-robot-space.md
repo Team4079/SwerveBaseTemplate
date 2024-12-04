@@ -3,7 +3,8 @@
 # setCameraPose_RobotSpace
 
 [jvm]\
-open fun [setCameraPose_RobotSpace](set-camera-pose_-robot-space.md)(limelightName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html), forward: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), side: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), up: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), roll: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), pitch: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), yaw: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html))
+
+public static void[setCameraPose_RobotSpace](set-camera-pose_-robot-space.md)([String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)limelightName, doubleforward, doubleside, doubleup, doubleroll, doublepitch, doubleyaw)
 
 Sets the camera pose relative to the robot.
 

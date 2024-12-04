@@ -3,7 +3,8 @@
 # getTX
 
 [jvm]\
-open fun [getTX](get-t-x.md)(limelightName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)
+
+public static double[getTX](get-t-x.md)([String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)limelightName)
 
 Gets the horizontal offset from the crosshair to the target in degrees.
 

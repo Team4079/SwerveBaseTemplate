@@ -3,4 +3,5 @@
 # Main
 
 [jvm]\
-constructor()
+
+public void[Main](-main.md)()

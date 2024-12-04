@@ -3,7 +3,8 @@
 # getModulePositions
 
 [jvm]\
-open fun [getModulePositions](get-module-positions.md)(): [Array](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)&lt;SwerveModulePosition&gt;
+
+public [Array](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)&lt;SwerveModulePosition&gt;[getModulePositions](get-module-positions.md)()
 
 Gets the positions of the swerve modules.
 

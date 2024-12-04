@@ -3,7 +3,8 @@
 # setStreamMode_PiPSecondary
 
 [jvm]\
-open fun [setStreamMode_PiPSecondary](set-stream-mode_-pi-p-secondary.md)(limelightName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html))
+
+public static void[setStreamMode_PiPSecondary](set-stream-mode_-pi-p-secondary.md)([String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)limelightName)
 
 Enables Picture-in-Picture mode with primary stream in the corner.
 

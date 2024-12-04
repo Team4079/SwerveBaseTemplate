@@ -3,6 +3,7 @@
 # setAUTOPID
 
 [jvm]\
-open fun [setAUTOPID](set-a-u-t-o-p-i-d.md)()
+
+public void[setAUTOPID](set-a-u-t-o-p-i-d.md)()
 
 Sets the PID values for autonomous mode.

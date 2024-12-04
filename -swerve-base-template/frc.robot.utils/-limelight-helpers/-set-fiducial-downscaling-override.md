@@ -3,7 +3,8 @@
 # SetFiducialDownscalingOverride
 
 [jvm]\
-open fun [SetFiducialDownscalingOverride](-set-fiducial-downscaling-override.md)(limelightName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html), downscale: [Float](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html))
+
+public static void[SetFiducialDownscalingOverride](-set-fiducial-downscaling-override.md)([String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)limelightName, floatdownscale)
 
 Sets the downscaling factor for AprilTag detection. Increasing downscale can improve performance at the cost of potentially reduced detection range.
 

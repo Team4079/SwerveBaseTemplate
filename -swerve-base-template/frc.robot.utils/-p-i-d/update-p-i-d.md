@@ -3,7 +3,8 @@
 # updatePID
 
 [jvm]\
-open fun [updatePID](update-p-i-d.md)(p: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), i: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), d: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), f: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), s: [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html))
+
+public void[updatePID](update-p-i-d.md)(doublep, doublei, doubled, doublef, ints)
 
 Updates the PID coefficients and S value.
 
@@ -20,7 +21,8 @@ jvm
 | s | The S value. |
 
 [jvm]\
-open fun [updatePID](update-p-i-d.md)(p: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), i: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), d: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), f: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html))
+
+public void[updatePID](update-p-i-d.md)(doublep, doublei, doubled, doublef)
 
 Updates the PID coefficients.
 
@@ -36,7 +38,8 @@ jvm
 | f | The feedforward coefficient. |
 
 [jvm]\
-open fun [updatePID](update-p-i-d.md)(p: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), i: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), d: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html))
+
+public void[updatePID](update-p-i-d.md)(doublep, doublei, doubled)
 
 Updates the PID coefficients.
 

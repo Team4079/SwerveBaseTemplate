@@ -3,7 +3,8 @@
 # getDPad
 
 [jvm]\
-open fun [getDPad](get-d-pad.md)(): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)
+
+public int[getDPad](get-d-pad.md)()
 
 Gets the DPad value.
 
@@ -12,7 +13,8 @@ Gets the DPad value.
 The DPad value.
 
 [jvm]\
-open fun [getDPad](get-d-pad.md)(inDegrees: [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)
+
+public double[getDPad](get-d-pad.md)(booleaninDegrees)
 
 Gets the DPad value in degrees or radians.
 

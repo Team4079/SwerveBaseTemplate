@@ -3,4 +3,5 @@
 # getStartButton
 
 [jvm]\
-open fun [getStartButton](get-start-button.md)(): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)
+
+public boolean[getStartButton](get-start-button.md)()

@@ -3,7 +3,7 @@
 # Coordinate
 
 [jvm]\
-class [Coordinate](index.md) : [Record](https://docs.oracle.com/javase/8/docs/api/java/lang/Record.html)
+public final class [Coordinate](index.md) extends [Record](https://docs.oracle.com/javase/8/docs/api/java/lang/Record.html)
 
 Record representing a coordinate with x and y values.
 
@@ -11,4 +11,4 @@ Record representing a coordinate with x and y values.
 
 | | |
 |---|---|
-| [Coordinate](-coordinate.md) | [jvm]<br>constructor() |
+| [PadDrive.Coordinate](-pad-drive.-coordinate.md) | [jvm]<br>public void[PadDrive.Coordinate](-pad-drive.-coordinate.md)() |

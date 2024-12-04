@@ -3,7 +3,8 @@
 # SetRobotOrientation
 
 [jvm]\
-open fun [SetRobotOrientation](-set-robot-orientation.md)(limelightName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html), yaw: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), yawRate: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), pitch: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), pitchRate: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), roll: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), rollRate: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html))
+
+public static void[SetRobotOrientation](-set-robot-orientation.md)([String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)limelightName, doubleyaw, doubleyawRate, doublepitch, doublepitchRate, doubleroll, doublerollRate)
 
 Sets robot orientation values used by MegaTag2 localization algorithm.
 

@@ -3,7 +3,8 @@
 # getDetectorClassIndex
 
 [jvm]\
-open fun [getDetectorClassIndex](get-detector-class-index.md)(limelightName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)
+
+public static int[getDetectorClassIndex](get-detector-class-index.md)([String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)limelightName)
 
 Gets the detector class index from the primary result of the currently running neural detector pipeline.
 

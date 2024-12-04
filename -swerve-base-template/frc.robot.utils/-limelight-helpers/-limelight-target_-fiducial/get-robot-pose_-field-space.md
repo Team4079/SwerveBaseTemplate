@@ -3,4 +3,5 @@
 # getRobotPose_FieldSpace
 
 [jvm]\
-open fun [getRobotPose_FieldSpace](get-robot-pose_-field-space.md)(): Pose3d
+
+public Pose3d[getRobotPose_FieldSpace](get-robot-pose_-field-space.md)()

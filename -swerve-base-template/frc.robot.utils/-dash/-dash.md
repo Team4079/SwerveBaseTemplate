@@ -3,4 +3,5 @@
 # Dash
 
 [jvm]\
-constructor()
+
+public void[Dash](-dash.md)()

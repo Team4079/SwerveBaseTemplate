@@ -3,4 +3,5 @@
 # getNeuralClassID
 
 [jvm]\
-open fun [getNeuralClassID](get-neural-class-i-d.md)(limelightName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)): [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)
+
+public static [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)[getNeuralClassID](get-neural-class-i-d.md)([String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)limelightName)

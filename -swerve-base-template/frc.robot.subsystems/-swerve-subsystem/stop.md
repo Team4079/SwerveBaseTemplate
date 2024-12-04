@@ -3,6 +3,7 @@
 # stop
 
 [jvm]\
-open fun [stop](stop.md)()
+
+public void[stop](stop.md)()
 
 Stops all swerve modules.

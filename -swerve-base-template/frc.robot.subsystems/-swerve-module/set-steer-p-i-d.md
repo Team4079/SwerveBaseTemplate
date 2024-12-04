@@ -3,7 +3,8 @@
 # setSteerPID
 
 [jvm]\
-open fun [setSteerPID](set-steer-p-i-d.md)(pid: [PID](../../frc.robot.utils/-p-i-d/index.md), velocity: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html))
+
+public void[setSteerPID](set-steer-p-i-d.md)([PID](../../frc.robot.utils/-p-i-d/index.md)pid, doublevelocity)
 
 Sets the steer PID values.
 

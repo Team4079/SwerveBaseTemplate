@@ -3,7 +3,8 @@
 # PadDrive
 
 [jvm]\
-constructor(swerveSubsystem: [SwerveSubsystem](../../frc.robot.subsystems/-swerve-subsystem/index.md), pad: [LogitechGamingPad](../../frc.robot.utils/-logitech-gaming-pad/index.md), isFieldOriented: [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html))
+
+public void[PadDrive](-pad-drive.md)([SwerveSubsystem](../../frc.robot.subsystems/-swerve-subsystem/index.md)swerveSubsystem, [LogitechGamingPad](../../frc.robot.utils/-logitech-gaming-pad/index.md)pad, booleanisFieldOriented)
 
 Constructs a new PadDrive command.
 

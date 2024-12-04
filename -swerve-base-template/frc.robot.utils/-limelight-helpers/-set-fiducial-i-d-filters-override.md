@@ -3,7 +3,8 @@
 # SetFiducialIDFiltersOverride
 
 [jvm]\
-open fun [SetFiducialIDFiltersOverride](-set-fiducial-i-d-filters-override.md)(limelightName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html), validIDs: [Array](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)&lt;[Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)&gt;)
+
+public static void[SetFiducialIDFiltersOverride](-set-fiducial-i-d-filters-override.md)([String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)limelightName, [Array](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)&lt;int&gt;validIDs)
 
 Overrides the valid AprilTag IDs that will be used for localization. Tags not in this list will be ignored for robot pose estimation.
 

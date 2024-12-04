@@ -3,4 +3,5 @@
 # getTargetPose_RobotSpace2D
 
 [jvm]\
-open fun [getTargetPose_RobotSpace2D](get-target-pose_-robot-space2-d.md)(): Pose2d
+
+public Pose2d[getTargetPose_RobotSpace2D](get-target-pose_-robot-space2-d.md)()

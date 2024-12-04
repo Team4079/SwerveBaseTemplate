@@ -3,7 +3,8 @@
 # getThrottle
 
 [jvm]\
-open fun [getThrottle](get-throttle.md)(): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)
+
+public double[getThrottle](get-throttle.md)()
 
 Gets the throttle value.
 

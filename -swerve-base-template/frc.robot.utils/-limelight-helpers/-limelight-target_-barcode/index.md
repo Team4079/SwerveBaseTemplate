@@ -3,7 +3,7 @@
 # LimelightTarget_Barcode
 
 [jvm]\
-open class [LimelightTarget_Barcode](index.md)
+public class [LimelightTarget_Barcode](index.md)
 
 Represents a Barcode Target Result extracted from JSON Output
 
@@ -11,25 +11,25 @@ Represents a Barcode Target Result extracted from JSON Output
 
 | | |
 |---|---|
-| [LimelightTarget_Barcode](-limelight-target_-barcode.md) | [jvm]<br>constructor() |
+| [LimelightHelpers.LimelightTarget_Barcode](-limelight-helpers.-limelight-target_-barcode.md) | [jvm]<br>public void[LimelightHelpers.LimelightTarget_Barcode](-limelight-helpers.-limelight-target_-barcode.md)() |
 
 ## Properties
 
 | Name | Summary |
 |---|---|
-| [corners](corners.md) | [jvm]<br>open var [corners](corners.md): [Array](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)&lt;[Array](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)&lt;[Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)&gt;&gt; |
-| [data](data.md) | [jvm]<br>open var [data](data.md): [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)<br>Gets the decoded data content of the barcode |
-| [family](family.md) | [jvm]<br>open var [family](family.md): [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)<br>Barcode family type (e.g. |
-| [ta](ta.md) | [jvm]<br>open var [ta](ta.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) |
-| [tx](tx.md) | [jvm]<br>open var [tx](tx.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) |
-| [tx_nocrosshair](tx_nocrosshair.md) | [jvm]<br>open var [tx_nocrosshair](tx_nocrosshair.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) |
-| [tx_pixels](tx_pixels.md) | [jvm]<br>open var [tx_pixels](tx_pixels.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) |
-| [ty](ty.md) | [jvm]<br>open var [ty](ty.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) |
-| [ty_nocrosshair](ty_nocrosshair.md) | [jvm]<br>open var [ty_nocrosshair](ty_nocrosshair.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) |
-| [ty_pixels](ty_pixels.md) | [jvm]<br>open var [ty_pixels](ty_pixels.md): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html) |
+| [corners](index.md#1471632300%2FProperties%2F-1216412040) | [jvm]<br>public [Array](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)&lt;[Array](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)&lt;double&gt;&gt;[corners](index.md#1471632300%2FProperties%2F-1216412040) |
+| [data](index.md#1313808262%2FProperties%2F-1216412040) | [jvm]<br>public [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)[data](index.md#1313808262%2FProperties%2F-1216412040)<br>Gets the decoded data content of the barcode |
+| [family](index.md#-1418381236%2FProperties%2F-1216412040) | [jvm]<br>public [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)[family](index.md#-1418381236%2FProperties%2F-1216412040)<br>Barcode family type (e.g. |
+| [ta](index.md#183796451%2FProperties%2F-1216412040) | [jvm]<br>public double[ta](index.md#183796451%2FProperties%2F-1216412040) |
+| [tx](index.md#897252012%2FProperties%2F-1216412040) | [jvm]<br>public double[tx](index.md#897252012%2FProperties%2F-1216412040) |
+| [tx_nocrosshair](index.md#688044202%2FProperties%2F-1216412040) | [jvm]<br>public double[tx_nocrosshair](index.md#688044202%2FProperties%2F-1216412040) |
+| [tx_pixels](index.md#-1167027294%2FProperties%2F-1216412040) | [jvm]<br>public double[tx_pixels](index.md#-1167027294%2FProperties%2F-1216412040) |
+| [ty](index.md#928271819%2FProperties%2F-1216412040) | [jvm]<br>public double[ty](index.md#928271819%2FProperties%2F-1216412040) |
+| [ty_nocrosshair](index.md#-1974119095%2FProperties%2F-1216412040) | [jvm]<br>public double[ty_nocrosshair](index.md#-1974119095%2FProperties%2F-1216412040) |
+| [ty_pixels](index.md#944263075%2FProperties%2F-1216412040) | [jvm]<br>public double[ty_pixels](index.md#944263075%2FProperties%2F-1216412040) |
 
 ## Functions
 
 | Name | Summary |
 |---|---|
-| [getFamily](get-family.md) | [jvm]<br>open fun [getFamily](get-family.md)(): [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html) |
+| [getFamily](get-family.md) | [jvm]<br>public [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)[getFamily](get-family.md)() |

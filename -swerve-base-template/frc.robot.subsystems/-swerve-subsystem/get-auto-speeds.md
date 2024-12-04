@@ -3,7 +3,8 @@
 # getAutoSpeeds
 
 [jvm]\
-open fun [getAutoSpeeds](get-auto-speeds.md)(): ChassisSpeeds
+
+public ChassisSpeeds[getAutoSpeeds](get-auto-speeds.md)()
 
 Gets the chassis speeds for autonomous driving.
 

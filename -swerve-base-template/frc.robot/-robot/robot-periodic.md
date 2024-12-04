@@ -3,7 +3,8 @@
 # robotPeriodic
 
 [jvm]\
-open fun [robotPeriodic](robot-periodic.md)()
+
+public void[robotPeriodic](robot-periodic.md)()
 
 This function is called every 20 ms, no matter the mode. Use this for items like diagnostics that you want ran during disabled, autonomous, teleoperated and test. 
 

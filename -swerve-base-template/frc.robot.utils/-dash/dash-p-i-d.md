@@ -3,7 +3,8 @@
 # dashPID
 
 [jvm]\
-open fun [dashPID](dash-p-i-d.md)(prefix: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html), pid: [PID](../-p-i-d/index.md), velocity: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), changeV: [DoubleConsumer](https://docs.oracle.com/javase/8/docs/api/java/util/function/DoubleConsumer.html))
+
+public static void[dashPID](dash-p-i-d.md)([String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)prefix, [PID](../-p-i-d/index.md)pid, doublevelocity, [DoubleConsumer](https://docs.oracle.com/javase/8/docs/api/java/util/function/DoubleConsumer.html)changeV)
 
 Function to update PIDV values from the SmartDashboard.
 

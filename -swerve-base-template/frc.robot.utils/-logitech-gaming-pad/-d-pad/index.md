@@ -3,7 +3,7 @@
 # DPad
 
 [jvm]\
-enum [DPad](index.md)
+public enum [DPad](index.md)
 
 Enum representing the DPad directions.
 
@@ -24,11 +24,11 @@ Enum representing the DPad directions.
 
 | Name | Summary |
 |---|---|
-| [angle](angle.md) | [jvm]<br>val [angle](angle.md): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) |
+| [angle](index.md#329494028%2FProperties%2F-1216412040) | [jvm]<br>public final int[angle](index.md#329494028%2FProperties%2F-1216412040) |
 
 ## Functions
 
 | Name | Summary |
 |---|---|
-| [valueOf](value-of.md) | [jvm]<br>open fun [valueOf](value-of.md)(name: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)): [LogitechGamingPad.DPad](index.md)<br>Returns the enum constant of this type with the specified name. The string must match exactly an identifier used to declare an enum constant in this type. (Extraneous whitespace characters are not permitted.) |
-| [values](values.md) | [jvm]<br>open fun [values](values.md)(): [Array](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)&lt;[LogitechGamingPad.DPad](index.md)&gt;<br>Returns an array containing the constants of this enum type, in the order they're declared. This method may be used to iterate over the constants. |
+| [valueOf](value-of.md) | [jvm]<br>public static [LogitechGamingPad.DPad](index.md)[valueOf](value-of.md)([String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)name)<br>Returns the enum constant of this type with the specified name. The string must match exactly an identifier used to declare an enum constant in this type. (Extraneous whitespace characters are not permitted.) |
+| [values](values.md) | [jvm]<br>public static [Array](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)&lt;[LogitechGamingPad.DPad](index.md)&gt;[values](values.md)()<br>Returns an array containing the constants of this enum type, in the order they're declared. This method may be used to iterate over the constants. |

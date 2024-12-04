@@ -3,7 +3,8 @@
 # getJSONDump
 
 [jvm]\
-open fun [getJSONDump](get-j-s-o-n-dump.md)(limelightName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)): [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)
+
+public static [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)[getJSONDump](get-j-s-o-n-dump.md)([String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)limelightName)
 
 Gets the full JSON results dump.
 

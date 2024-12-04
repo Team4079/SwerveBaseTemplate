@@ -3,6 +3,7 @@
 # resetDrivePosition
 
 [jvm]\
-open fun [resetDrivePosition](reset-drive-position.md)()
+
+public void[resetDrivePosition](reset-drive-position.md)()
 
 Resets the drive motor position to zero.

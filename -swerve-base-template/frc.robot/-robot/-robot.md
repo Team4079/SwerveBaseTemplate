@@ -3,4 +3,5 @@
 # Robot
 
 [jvm]\
-constructor()
+
+public void[Robot](-robot.md)()

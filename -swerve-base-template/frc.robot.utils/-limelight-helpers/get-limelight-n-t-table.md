@@ -3,4 +3,5 @@
 # getLimelightNTTable
 
 [jvm]\
-open fun [getLimelightNTTable](get-limelight-n-t-table.md)(tableName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)): NetworkTable
+
+public static NetworkTable[getLimelightNTTable](get-limelight-n-t-table.md)([String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)tableName)

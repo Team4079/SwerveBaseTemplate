@@ -3,7 +3,8 @@
 # getBotPose2d_wpiRed
 
 [jvm]\
-open fun [getBotPose2d_wpiRed](get-bot-pose2d_wpi-red.md)(limelightName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)): Pose2d
+
+public static Pose2d[getBotPose2d_wpiRed](get-bot-pose2d_wpi-red.md)([String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)limelightName)
 
 Gets the Pose2d for easy use with Odometry vision pose estimator (addVisionMeasurement)
 

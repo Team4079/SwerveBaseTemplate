@@ -3,7 +3,8 @@
 # getCurrentPipelineIndex
 
 [jvm]\
-open fun [getCurrentPipelineIndex](get-current-pipeline-index.md)(limelightName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)
+
+public static double[getCurrentPipelineIndex](get-current-pipeline-index.md)([String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)limelightName)
 
 Gets the active pipeline index.
 

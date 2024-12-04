@@ -3,7 +3,8 @@
 # dimensionIncrease
 
 [jvm]\
-open fun [dimensionIncrease](dimension-increase.md)(translation2d: Translation2d, z: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)): Translation3d
+
+public static Translation3d[dimensionIncrease](dimension-increase.md)(Translation2dtranslation2d, doublez)
 
 Converts a 2D translation to a 3D translation.
 

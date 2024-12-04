@@ -3,7 +3,8 @@
 # getAutonomousCommand
 
 [jvm]\
-open fun [getAutonomousCommand](get-autonomous-command.md)(): Command
+
+public Command[getAutonomousCommand](get-autonomous-command.md)()
 
 Use this to pass the autonomous command to the main [Robot](../-robot/index.md) class.
 

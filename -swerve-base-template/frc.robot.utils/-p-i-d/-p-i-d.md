@@ -3,7 +3,8 @@
 # PID
 
 [jvm]\
-constructor(p: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), i: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), d: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html))
+
+public void[PID](-p-i-d.md)(doublep, doublei, doubled)
 
 Constructor for PID with P, I, and D values.
 
@@ -18,7 +19,8 @@ jvm
 | d | The derivative coefficient. |
 
 [jvm]\
-constructor(p: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), i: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), d: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), f: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), s: [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html))
+
+public void[PID](-p-i-d.md)(doublep, doublei, doubled, doublef, ints)
 
 Constructor for PID with P, I, D, F values and S value.
 
@@ -35,7 +37,8 @@ jvm
 | s | The S value. |
 
 [jvm]\
-constructor(p: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), i: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), d: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html), f: [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html))
+
+public void[PID](-p-i-d.md)(doublep, doublei, doubled, doublef)
 
 Constructor for PID with P, I, D, and F values.
 

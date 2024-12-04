@@ -3,7 +3,8 @@
 # toPose2D
 
 [jvm]\
-open fun [toPose2D](to-pose2-d.md)(inData: [Array](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)&lt;[Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)&gt;): Pose2d
+
+public static Pose2d[toPose2D](to-pose2-d.md)([Array](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)&lt;double&gt;inData)
 
 Takes a 6-length array of pose data and converts it to a Pose2d object. Uses only x, y, and yaw components, ignoring z, roll, and pitch. Array format: [x, y, z, roll, pitch, yaw] where angles are in degrees.
 

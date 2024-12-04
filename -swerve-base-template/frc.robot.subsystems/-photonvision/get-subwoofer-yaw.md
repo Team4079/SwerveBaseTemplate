@@ -3,7 +3,8 @@
 # getSubwooferYaw
 
 [jvm]\
-open fun [getSubwooferYaw](get-subwoofer-yaw.md)(): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)
+
+public double[getSubwooferYaw](get-subwoofer-yaw.md)()
 
 Gets the yaw of the subwoofer.
 

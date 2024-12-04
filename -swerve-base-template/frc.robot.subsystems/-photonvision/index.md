@@ -3,7 +3,7 @@
 # Photonvision
 
 [jvm]\
-open class [Photonvision](index.md) : SubsystemBase
+public class [Photonvision](index.md) extends SubsystemBase
 
 The PhotonVision subsystem handles vision processing using PhotonVision cameras.
 
@@ -11,15 +11,15 @@ The PhotonVision subsystem handles vision processing using PhotonVision cameras.
 
 | | |
 |---|---|
-| [Photonvision](-photonvision.md) | [jvm]<br>constructor()<br>Constructs a new PhotonVision subsystem. |
+| [Photonvision](-photonvision.md) | [jvm]<br>public void[Photonvision](-photonvision.md)()<br>Constructs a new PhotonVision subsystem. |
 
 ## Functions
 
 | Name | Summary |
 |---|---|
-| [getDistanceSubwoofer](get-distance-subwoofer.md) | [jvm]<br>open fun [getDistanceSubwoofer](get-distance-subwoofer.md)(): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)<br>Calculates and returns the distance to the subwoofer for the 2024 Crescendo game. |
-| [getEstimatedGlobalPose](get-estimated-global-pose.md) | [jvm]<br>open fun [getEstimatedGlobalPose](get-estimated-global-pose.md)(): Transform3d<br>open fun [getEstimatedGlobalPose](get-estimated-global-pose.md)(prevEstimatedRobotPose: Pose2d): EstimatedRobotPose<br>Gets the estimated global pose of the robot. |
-| [getPivotPosition](get-pivot-position.md) | [jvm]<br>open fun [getPivotPosition](get-pivot-position.md)(): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)<br>Gets the forward distance to the target. |
-| [getSubwooferYaw](get-subwoofer-yaw.md) | [jvm]<br>open fun [getSubwooferYaw](get-subwoofer-yaw.md)(): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)<br>Gets the yaw of the subwoofer. |
-| [hasTag](has-tag.md) | [jvm]<br>open fun [hasTag](has-tag.md)(): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)<br>Checks if there is a tag. |
-| [periodic](periodic.md) | [jvm]<br>open fun [periodic](periodic.md)()<br>This method is called periodically by the scheduler. |
+| [getDistanceSubwoofer](get-distance-subwoofer.md) | [jvm]<br>public double[getDistanceSubwoofer](get-distance-subwoofer.md)()<br>Calculates and returns the distance to the subwoofer for the 2024 Crescendo game. |
+| [getEstimatedGlobalPose](get-estimated-global-pose.md) | [jvm]<br>public Transform3d[getEstimatedGlobalPose](get-estimated-global-pose.md)()<br>public EstimatedRobotPose[getEstimatedGlobalPose](get-estimated-global-pose.md)(Pose2dprevEstimatedRobotPose)<br>Gets the estimated global pose of the robot. |
+| [getPivotPosition](get-pivot-position.md) | [jvm]<br>public double[getPivotPosition](get-pivot-position.md)()<br>Gets the forward distance to the target. |
+| [getSubwooferYaw](get-subwoofer-yaw.md) | [jvm]<br>public double[getSubwooferYaw](get-subwoofer-yaw.md)()<br>Gets the yaw of the subwoofer. |
+| [hasTag](has-tag.md) | [jvm]<br>public boolean[hasTag](has-tag.md)()<br>Checks if there is a tag. |
+| [periodic](periodic.md) | [jvm]<br>public void[periodic](periodic.md)()<br>This method is called periodically by the scheduler. |

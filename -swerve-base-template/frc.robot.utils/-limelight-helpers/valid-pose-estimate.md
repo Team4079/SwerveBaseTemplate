@@ -3,4 +3,5 @@
 # validPoseEstimate
 
 [jvm]\
-open fun [validPoseEstimate](valid-pose-estimate.md)(pose: [LimelightHelpers.PoseEstimate](-pose-estimate/index.md)): [Boolean](https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html)
+
+public static [Boolean](https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html)[validPoseEstimate](valid-pose-estimate.md)([LimelightHelpers.PoseEstimate](-pose-estimate/index.md)pose)

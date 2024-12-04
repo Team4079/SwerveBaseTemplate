@@ -3,7 +3,8 @@
 # hasTag
 
 [jvm]\
-open fun [hasTag](has-tag.md)(): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)
+
+public boolean[hasTag](has-tag.md)()
 
 Checks if there is a tag. This method is useful to avoid NullPointerExceptions when trying to access specific info based on vision.
 

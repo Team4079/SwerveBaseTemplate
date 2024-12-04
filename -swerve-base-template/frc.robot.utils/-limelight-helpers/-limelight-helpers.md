@@ -3,4 +3,5 @@
 # LimelightHelpers
 
 [jvm]\
-constructor()
+
+public void[LimelightHelpers](-limelight-helpers.md)()

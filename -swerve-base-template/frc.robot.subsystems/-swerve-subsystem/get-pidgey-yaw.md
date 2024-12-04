@@ -3,7 +3,8 @@
 # getPidgeyYaw
 
 [jvm]\
-open fun [getPidgeyYaw](get-pidgey-yaw.md)(): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)
+
+public double[getPidgeyYaw](get-pidgey-yaw.md)()
 
 Gets the yaw of the Pigeon2 IMU.
 

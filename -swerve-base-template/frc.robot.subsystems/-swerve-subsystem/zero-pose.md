@@ -3,6 +3,7 @@
 # zeroPose
 
 [jvm]\
-open fun [zeroPose](zero-pose.md)()
+
+public void[zeroPose](zero-pose.md)()
 
 Resets the pose of the robot to zero.

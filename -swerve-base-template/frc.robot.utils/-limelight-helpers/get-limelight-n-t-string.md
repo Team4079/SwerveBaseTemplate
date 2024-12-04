@@ -3,4 +3,5 @@
 # getLimelightNTString
 
 [jvm]\
-open fun [getLimelightNTString](get-limelight-n-t-string.md)(tableName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html), entryName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)): [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)
+
+public static [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)[getLimelightNTString](get-limelight-n-t-string.md)([String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)tableName, [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)entryName)

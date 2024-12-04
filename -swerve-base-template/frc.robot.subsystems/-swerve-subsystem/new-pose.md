@@ -3,7 +3,8 @@
 # newPose
 
 [jvm]\
-open fun [newPose](new-pose.md)(pose: Pose2d)
+
+public void[newPose](new-pose.md)(Pose2dpose)
 
 Sets a new pose for the robot.
 

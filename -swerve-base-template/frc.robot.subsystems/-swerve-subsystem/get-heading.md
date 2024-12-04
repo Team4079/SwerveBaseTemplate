@@ -3,7 +3,8 @@
 # getHeading
 
 [jvm]\
-open fun [getHeading](get-heading.md)(): [Double](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)
+
+public double[getHeading](get-heading.md)()
 
 Gets the heading of the robot.
 
