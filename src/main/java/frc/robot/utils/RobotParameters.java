@@ -12,7 +12,7 @@ import java.io.IOException;
 import org.json.simple.parser.ParseException;
 
 /** Class containing global values for the robot. */
-@SuppressWarnings("ALL")
+@SuppressWarnings("unused")
 public class RobotParameters {
   /** Class containing global values related to motors. */
   public static class MotorParameters {
@@ -82,9 +82,7 @@ public class RobotParameters {
       static {
         try {
           config = RobotConfig.fromGUISettings();
-        } catch (IOException e) {
-          throw new RuntimeException("Failed to load robot config", e);
-        } catch (ParseException e) {
+        } catch (IOException | ParseException e) {
           throw new RuntimeException("Failed to load robot config", e);
         }
       }

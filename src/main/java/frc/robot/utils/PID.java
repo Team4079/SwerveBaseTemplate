@@ -1,31 +1,19 @@
 package frc.robot.utils;
 
 /** A class representing a PID controller. */
+@SuppressWarnings("unused")
 public class PID {
   private double p;
   private double i;
   private double d;
-  private double f = 0.0;
-  private int s = 0;
+  private double f;
+  private int s;
 
-  private double previousError = 0.0;
-  private double integral = 0.0;
-  private double setpoint = 0.0;
-  private double error = 0.0;
-  private double output = 0.0;
-
-  /**
-   * Constructor for PID with P, I, and D values.
-   *
-   * @param p The proportional coefficient.
-   * @param i The integral coefficient.
-   * @param d The derivative coefficient.
-   */
-  public PID(double p, double i, double d) {
-    this.p = p;
-    this.i = i;
-    this.d = d;
-  }
+  private double previousError = 0;
+  private double integral = 0;
+  private double setpoint = 0;
+  private double error = 0;
+  private double output = 0;
 
   /**
    * Constructor for PID with P, I, D, F values and S value.
@@ -37,11 +25,18 @@ public class PID {
    * @param s The S value.
    */
   public PID(double p, double i, double d, double f, int s) {
-    this.p = p;
-    this.i = i;
-    this.d = d;
-    this.f = f;
-    this.s = s;
+    updatePID(p, i, d, f, s);
+  }
+
+  /**
+   * Constructor for PID with P, I, and D values.
+   *
+   * @param p The proportional coefficient.
+   * @param i The integral coefficient.
+   * @param d The derivative coefficient.
+   */
+  public PID(double p, double i, double d) {
+    updatePID(p, i, d);
   }
 
   /**
@@ -53,11 +48,7 @@ public class PID {
    * @param f The feedforward coefficient.
    */
   public PID(double p, double i, double d, double f) {
-    this.p = p;
-    this.i = i;
-    this.d = d;
-    this.f = f;
-    this.s = -1;
+    updatePID(p, i, d, f);
   }
 
   /**
@@ -86,11 +77,7 @@ public class PID {
    * @param f The feedforward coefficient.
    */
   public void updatePID(double p, double i, double d, double f) {
-    this.p = p;
-    this.i = i;
-    this.d = d;
-    this.f = f;
-    this.s = -1;
+    updatePID(p, i, d, f, -1);
   }
 
   /**
@@ -101,11 +88,7 @@ public class PID {
    * @param d The derivative coefficient.
    */
   public void updatePID(double p, double i, double d) {
-    this.p = p;
-    this.i = i;
-    this.d = d;
-    this.f = 0.0;
-    this.s = -1;
+    updatePID(p, i, d, 0);
   }
 
   /**
@@ -128,86 +111,185 @@ public class PID {
 
   /** Resets the integral term. */
   public void resetI() {
-    this.integral = 0.0;
+    setI(0);
   }
 
-  // Getters and setters for the PID coefficients and other fields
+  /**
+   * Gets the proportional coefficient.
+   *
+   * @return The proportional coefficient.
+   */
   public double getP() {
     return p;
   }
 
+  /**
+   * Sets the proportional coefficient.
+   *
+   * @param p The proportional coefficient.
+   */
   public void setP(double p) {
     this.p = p;
   }
 
+  /**
+   * Gets the integral coefficient.
+   *
+   * @return The integral coefficient.
+   */
   public double getI() {
     return i;
   }
 
+  /**
+   * Sets the integral coefficient.
+   *
+   * @param i The integral coefficient.
+   */
   public void setI(double i) {
     this.i = i;
   }
 
+  /**
+   * Gets the derivative coefficient.
+   *
+   * @return The derivative coefficient.
+   */
   public double getD() {
     return d;
   }
 
+  /**
+   * Sets the derivative coefficient.
+   *
+   * @param d The derivative coefficient.
+   */
   public void setD(double d) {
     this.d = d;
   }
 
+  /**
+   * Gets the feedforward coefficient.
+   *
+   * @return The feedforward coefficient.
+   */
   public double getF() {
     return f;
   }
 
+  /**
+   * Sets the feedforward coefficient.
+   *
+   * @param f The feedforward coefficient.
+   */
   public void setF(double f) {
     this.f = f;
   }
 
+  /**
+   * Gets the S value.
+   *
+   * @return The S value.
+   */
   public int getS() {
     return s;
   }
 
+  /**
+   * Sets the S value.
+   *
+   * @param s The S value.
+   */
   public void setS(int s) {
     this.s = s;
   }
 
+  /**
+   * Gets the previous error.
+   *
+   * @return The previous error.
+   */
   public double getPreviousError() {
     return previousError;
   }
 
+  /**
+   * Sets the previous error.
+   *
+   * @param previousError The previous error.
+   */
   public void setPreviousError(double previousError) {
     this.previousError = previousError;
   }
 
+  /**
+   * Gets the integral term.
+   *
+   * @return The integral term.
+   */
   public double getIntegral() {
     return integral;
   }
 
+  /**
+   * Sets the integral term.
+   *
+   * @param integral The integral term.
+   */
   public void setIntegral(double integral) {
     this.integral = integral;
   }
 
+  /**
+   * Gets the setpoint.
+   *
+   * @return The setpoint.
+   */
   public double getSetpoint() {
     return setpoint;
   }
 
+  /**
+   * Sets the setpoint.
+   *
+   * @param setpoint The setpoint.
+   */
   public void setSetpoint(double setpoint) {
     this.setpoint = setpoint;
   }
 
+  /**
+   * Gets the current error.
+   *
+   * @return The current error.
+   */
   public double getError() {
     return error;
   }
 
+  /**
+   * Sets the current error.
+   *
+   * @param error The current error.
+   */
   public void setError(double error) {
     this.error = error;
   }
 
+  /**
+   * Gets the PID output.
+   *
+   * @return The PID output.
+   */
   public double getOutput() {
     return output;
   }
 
+  /**
+   * Sets the PID output.
+   *
+   * @param output The PID output.
+   */
   public void setOutput(double output) {
     this.output = output;
   }
