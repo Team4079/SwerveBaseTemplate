@@ -66,7 +66,7 @@ public class SwerveModule {
 
     // Sets the brake mode, invered, and current limits for the drive motor
     driveConfigs.MotorOutput.NeutralMode = NeutralModeValue.Brake;
-    driveConfigs.MotorOutput.Inverted = SwerveParameters.Thresholds.DRIVE_MOTOR_INVERETED;
+    driveConfigs.MotorOutput.Inverted = SwerveParameters.Thresholds.DRIVE_MOTOR_INVERTED;
     driveConfigs.CurrentLimits.SupplyCurrentLimit = MotorParameters.DRIVE_SUPPLY_LIMIT;
     driveConfigs.CurrentLimits.SupplyCurrentLimitEnable = true;
     driveConfigs.CurrentLimits.StatorCurrentLimit = MotorParameters.DRIVE_STATOR_LIMIT;
@@ -80,7 +80,7 @@ public class SwerveModule {
     steerConfigs.Slot0.kD = PIDParameters.STEER_PID_AUTO.getD();
     steerConfigs.Slot0.kV = 0.0;
 
-    // Sets the brake mode, invered, and current limits for the steer motor
+    // Sets the brake mode, inverted, and current limits for the steer motor
     steerConfigs.MotorOutput.NeutralMode = NeutralModeValue.Brake;
     steerConfigs.MotorOutput.Inverted = SwerveParameters.Thresholds.STEER_MOTOR_INVERTED;
     steerConfigs.Feedback.FeedbackRemoteSensorID = canCoderID;

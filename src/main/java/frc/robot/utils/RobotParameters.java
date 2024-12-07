@@ -109,14 +109,12 @@ public class RobotParameters {
       public static final double CANCODER_VAL10 = -0.825928 - 0.5;
       public static final double CANCODER_VAL11 = -0.475098;
       public static final double CANCODER_VAL12 = -0.032959 + 0.5;
-      public static final InvertedValue DRIVE_MOTOR_INVERETED =
+      public static final InvertedValue DRIVE_MOTOR_INVERTED =
           InvertedValue.CounterClockwise_Positive;
       public static final InvertedValue STEER_MOTOR_INVERTED = InvertedValue.Clockwise_Positive;
       public static final double JOYSTICK_DEADBAND = 0.05;
       public static final boolean USING_VISION = false;
-      public static final boolean FIELD_ORIENTATED = true;
       public static final boolean AUTO_ALIGN = false;
-      public static final double LIMELIGHT_DEADBAND = 1.5;
       public static final double MOTOR_DEADBAND = 0.05;
       public static final boolean IS_FIELD_ORIENTED = true;
       public static final boolean SHOULD_INVERT = false;

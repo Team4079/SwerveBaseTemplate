@@ -19,10 +19,10 @@ import org.photonvision.targeting.PhotonTrackedTarget;
 /** The PhotonVision subsystem handles vision processing using PhotonVision cameras. */
 public class Photonvision extends SubsystemBase {
   // PhotonVision cameras
-  private PhotonCamera camera = new PhotonCamera("Camera");
+  private final PhotonCamera camera = new PhotonCamera("Camera");
 
   // Pose estimator for determining the robot's position on the field
-  private PhotonPoseEstimator photonPoseEstimator;
+  private final PhotonPoseEstimator photonPoseEstimator;
 
   private final Translation2d cameraTrans = new Translation2d(0.31, 0.0);
 
