@@ -26,7 +26,7 @@ public class Dash {
         } else if (value instanceof Sendable sendableValue) {
           SmartDashboard.putData(key, sendableValue);
         } else {
-          System.out.println("Jayden had a skill issue like always");
+          System.out.println("Oh great the dash function isn't working");
           throw new IllegalArgumentException("Unsupported type: " + value.getClass());
         }
       }

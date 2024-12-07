@@ -6,7 +6,6 @@ import com.ctre.phoenix6.hardware.Pigeon2;
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.config.PIDConstants;
 import com.pathplanner.lib.controllers.PPHolonomicDriveController;
-import edu.wpi.first.math.VecBuilder;
 import edu.wpi.first.math.estimator.SwerveDrivePoseEstimator;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -14,7 +13,6 @@ import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
-import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
@@ -56,8 +54,9 @@ public class SwerveSubsystem extends SubsystemBase {
   }
 
   /**
-   * Initializes the swerve modules.
-   * Ensure the swerve modules are intialized in the same order as in kinematics. 
+   * Initializes the swerve modules. Ensure the swerve modules are intialized in the same order as
+   * in kinematics.
+   *
    * @return An array of initialized SwerveModule objects.
    */
   private SwerveModule[] initializeModules() {
@@ -98,9 +97,9 @@ public class SwerveSubsystem extends SubsystemBase {
   }
 
   /**
-   * Initializes the SwerveDrivePoseEstimator.
-   * The SwerveDrivePoseEsimator estimates the robot's position.
-   * This is based on a combination of the robot's movement and vision.
+   * Initializes the SwerveDrivePoseEstimator. The SwerveDrivePoseEsimator estimates the robot's
+   * position. This is based on a combination of the robot's movement and vision.
+   *
    * @return A new SwerveDrivePoseEstimator object.
    */
   private SwerveDrivePoseEstimator initializePoseEstimator() {
@@ -111,11 +110,10 @@ public class SwerveSubsystem extends SubsystemBase {
         new Pose2d(0.0, 0.0, Rotation2d.fromDegrees(0.0)));
   }
 
-  /** Configures the AutoBuilder for autonomous driving. 
-   * READ DOCUMENTATION TO PUT IN CORRECT VALUES
-   * Allows PathPlanner to get pose and output robot-relative chassis speeds
-   * Needs tuning
-  */
+  /**
+   * Configures the AutoBuilder for autonomous driving. READ DOCUMENTATION TO PUT IN CORRECT VALUES
+   * Allows PathPlanner to get pose and output robot-relative chassis speeds Needs tuning
+   */
   private void configureAutoBuilder() {
     AutoBuilder.configure(
         this::getPose,
@@ -146,9 +144,9 @@ public class SwerveSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
 
-    /**
-     * This method checks whether the bot is in Teleop, and adds it to poseEstimator based on VISION
-     */
+    /*
+     This method checks whether the bot is in Teleop, and adds it to poseEstimator based on VISION
+    */
     if (DriverStation.isTeleop()) {
       EstimatedRobotPose estimatedPose =
           photonvision.getEstimatedGlobalPose(poseEstimator.getEstimatedPosition());
@@ -160,9 +158,9 @@ public class SwerveSubsystem extends SubsystemBase {
       }
     }
 
-    /**
-     * Updates the robot position based on movement and rotation from the pidgey and encoders
-     */
+    /*
+     Updates the robot position based on movement and rotation from the pidgey and encoders
+    */
     poseEstimator.update(getPidgeyRotation(), getModulePositions());
 
     field.setRobotPose(poseEstimator.getEstimatedPosition());
@@ -228,9 +226,11 @@ public class SwerveSubsystem extends SubsystemBase {
     return pidgey.getYaw().getValueAsDouble();
   }
 
-  /** Sets the initial heading of the robot based on the alliance color. 
-   * Our attempt to set the intial heading based on our alliance color. Likely should be able to use vision to set this automaically. 
-  */
+  /**
+   * Sets the initial heading of the robot based on the alliance color. Our attempt to set the
+   * intial heading based on our alliance color. Likely should be able to use vision to set this
+   * automaically.
+   */
   public void setInitialHeading() {
     Optional<Alliance> alliance = DriverStation.getAlliance();
     if (alliance.isEmpty() || alliance.get() == Alliance.Red) {

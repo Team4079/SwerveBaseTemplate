@@ -64,7 +64,7 @@ public class SwerveModule {
     driveConfigs.Slot0.kD = PIDParameters.DRIVE_PID_AUTO.getD();
     driveConfigs.Slot0.kV = PIDParameters.DRIVE_PID_V_AUTO;
 
-    //Sets the brake mode, invered, and current limits for the drive motor
+    // Sets the brake mode, invered, and current limits for the drive motor
     driveConfigs.MotorOutput.NeutralMode = NeutralModeValue.Brake;
     driveConfigs.MotorOutput.Inverted = SwerveParameters.Thresholds.DRIVE_MOTOR_INVERETED;
     driveConfigs.CurrentLimits.SupplyCurrentLimit = MotorParameters.DRIVE_SUPPLY_LIMIT;
@@ -94,8 +94,8 @@ public class SwerveModule {
     CANcoderConfiguration canCoderConfiguration = new CANcoderConfiguration();
 
     /**
-     * Sets the CANCoder direction, absolute sensor range, and magnet offset for the CANCoder
-     * Make sure the magnet offset is ACCURATE and based on when the wheel is straight!
+     * Sets the CANCoder direction, absolute sensor range, and magnet offset for the CANCoder Make
+     * sure the magnet offset is ACCURATE and based on when the wheel is straight!
      */
     canCoderConfiguration.MagnetSensor.AbsoluteSensorRange =
         AbsoluteSensorRangeValue.Signed_PlusMinusHalf;
