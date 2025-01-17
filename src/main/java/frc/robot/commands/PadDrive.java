@@ -1,30 +1,30 @@
 package frc.robot.commands;
 
+import static frc.robot.utils.Dash.*;
+import static frc.robot.utils.RobotParameters.MotorParameters.*;
+import static frc.robot.utils.RobotParameters.SwerveParameters.Thresholds.*;
+
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.SwerveSubsystem;
-import frc.robot.utils.Dash;
-import frc.robot.utils.LogitechGamingPad;
-import frc.robot.utils.RobotParameters;
-import frc.robot.utils.RobotParameters.SwerveParameters.Thresholds;
+import frc.robot.subsystems.*;
+import frc.robot.utils.*;
+import frc.robot.utils.controller.*;
+import kotlin.*;
 
 /** Command to control the robot's swerve drive using a Logitech gaming pad. */
 public class PadDrive extends Command {
-  private final SwerveSubsystem swerveSubsystem;
-  private final LogitechGamingPad pad;
+  private final GamingController pad;
   private final boolean isFieldOriented;
 
   /**
    * Constructs a new PadDrive command.
    *
-   * @param swerveSubsystem The swerve subsystem used by this command.
    * @param pad The Logitech gaming pad used to control the robot.
    * @param isFieldOriented Whether the drive is field-oriented.
    */
-  public PadDrive(SwerveSubsystem swerveSubsystem, LogitechGamingPad pad, boolean isFieldOriented) {
-    this.swerveSubsystem = swerveSubsystem;
+  public PadDrive(GamingController pad, boolean isFieldOriented) {
     this.pad = pad;
     this.isFieldOriented = isFieldOriented;
-    addRequirements(this.swerveSubsystem);
+    addRequirements(Swerve.getInstance());
   }
 
   /**
@@ -34,20 +34,19 @@ public class PadDrive extends Command {
    */
   @Override
   public void execute() {
-    Coordinate position = positionSet(pad);
+    Pair<Double, Double> position = positionSet(pad);
 
     double rotation =
-        -pad.getRightAnalogXAxis() * RobotParameters.MotorParameters.MAX_ANGULAR_SPEED;
-    if (Math.abs(pad.getRightAnalogXAxis()) < 0.2) {
-      rotation = 0.0;
-    }
+        (Math.abs(pad.getRightAnalogXAxis()) >= 0.1)
+            ? -pad.getRightAnalogXAxis() * RobotParameters.MotorParameters.MAX_ANGULAR_SPEED
+            : 0.0;
 
-    Dash.dash(
-        Dash.pairOf("X Joystick", position.x()),
-        Dash.pairOf("Y Joystick", position.y()),
-        Dash.pairOf("Rotation", rotation));
+    log("X Joystick", position.getFirst());
+    log("Y Joystick", position.getSecond());
+    log("Rotation", rotation);
 
-    swerveSubsystem.setDriveSpeeds(position.y(), position.x(), rotation * 0.8, isFieldOriented);
+    Swerve.getInstance()
+        .setDriveSpeeds(position.getSecond(), position.getFirst(), rotation * 0.5, isFieldOriented);
   }
 
   /**
@@ -60,26 +59,20 @@ public class PadDrive extends Command {
     return false;
   }
 
-  /** Record representing a coordinate with x and y values. */
-  public record Coordinate(double x, double y) {}
-
   /**
    * Sets the position based on the input from the Logitech gaming pad.
    *
    * @param pad The Logitech gaming pad.
-   * @return The coordinate representing the position.
+   * @return The coordinate representing the position. The first element is the x-coordinate, and
+   *     the second element is the y-coordinate.
    */
-  public static Coordinate positionSet(LogitechGamingPad pad) {
-    double x = -pad.getLeftAnalogXAxis() * RobotParameters.MotorParameters.MAX_SPEED;
-    if (Math.abs(x) < Thresholds.X_DEADZONE) {
-      x = 0.0;
-    }
+  public static Pair<Double, Double> positionSet(GamingController pad) {
+    double x = -pad.getLeftAnalogXAxis() * MAX_SPEED;
+    if (Math.abs(x) < X_DEADZONE) x = 0.0;
 
-    double y = -pad.getLeftAnalogYAxis() * RobotParameters.MotorParameters.MAX_SPEED;
-    if (Math.abs(y) < Thresholds.Y_DEADZONE) {
-      y = 0.0;
-    }
+    double y = -pad.getLeftAnalogYAxis() * MAX_SPEED;
+    if (Math.abs(y) < Y_DEADZONE) y = 0.0;
 
-    return new Coordinate(x, y);
+    return new Pair<>(x, y);
   }
 }

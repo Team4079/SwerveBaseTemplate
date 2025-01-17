@@ -1,0 +1,19 @@
+{
+  "name": "reefscape2025",
+  "version": "0.1.0",
+  "private": false,
+  "devDependencies": {
+    "@commitlint/cli": "^19.6.1",
+    "@commitlint/config-conventional": "^19.6.0",
+    "husky": "^9.1.7"
+  },
+  "scripts": {
+    "prepare": "husky",
+    "cz-cuzt": "cz-customizable"
+  },
+  "dependencies": {
+    "cz": "^1.8.2",
+    "cz-customizable": "^7.4.0",
+    "reefscape2025": "file:"
+  }
+}
