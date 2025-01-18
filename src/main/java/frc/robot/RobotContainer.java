@@ -1,10 +1,7 @@
 package frc.robot;
 
-import static frc.robot.utils.Direction.*;
-import static frc.robot.utils.ElevatorState.*;
 import static frc.robot.commands.Kommand.*;
 
-import com.pathplanner.lib.auto.NamedCommands;
 import com.pathplanner.lib.commands.PathPlannerAuto;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.*;
@@ -47,13 +44,6 @@ public class RobotContainer {
 
     configureBindings();
 
-    NamedCommands.registerCommand("scoreLeft", score(LEFT));
-    NamedCommands.registerCommand("scoreRight", score(RIGHT));
-    NamedCommands.registerCommand("SetL1", setElevatorState(L1));
-    NamedCommands.registerCommand("SetL2", setElevatorState(L2));
-    NamedCommands.registerCommand("SetL3", setElevatorState(L3));
-    NamedCommands.registerCommand("SetL4", setElevatorState(L4));
-
     networkChooser.addDefaultOption("Do Nothing", new PathPlannerAuto("Straight Auto"));
   }
 
@@ -68,12 +58,6 @@ public class RobotContainer {
   private void configureBindings() {
     padStart.onTrue(resetPidgey()); // Prev Button: padB
     padY.onTrue(setTelePid());
-    // padA.onTrue(setElevatorState(L1));
-    // padB.onTrue(setElevatorState(L2));
-    // padX.onTrue(setElevatorState(L3));
-    // padY.onTrue(setElevatorState(L4));
-    padLeftBumper.onTrue(score(LEFT));
-    padRightBumper.onTrue(score(RIGHT));
   }
 
   public Command getAutonomousCommand() {
